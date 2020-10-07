@@ -10,7 +10,7 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Moin in die Gruppe!");
+            Console.WriteLine("Moin in die Gruppe! und Ich bin Claude");
             Console.ReadKey();
         }
     }
