@@ -14,60 +14,45 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
         const double PI = 3.1415926535897932384626433832;
         double cosAngle;
 
+        
+
         static void Main(string[] args)  //Hauptschleife
         {
-            //Begrüßung
-           
-            Console.WriteLine("Ein herzerfrischendes Moin Moin an den Anwender!");
-            Console.WriteLine("Mit dieser Anwendung können Sie ein Zahnrad konfigurieren.");
-            Console.WriteLine("");
-            Console.WriteLine("Zur Berechnung werden folgende Daten benötigt: ");
-            Console.WriteLine("Zähnezahl , Teilkreisdurchmesser (mm), Breite(mm) und das Material.");
             
+            //Begrüßung
+            Begrüßung();
+
             //Konsoleneingabe
             Console.Write("Geben Sie die Zähnezahl ein: ");
             double zähnezahl = Convert.ToDouble(Console.ReadLine());
-
             Console.Write("Geben Sie den Teilkreisdurchmesser ein: ");
             double teilkreisdurchmesser = Convert.ToDouble(Console.ReadLine());
-
             Console.Write("Geben Sie die Breite ein: ");
             double breite = Convert.ToDouble(Console.ReadLine());
-
-            //Eingabe wird beendet und auf die Berechnungsanforderung gewartet
+            Console.Write("Auf wie viele Nachkommarstellen soll gerundet werden?: ");
+            int deci = Convert.ToInt32(Console.ReadLine());           
             Console.WriteLine("Danke für ihre Eingabe. Mit ENTER wird berechnet!");
             Console.WriteLine("");
             Console.ReadKey();
 
-
-
             // Eingegebene Daten werden in Unterprogrammen berechnet und ausgegeben
-            Program prg = new Program();
 
-            //Dezimalstellen angeben
-            int deci = 3;
+            Program prg = new Program();
 
             double modul = prg.Modul_m(teilkreisdurchmesser, zähnezahl);
             Console.WriteLine("Das Modul                        m   = " + Math.Round(modul , deci) + "mm");
-
             double h = prg.Zahnhöhe_h(modul);
             Console.WriteLine("Die Zahnhöhe                     h   = " + Math.Round(h , deci) + "mm");
-
             double hf = prg.Zahnfusshöhe_hf(modul);
             Console.WriteLine("Die Zahnfusshöhe                 hf  = " + Math.Round(hf , deci) + "mm");
-
             double ha = prg.Zahnkopfhöhe_ha(modul);
             Console.WriteLine("Die Zahnkopfhöhe                 ha  = " + Math.Round(ha, deci) + "mm");
-
             double p = prg.Teilung_p(modul);
             Console.WriteLine("Die Teilung                      p   = " + Math.Round(p, deci) + "mm");
-
             double df = prg.Fusskreisdurchnmesser_df(modul, teilkreisdurchmesser);
             Console.WriteLine("Der Fußkreisdurchnmesser         df  = " + Math.Round(df, deci) + "mm");
-
             double da = prg.Kopfkreisdurchnmesser_da(modul, zähnezahl);
             Console.WriteLine("Der Kopfkreisdurchnmesser        da  = " + Math.Round(da, deci) + "mm");
-
             double db = prg.Grundkreisdurchmesser_db(teilkreisdurchmesser);
             Console.WriteLine("Der Grundkreisdurchnmesser       db  = " + Math.Round(db, deci) + "mm");
 
@@ -78,8 +63,18 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
             Console.ReadKey();
         }
 
+        static void Begrüßung()
+        {
+            Console.WriteLine("Ein herzerfrischendes Moin Moin an den Anwender!");
+            Console.WriteLine("Mit dieser Anwendung können Sie ein Zahnrad konfigurieren.");
+            Console.WriteLine("");
+            Console.WriteLine("Zur Berechnung werden folgende Daten benötigt: ");
+            Console.WriteLine("Zähnezahl , Teilkreisdurchmesser (mm), Breite(mm) und das Material.");
+        }
+       
+
         //Berechnungen
-        double DegreesToRadians(double degrees)
+        public double DegreesToRadians(double degrees)
         {
             return degrees * Math.PI / 180.0;
         }
