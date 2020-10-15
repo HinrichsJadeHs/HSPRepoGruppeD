@@ -11,6 +11,7 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
         static void Main(string[] args)
         {
             Console.WriteLine("Moin in die Gruppe! und Ich bin Claude");
+            Console.WriteLine("aber wo ist xiaowei ?");   
             Console.ReadKey();
         }
     }
