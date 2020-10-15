@@ -25,8 +25,10 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
             //Konsoleneingabe
             Console.Write("Geben Sie die Zähnezahl ein: ");
             double zähnezahl = Convert.ToDouble(Console.ReadLine());
+
             Console.Write("Geben Sie den Teilkreisdurchmesser ein: ");
             double teilkreisdurchmesser = Convert.ToDouble(Console.ReadLine());
+
             Console.Write("Geben Sie die Breite ein: ");
             double breite = Convert.ToDouble(Console.ReadLine());
             Console.Write("Auf wie viele Nachkommarstellen soll gerundet werden?: ");
@@ -41,17 +43,17 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
 
             double modul = prg.Modul_m(teilkreisdurchmesser, zähnezahl);
             Console.WriteLine("Das Modul                        m   = " + Math.Round(modul , deci) + "mm");
-            double h = prg.Zahnhöhe_h(modul);
+            double h = prg.Zahnhöhe_h(modul, Spielconstante);
             Console.WriteLine("Die Zahnhöhe                     h   = " + Math.Round(h , deci) + "mm");
-            double hf = prg.Zahnfusshöhe_hf(modul);
+            double hf = prg.Zahnfusshöhe_hf(modul, Spielconstante);
             Console.WriteLine("Die Zahnfusshöhe                 hf  = " + Math.Round(hf , deci) + "mm");
             double ha = prg.Zahnkopfhöhe_ha(modul);
             Console.WriteLine("Die Zahnkopfhöhe                 ha  = " + Math.Round(ha, deci) + "mm");
-            double p = prg.Teilung_p(modul);
+            double p = prg.Teilung_p(modul, PI);
             Console.WriteLine("Die Teilung                      p   = " + Math.Round(p, deci) + "mm");
-            double df = prg.Fusskreisdurchnmesser_df(modul, teilkreisdurchmesser);
+            double df = prg.Fusskreisdurchnmesser_df(modul , teilkreisdurchmesser, Spielconstante );
             Console.WriteLine("Der Fußkreisdurchnmesser         df  = " + Math.Round(df, deci) + "mm");
-            double da = prg.Kopfkreisdurchnmesser_da(modul, zähnezahl);
+            double da = prg.Kopfkreisdurchnmesser_da(modul, teilkreisdurchmesser);
             Console.WriteLine("Der Kopfkreisdurchnmesser        da  = " + Math.Round(da, deci) + "mm");
             double db = prg.Grundkreisdurchmesser_db(teilkreisdurchmesser);
             Console.WriteLine("Der Grundkreisdurchnmesser       db  = " + Math.Round(db, deci) + "mm");
@@ -83,14 +85,14 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
             double modul = teilkreisdurchmesser / zähnezahl;
             return modul;
         }
-        public double Zahnhöhe_h(double modul)
+        public double Zahnhöhe_h(double modul, double Spielconstante)
         {
             double c = Spielconstante * modul;
-            double h = (2 * modul) + c;
+            double h = 2 * modul + c;
             return h ;
         }
 
-        public double Zahnfusshöhe_hf(double modul)
+        public double Zahnfusshöhe_hf(double modul, double Spielconstante)
         {
             double c = Spielconstante * modul;
             double hf = modul + c;
@@ -104,20 +106,20 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
             return ha;
         }
 
-        public double Teilung_p(double modul)
+        public double Teilung_p(double modul, double PI)
         {
             double p = PI * modul;
             return p;
         }
-        public double Fusskreisdurchnmesser_df(double modul, double teilkreisdurchmesser)
+        public double Fusskreisdurchnmesser_df(double modul, double teilkreisdurchmesser, double Spielconstante)
         {
             double c = Spielconstante * modul;
-            double df = teilkreisdurchmesser - (2 * (modul + c));
+            double df = teilkreisdurchmesser - 2 * (c + modul);
             return df;
         }
-        public double Kopfkreisdurchnmesser_da(double modul, double zähnezahl)
+        public double Kopfkreisdurchnmesser_da(double modul, double teilkreisdurchmesser)
         {
-            double da = modul * (zähnezahl - 2);
+            double da = teilkreisdurchmesser + 2 * modul;
             return da;
         }
         public double Grundkreisdurchmesser_db(double teilkreisdurchmesser)
