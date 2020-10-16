@@ -19,7 +19,7 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
         static void Main(string[] args)  //Hauptschleife
         {
             
-            //Begrüßung
+            //Begrüßung in der Methode
             Begrüßung();
 
             //Konsoleneingabe
@@ -31,6 +31,7 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
 
             Console.Write("Geben Sie die Breite ein: ");
             double breite = Convert.ToDouble(Console.ReadLine());
+
             Console.Write("Auf wie viele Nachkommarstellen soll gerundet werden?: ");
             int deci = Convert.ToInt32(Console.ReadLine());           
             Console.WriteLine("Danke für ihre Eingabe. Mit ENTER wird berechnet!");
