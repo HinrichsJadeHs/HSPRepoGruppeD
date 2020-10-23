@@ -27,6 +27,7 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
             Console.Write("Teilkreisdurchmesser: ");
             double teilkreisdurchmesser = Convert.ToDouble(Console.ReadLine());
 
+        // Modul = teilkreisdurchmesser / zähnezahl
             // Eingegebene Daten werden in Unterprogrammen berechnet und ausgegeben
 
 
