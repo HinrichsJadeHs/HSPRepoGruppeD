@@ -18,7 +18,7 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
             
             //Begrüßung in der Methode
             
-            lydksgliudrihderhgdö
+            lydksgliudrihderhgdö xiaowei 
             //Konsoleneingabe
             
 
