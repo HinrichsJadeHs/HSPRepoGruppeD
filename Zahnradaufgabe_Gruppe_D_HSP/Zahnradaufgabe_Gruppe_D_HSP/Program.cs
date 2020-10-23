@@ -31,7 +31,7 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
 
         static void Begrüßung() //Methode Begrüßung 1. Hallo/Moin/.... 2. Wir berechnen ein Zahnrad
         {
-            Console.WriteLine("Xiaowei");
+            Console.WriteLine("Xiaoweisdfsefsefsef");
             Console.ReadKey();
         }
         
