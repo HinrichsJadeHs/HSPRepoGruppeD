@@ -50,3 +50,40 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
 
     }
 }
+static void Main(string[] args)//xiaowei
+{
+    Console.WriteLine("Hallo an den Anwender!");
+    Console.WriteLine("Willkommen bei dem Zahnradrechner");
+    Console.WriteLine("Bitte geben Sie Die Zahnhöhe(z) und den Teilkreisdurchmesser（d) (in mm) an");
+    Console.WriteLine("Mit ENTER gehts weiter!");
+    Console.ReadKey();
+
+    Console.WriteLine("z: ");
+    double z = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("d: ");
+    double d = Convert.ToDouble(Console.ReadLine());
+
+    double m = d / z;
+    double c = 0.167 * m;
+    Console.ReadKey();
+
+    Console.WriteLine("Es stehen vier Ergebinisse zur Benutz");
+    double q = m + c;
+    Console.WriteLine("Zahnhöhe=" + q);
+
+
+    double e = m;
+    Console.WriteLine("Zahnkopfhöhe=" + m);
+
+    double s = m * 3.14;
+    Console.WriteLine("Teilung=" + s);
+
+    double h = d - 2 * (m + c);
+    Console.WriteLine("Fusskreisdurchmesser=" + h);
+
+    Console.ReadKey();
+
+
+    Console.WriteLine("Danke für das Benutzen");
+    Console.ReadKey();
+}
