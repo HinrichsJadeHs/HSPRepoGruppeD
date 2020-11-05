@@ -9,61 +9,87 @@ namespace Zahnradaufgabe_Gruppe_D_HSP
     class Program
         
     {
-        //Konstante Variablen
-        
-        
 
         static void Main(string[] args)  //Hauptschleife
         {
-            //Begrüßung in einer Methode
-            Begrüßung();
-            //Begrüßung in einer Methode
+            Boolean abfrage = true;
+            while (abfrage == true)
+            {
+                //Begrüßung in einer Methode
+                Begrüßung();
+                //Begrüßung in einer Methode
+
+                //Konsoleneingabe
+                Console.WriteLine("...");
+                Console.Write("Geben Sie die gewünschte Zähnezahl an: ");
+                double z = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Geben Sie den gewünschten Teilkreisdurchmesser an: ");
+                double d = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Geben sie die Anzahl der gerundeten Nachkommarstellen an: ");
+                int nachkommar = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Mit ENTER wird berechnet...");
+                Console.ReadKey();
+                //Konsoleneingabe
+
+                //Verarbeitung in einer Methode
+                Program prg = new Program();
+                double m = prg.Modul_m(d, z);
+                double c = prg.Kopfspiel_c(m);
+                double h = prg.Zahnhöhe_h(m, c);
+                double df = prg.Fusskreisdurchmesser_df(d, m, c);
+                double da = prg.Kopfkreisdurchmesser_da(m, z);
+                double p = prg.Teilung_p(m);
+                double hf = prg.Zahnfusshöhe_hf(m, c);
+                double ha = m;
+                //Verarbeitung in einer Methode
 
 
-            //Konsoleneingabe
-            Console.Write("Zähnezahl: ");
-            double z = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Teilkreisdurchmesser: ");
-            double d = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Geben sie die Anzahl der gerundeten Nachkommarstellen an: ");
-            int nachkommar = Convert.ToInt32(Console.ReadLine());
-            Console.ReadKey();
-            //Konsoleneingabe
 
+                //Ausgabe
+                Console.WriteLine("...");
+                Console.WriteLine("Das Modul                        m   = " + Math.Round(m, nachkommar));
+                Console.WriteLine("Die Teilung                      p   = " + Math.Round(p, nachkommar));
+                Console.WriteLine("Die Zahnhöhe                     h   = " + Math.Round(h, nachkommar) + "mm");
+                Console.WriteLine("Der Fußkreisdurchmesser          df  = " + Math.Round(df, nachkommar) + "mm");
+                Console.WriteLine("Der Kopfkreisdurchmesser         da  = " + Math.Round(da, nachkommar) + "mm");
+                Console.WriteLine("Die Zahnfusshöhe                 hf  = " + Math.Round(hf, nachkommar) + "mm");
+                Console.WriteLine("Die Zahnkopfhöhe                 ha  = " + Math.Round(ha, nachkommar) + "mm");
+                Console.WriteLine("Press ENTER");
+                //Ausgabe
+                // Eingegebene Daten werden in Unterprogrammen berechnet und ausgegeben
 
-            //Verarbeitung in einer Methode
-            Program prg = new Program();
-            double m = prg.Modul_m(d, z);
-            double c = prg.Kopfspiel_c(m);
-            double h = prg.Zahnhöhe_h(m, c);
-            double df = prg.Fusskreisdurchmesser_df(d, m, c);
-            double da = prg.Kopfkreisdurchmesser_da(m, z);
-            double p = prg.Teilung_p(m);
-            double hf = prg.Zahnfusshöhe_hf(m, c);
-            double ha = m;
-            //Verarbeitung in einer Methode
+                // erneut ausführen ?
+                Console.ReadKey();
+                Console.WriteLine("...");
+                Console.WriteLine("Mit 1 = wiederholen und mit 2 = beenden");
+                Console.Write("Geben Sie ein: ");
+                 int i = Convert.ToInt32(Console.ReadLine());
+                if (i == 1)
+                {
+                    abfrage = true;
+                    Console.Clear();
+                }
+                else if (i == 2 )
+                {
+                    Console.Clear();
+                    Console.WriteLine("Press ENTER and BYE BYE!");
+                    Console.ReadKey();
+                    abfrage = false;
+                }
+                // erneut ausführen ?
+               
 
-
-
-            //Ausgabe
-            Console.WriteLine("Das Modul                        m   = " + Math.Round(m, nachkommar));
-            Console.WriteLine("Die Teilung                      p   = " + Math.Round(p, nachkommar));
-            Console.WriteLine("Die Zahnhöhe                     h   = " + Math.Round(h, nachkommar) + "mm");
-            Console.WriteLine("Der Fußkreisdurchmesser          df  = " + Math.Round(df, nachkommar) + "mm");
-            Console.WriteLine("Der Kopfkreisdurchmesser         da  = " + Math.Round(da, nachkommar) + "mm");
-            Console.WriteLine("Die Zahnfusshöhe                 hf  = " + Math.Round(hf, nachkommar) + "mm");
-            Console.WriteLine("Die Zahnkopfhöhe                 ha  = " + Math.Round(ha, nachkommar) + "mm");
-            //Ausgabe
-
-            Console.ReadKey();
-
-            // Eingegebene Daten werden in Unterprogrammen berechnet und ausgegeben
+            }
         }
 
         static void Begrüßung() //Methode Begrüßung 
         {
-            Console.WriteLine("Hallo an den Anwender!");
+            Console.WriteLine("Ein herzerfrischendes MOIN MOIN! an den Anwender!");
             Console.WriteLine("Willkommen bei dem Zahnradrechner");
+            Console.WriteLine("...");
+            Console.WriteLine("Mit diesem Programm kann exemplarisch gezeigt werden,");
+            Console.WriteLine("dass man mit Eingabeparametern Werte für ein Zahnrad ausrechnen kann.");
+            Console.WriteLine("...");
             Console.WriteLine("Bitte geben Sie Die Zähnezahl und den Teilkreisdurchmesser (in mm) an");
             Console.WriteLine("Mit ENTER gehts weiter!");
             Console.ReadKey();
