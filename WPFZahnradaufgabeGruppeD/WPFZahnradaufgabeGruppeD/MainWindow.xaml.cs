@@ -37,11 +37,8 @@ namespace WPFZahnradaufgabeGruppeD
         {
             
             int z = Convert.ToInt32( zähnezahl.Text);
-            
-            double m = Convert.ToDouble(DropModul.Text);
-
-            
-
+           
+            double m = Convert.ToDouble(DropModul.Text);         
             double d = z * m;
             ausgabe.Text = Convert.ToString(d);
         }
