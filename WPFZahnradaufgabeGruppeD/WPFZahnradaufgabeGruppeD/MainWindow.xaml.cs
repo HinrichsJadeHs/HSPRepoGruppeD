@@ -205,7 +205,7 @@ namespace WPFZahnradaufgabeGruppeD
             einfachCheck.IsChecked = true;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Close_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

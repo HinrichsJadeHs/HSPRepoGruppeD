@@ -106,7 +106,7 @@
             <Label Content="°"             HorizontalAlignment="Left" Margin="116,182,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
         </Canvas>
-        <Button Content="Beenden" Margin="481,439,245,48" Background="#FFA953FF" BorderBrush="Red" Foreground="Black" Click="Button_Click_1"/>
+        <Button Name="Close" Content="Beenden" Margin="481,439,245,48" Background="#FFA953FF" BorderBrush="Red" Foreground="Black" Click="Close_Click_1"/>
 
     </Grid>
 </Window>
