@@ -59,7 +59,7 @@
             <TextBox  Name="zähnezahl"           HorizontalAlignment="Left" Margin="80,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
 
             <Label Content="Modul :"             HorizontalAlignment="Left" Margin="5,95,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <ComboBox Name="DropModul"           HorizontalAlignment="Left" Margin="80,95,0,0" VerticalAlignment="Top" Width="120" Height="25" >
+            <ComboBox Name="DropModul"           HorizontalAlignment="Left" Margin="80,95,0,0" VerticalAlignment="Top" Width="120" Height="25" SelectedIndex="17" >
                 <ComboBoxItem>0,1</ComboBoxItem>
                 <ComboBoxItem>0,12</ComboBoxItem>
                 <ComboBoxItem>0,16</ComboBoxItem>
@@ -106,7 +106,7 @@
             <Label Content="°"             HorizontalAlignment="Left" Margin="116,182,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
         </Canvas>
-        <Button Content="Beenden" HorizontalAlignment="Left" Margin="481,439,0,0" VerticalAlignment="Top" Width="274" Height="47" Background="#FFA953FF" BorderBrush="Red" Foreground="Black" Click="Button_Click_1"/>
+        <Button Content="Beenden" Margin="481,439,245,48" Background="#FFA953FF" BorderBrush="Red" Foreground="Black" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
