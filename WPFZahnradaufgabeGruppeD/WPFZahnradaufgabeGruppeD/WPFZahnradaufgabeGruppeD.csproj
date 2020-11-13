@@ -6,4 +6,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Niklas2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Niklas2.png" />
+  </ItemGroup>
+
 </Project>
