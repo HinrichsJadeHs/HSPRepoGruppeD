@@ -41,5 +41,7 @@ namespace WPFZahnradaufgabeGruppeD
         {
             this.Close();
         }
+
+        
     }
 }
