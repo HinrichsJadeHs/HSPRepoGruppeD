@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFZahnradaufgabeGruppeD"
         mc:Ignorable="d"
-        Title="Zahnradrechner" Height="550" Width="1000">
+        Title="Zahnradrechner"  Height="550" Width="1000" Icon="Niklas2.png">
 
     <Grid>
         <Grid.Background>
@@ -20,7 +20,7 @@
 
         <Button Name="Close" Content="Beenden" Margin="363,432,363,55" Background="#FFA953FF" BorderBrush="Red" Foreground="Black" Click="Close_Click_1"/>
         <Button Content="Außenverzahnung" HorizontalAlignment="Left" Margin="235,295,0,0" VerticalAlignment="Top" Width="224" Click="Button_Click" Height="75" Background="Red" />
-        <Button Content="Innenverzahnung" HorizontalAlignment="Left" Margin="533,295,0,0" VerticalAlignment="Top" Width="224" Click="Button_Click" Height="75" Background="#FF1CCB00" />
+        <Button Content="Innenverzahnung" HorizontalAlignment="Left" Margin="533,295,0,0" VerticalAlignment="Top" Width="224" Click="Button_Click_2" Height="75" Background="#FF1CCB00" />
         <Image HorizontalAlignment="Center" Height="177" Margin="0,90,0,0" VerticalAlignment="Top" Width="182" Source="Niklas2.png" />
         <Image HorizontalAlignment="Left" Height="100" Margin="611,175,0,0" VerticalAlignment="Top" Width="100"/>
 
