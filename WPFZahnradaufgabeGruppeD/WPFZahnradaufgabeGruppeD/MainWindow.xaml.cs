@@ -44,6 +44,8 @@ namespace WPFZahnradaufgabeGruppeD
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            Window3 objwindow3 = new Window3();
+            objwindow3.Show();
             MessageBox.Show("in progress");
         }
     }

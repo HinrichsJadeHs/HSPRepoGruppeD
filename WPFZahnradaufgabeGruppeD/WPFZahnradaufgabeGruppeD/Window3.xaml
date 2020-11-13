@@ -1,0 +1,119 @@
+﻿<Window x:Class="WPFZahnradaufgabeGruppeD.Window3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFZahnradaufgabeGruppeD"
+        mc:Ignorable="d"
+       Title="Zahnradrechner" Height="550" Width="1000" Icon="Niklas2.png">
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFA5FFA5"/>
+                <GradientStop Color="#FFFF7D7D" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Label Content="Willkommen beim Zahnradrechner: Innenverzahnt" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="498" FontSize="20" FontWeight="Bold" />
+
+        <Button Content="Berechnen" HorizontalAlignment="Left" Margin="40,367,0,0" VerticalAlignment="Top" Click="Button_Click" Height="67" Width="290" Background="#FFA2FF8D" FontSize="16" FontWeight="Bold" FontStyle="Normal" FontFamily="Bookman Old Style"/>
+        <Canvas Margin="364,70,0,0" Background="#FF89D9F7" HorizontalAlignment="Left" Width="508" Height="364" VerticalAlignment="Top">
+            <Label Content="Berechnungen:" Margin="5,5,0,0" Width="150" Height="31" RenderTransformOrigin="1.618,0.362" FontWeight="Bold" FontSize="16" Canvas.Left="5" Canvas.Top="5"/>
+            <Label Name="lbl_Ausgabe" Content="Teilkreisdurchmesser d: "           HorizontalAlignment="Left" Margin="5,55,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Teilung p: "                        HorizontalAlignment="Left" Margin="5,85,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Kopfkreisdurchmesser da: "          HorizontalAlignment="Left" Margin="5,115,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Fußkreisdurchmesser df: "           HorizontalAlignment="Left" Margin="5,145,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Zahnhöhe h: "                       HorizontalAlignment="Left" Margin="5,175,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Zahnkopfhöhe ha"                    HorizontalAlignment="Left" Margin="5,205,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Zahnfußhöhe hf: "                   HorizontalAlignment="Left" Margin="5,235,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Kopfspiel c: "                      HorizontalAlignment="Left" Margin="5,265,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Achsabstand a: "                    HorizontalAlignment="Left" Margin="5,295,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+
+
+            <TextBlock Name="d_Ausgabe"        HorizontalAlignment="Left" Margin="160,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="p_Ausgabe"        HorizontalAlignment="Left" Margin="160,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="da_Ausgabe"        HorizontalAlignment="Left" Margin="160,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="df_Ausgabe"        HorizontalAlignment="Left" Margin="160,150,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="h_Ausgabe"        HorizontalAlignment="Left" Margin="160,180,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="ha_Ausgabe"        HorizontalAlignment="Left" Margin="160,210,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="hf_Ausgabe"        HorizontalAlignment="Left" Margin="160,240,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="c_Ausgabe"        HorizontalAlignment="Left" Margin="160,270,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="a_Ausgabe"        HorizontalAlignment="Left" Margin="160,300,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+
+
+            <Label Content="Stirnmodul mt: "           HorizontalAlignment="Left" Margin="250,55,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Stirnteilung pt: "         HorizontalAlignment="Left" Margin="250,85,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Dicke für Catia: "         HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+
+            <TextBlock Name="mt_Ausgabe"        HorizontalAlignment="Left" Margin="401,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="pt_Ausgabe"        HorizontalAlignment="Left" Margin="401,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="dicke_Ausgabe"     HorizontalAlignment="Left" Margin="401,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+
+        </Canvas>
+
+        <Canvas Margin="40,70,0,205" Background="#FFFFFF7F" HorizontalAlignment="Left" Width="290">
+            <Label Content="Eingabe:"            HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="150" Height="31" RenderTransformOrigin="1.618,0.362" FontWeight="Bold" FontSize="16"/>
+
+            <ComboBox Name="EingabeAuswahlDrop" HorizontalAlignment="Left" Margin="80,10,0,0" VerticalAlignment="Top" Width="150" Height="25"  SelectionChanged="EingabeAuswahlDrop_SelectionChanged" >
+                <ComboBoxItem>Zähnezahl/Modul</ComboBoxItem>
+                <ComboBoxItem>Teilkreisdurchmesser/Modul</ComboBoxItem>
+            </ComboBox>
+
+            <Label  Name="lbl_eingabe1"    Content="Zähnezahl :"      HorizontalAlignment="Left" Margin="5,55,0,0" VerticalAlignment="Top" Height="25" Width="75"/>
+            <TextBox  Name="txtbx_eingabe1"           HorizontalAlignment="Left" Margin="80,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <Label  Name="lbl_mm"    Content=""      HorizontalAlignment="Left" Margin="120,60,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
+
+            <Label Name="lbl_eingabe2" Content="Modul :"             HorizontalAlignment="Left" Margin="5,95,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
+            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,95,0,0" VerticalAlignment="Top" Width="120" Height="25" SelectedIndex="17" >
+                <ComboBoxItem>0,1</ComboBoxItem>
+                <ComboBoxItem>0,12</ComboBoxItem>
+                <ComboBoxItem>0,16</ComboBoxItem>
+                <ComboBoxItem>0,2</ComboBoxItem>
+                <ComboBoxItem>0,25</ComboBoxItem>
+                <ComboBoxItem>0,3</ComboBoxItem>
+                <ComboBoxItem>0,4</ComboBoxItem>
+                <ComboBoxItem>0,5</ComboBoxItem>
+                <ComboBoxItem>0,6</ComboBoxItem>
+                <ComboBoxItem>0,7</ComboBoxItem>
+                <ComboBoxItem>0,8</ComboBoxItem>
+                <ComboBoxItem>0,9</ComboBoxItem>
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>1,25</ComboBoxItem>
+                <ComboBoxItem>1,5</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+                <ComboBoxItem>2,5</ComboBoxItem>
+                <ComboBoxItem>3</ComboBoxItem>
+                <ComboBoxItem>4</ComboBoxItem>
+                <ComboBoxItem>5</ComboBoxItem>
+                <ComboBoxItem>6</ComboBoxItem>
+                <ComboBoxItem>8</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>12</ComboBoxItem>
+                <ComboBoxItem>16</ComboBoxItem>
+                <ComboBoxItem>20</ComboBoxItem>
+                <ComboBoxItem>25</ComboBoxItem>
+                <ComboBoxItem>32</ComboBoxItem>
+                <ComboBoxItem>40</ComboBoxItem>
+                <ComboBoxItem>50</ComboBoxItem>
+                <ComboBoxItem>60</ComboBoxItem>
+            </ComboBox>
+
+            <Label Content="Zähne :"             HorizontalAlignment="Left" Margin="5,130,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
+            <CheckBox Name="einfachCheck"        Content="einfach" Canvas.Left="80" Canvas.Top="135"   Checked="einfachCheck_Checked" Unchecked="einfachCheck_Unchecked" />
+            <CheckBox Name="schraegCheck"        Content="schräg" Canvas.Left="150" Canvas.Top="135"  Checked="schraegCheck_Checked" Unchecked="schraegCheck_Unchecked" />
+
+            <Label Content="Dicke :"             HorizontalAlignment="Left" Margin="5,160,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
+            <TextBox  Name="Dicke"           HorizontalAlignment="Left" Margin="80,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <Label Content="mm"             HorizontalAlignment="Left" Margin="116,164,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
+
+            <Label Content="Winkel :"             HorizontalAlignment="Left" Margin="5,190,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
+            <TextBox  Name="Winkeleingabe"           HorizontalAlignment="Left" Margin="80,190,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <Label Content="°"             HorizontalAlignment="Left" Margin="116,182,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
+
+        </Canvas>
+        <Button Name="Close" Content="zurück" Margin="481,439,245,48" Background="#FFA953FF" BorderBrush="Red" Foreground="Black" Click="Close_Click_1"/>
+
+    </Grid>
+</Window>
+
