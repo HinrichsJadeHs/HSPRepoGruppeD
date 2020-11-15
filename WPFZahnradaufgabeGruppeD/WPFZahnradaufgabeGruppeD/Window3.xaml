@@ -65,7 +65,7 @@
             <Label  Name="lbl_mm"    Content=""      HorizontalAlignment="Left" Margin="120,60,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
 
             <Label Name="lbl_eingabe2" Content="Modul :"             HorizontalAlignment="Left" Margin="5,95,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,95,0,0" VerticalAlignment="Top" Width="120" Height="25" SelectedIndex="17" >
+            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,95,0,0" VerticalAlignment="Top" Width="45" Height="25" SelectedIndex="17" >
                 <ComboBoxItem>0,1</ComboBoxItem>
                 <ComboBoxItem>0,12</ComboBoxItem>
                 <ComboBoxItem>0,16</ComboBoxItem>
@@ -98,18 +98,11 @@
                 <ComboBoxItem>50</ComboBoxItem>
                 <ComboBoxItem>60</ComboBoxItem>
             </ComboBox>
-
-            <Label Content="Zähne :"             HorizontalAlignment="Left" Margin="5,130,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <CheckBox Name="einfachCheck"        Content="einfach" Canvas.Left="80" Canvas.Top="135"   Checked="einfachCheck_Checked" Unchecked="einfachCheck_Unchecked" />
-            <CheckBox Name="schraegCheck"        Content="schräg" Canvas.Left="150" Canvas.Top="135"  Checked="schraegCheck_Checked" Unchecked="schraegCheck_Unchecked" />
+            <Label Content="mm"             HorizontalAlignment="Left" Margin="121,98,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Dicke :"             HorizontalAlignment="Left" Margin="5,160,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
             <TextBox  Name="Dicke"           HorizontalAlignment="Left" Margin="80,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
             <Label Content="mm"             HorizontalAlignment="Left" Margin="116,164,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
-
-            <Label Content="Winkel :"             HorizontalAlignment="Left" Margin="5,190,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <TextBox  Name="Winkeleingabe"           HorizontalAlignment="Left" Margin="80,190,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
-            <Label Content="°"             HorizontalAlignment="Left" Margin="116,182,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
         </Canvas>
         <Button Name="Close" Content="zurück" Margin="481,439,245,48" Background="#FFA953FF" BorderBrush="Red" Foreground="Black" Click="Close_Click_1"/>
