@@ -234,7 +234,7 @@ namespace WPFZahnradaufgabeGruppeD
                                 // Berechnung einfach
                                 double z = d / m;
                                
-                                d_Ausgabe.Text = Convert.ToString(Math.Round(z, 2));
+                                d_Ausgabe.Text = Convert.ToString(Math.Round(z, 0));
 
                                 double p = Math.PI * m;
                                 p_Ausgabe.Text = Convert.ToString(Math.Round(p, 2));
@@ -322,7 +322,7 @@ namespace WPFZahnradaufgabeGruppeD
                                 double cosbeta = Math.Cos(Winkel);
                                 double z = (cosbeta * d) / m;
                                 lbl_Ausgabe.Content = "Zähnezahl :";
-                                d_Ausgabe.Text = Convert.ToString(Math.Round(z, 2));
+                                d_Ausgabe.Text = Convert.ToString(Math.Round(z, 0));
 
                                 double p = Math.PI * m;
                                 p_Ausgabe.Text = Convert.ToString(Math.Round(p, 2));
