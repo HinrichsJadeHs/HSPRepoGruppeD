@@ -96,7 +96,7 @@ namespace WPFZahnradaufgabeGruppeD
                                 if (z % 1 != 0)
                                 {
                                     txtbx_eingabe1.Background = Brushes.Red;
-                                    MessageBox.Show("Es gibt nur gerade Zähnezahlen :D ");
+                                    MessageBox.Show("Es gibt nur ganzzahlige Zähnezahlen!");
                                 }
                                 if (z <= 4)
                                 {
