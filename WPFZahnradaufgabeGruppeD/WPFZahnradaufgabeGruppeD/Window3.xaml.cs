@@ -38,70 +38,7 @@ namespace WPFZahnradaufgabeGruppeD
                         double z = Convert.ToDouble(txtbx_eingabe1.Text);
                         double m = Convert.ToDouble(Drp_eingabe2.Text);
 
-
-
-                        if (z % 1 == 0 && z >= 5)
-                        {
-                            txtbx_eingabe1.Background = Brushes.White;
-
-                            // Berechnung einfach
-                            double d = m * z;
-                            d_Ausgabe.Text = Convert.ToString(Math.Round(d, 2) + " mm");
-
-                            double p = Math.PI * m;
-                            p_Ausgabe.Text = Convert.ToString(Math.Round(p, 2));
-
-                            double da = d - 2 * m;
-                            da_Ausgabe.Text = Convert.ToString(Math.Round(da, 2) + " mm");
-
-                            double c = 0.167;
-                            c_Ausgabe.Text = Convert.ToString(Math.Round(c, 2) + " mm");
-
-                            double df = d + 2 * (m + c);
-                            df_Ausgabe.Text = Convert.ToString(Math.Round(df, 2) + " mm");
-
-                            double h = 2 * m + c;
-                            h_Ausgabe.Text = Convert.ToString(Math.Round(h, 2) + " mm");
-
-                            double ha = m;
-                            ha_Ausgabe.Text = Convert.ToString(Math.Round(ha, 2) + " mm");
-
-                            double hf = m + c;
-                            hf_Ausgabe.Text = Convert.ToString(Math.Round(hf, 2) + " mm");
-
-                            double a = 10 * 10;
-                            a_Ausgabe.Text = Convert.ToString(Math.Round(a, 2) + " mm");
-
-
-                            mt_Ausgabe.Text = Convert.ToString("");
-
-                            pt_Ausgabe.Text = Convert.ToString("");
-
-                            //Berechnung schräg
-
-                            if (Dicke.Text != "")
-                            {
-                                dicke_Ausgabe.Text = Dicke.Text + " mm";
-                            }
-                            else
-                            {
-                                dicke_Ausgabe.Text = "";
-                            }
-                        }
-                        else
-                        {
-                            if (z % 1 != 0)
-                            {
-                                txtbx_eingabe1.Background = Brushes.Red;
-                                MessageBox.Show("Es gibt nur gerade Zähnezahlen :D ");
-                            }
-                            if (z <= 4)
-                            {
-                                txtbx_eingabe1.Background = Brushes.Red;
-                                MessageBox.Show("Bitte mindestens eine Zähnzahl von 5 eingeben");
-                            }
-
-                        }
+                        RechnungEinfachverzahntSelect0(z, m);
                     }
                     else if (isteingabedouble(zahlcheck) == false)
                     {
@@ -130,67 +67,9 @@ namespace WPFZahnradaufgabeGruppeD
                             double d = Convert.ToDouble(txtbx_eingabe1.Text);
                             double m = Convert.ToDouble(Drp_eingabe2.Text);
 
+                        RechnungEinfachverzahntSelect1(d, m);
 
-
-                            if (d >= 5)
-                            {
-                                txtbx_eingabe1.Background = Brushes.White;
-
-                                // Berechnung einfach
-                                double z = d / m;
-
-                                d_Ausgabe.Text = Convert.ToString(Math.Round(z, 2));
-
-                                double p = Math.PI * m;
-                                p_Ausgabe.Text = Convert.ToString(Math.Round(p, 2));
-
-                                double da = d - 2 * m;
-                                da_Ausgabe.Text = Convert.ToString(Math.Round(da, 2) + " mm");
-
-                                double c = 0.167;
-                                c_Ausgabe.Text = Convert.ToString(Math.Round(c, 2) + " mm");
-
-                                double df = d + 2 * (m + c);
-                                df_Ausgabe.Text = Convert.ToString(Math.Round(df, 2) + " mm");
-
-                                double h = 2 * m + c;
-                                h_Ausgabe.Text = Convert.ToString(Math.Round(h, 2) + " mm");
-
-                                double ha = m;
-                                ha_Ausgabe.Text = Convert.ToString(Math.Round(ha, 2) + " mm");
-
-                                double hf = m + c;
-                                hf_Ausgabe.Text = Convert.ToString(Math.Round(hf, 2) + " mm");
-
-                                double a = 10 * 10;
-                                a_Ausgabe.Text = Convert.ToString(Math.Round(a, 2) + " mm");
-
-
-                                mt_Ausgabe.Text = Convert.ToString("");
-
-                                pt_Ausgabe.Text = Convert.ToString("");
-
-                                //Berechnung schräg
-
-                                if (Dicke.Text != "")
-                                {
-                                    dicke_Ausgabe.Text = Dicke.Text + " mm";
-                                }
-                                else
-                                {
-                                    dicke_Ausgabe.Text = "";
-                                }
-                            }
-                            else
-                            {
-
-                                if (d <= 4)
-                                {
-                                    txtbx_eingabe1.Background = Brushes.Red;
-                                    MessageBox.Show("Bitte mindestens einen Teilkreisdurchmesser von 5 mm eingeben");
-                                }
-                                //else { MessageBox.Show("Technischer Fehler, bitte wenden Sie sich an ihen Administrator"); }
-                            }
+                            
                         }
                         else if (isteingabedouble(zahlcheck) == false)
                         {
@@ -233,6 +112,135 @@ namespace WPFZahnradaufgabeGruppeD
             catch (FormatException)
             {
                 return false;
+            }
+        }
+
+        private void RechnungEinfachverzahntSelect0(double z, double m)
+        {
+            if (z % 1 == 0 && z >= 5)
+            {
+                txtbx_eingabe1.Background = Brushes.White;
+
+                // Berechnung einfach
+                double d = m * z;
+                d_Ausgabe.Text = Convert.ToString(Math.Round(d, 2) + " mm");
+
+                double p = Math.PI * m;
+                p_Ausgabe.Text = Convert.ToString(Math.Round(p, 2));
+
+                double da = d - 2 * m;
+                da_Ausgabe.Text = Convert.ToString(Math.Round(da, 2) + " mm");
+
+                double c = 0.167;
+                c_Ausgabe.Text = Convert.ToString(Math.Round(c, 2) + " mm");
+
+                double df = d + 2 * (m + c);
+                df_Ausgabe.Text = Convert.ToString(Math.Round(df, 2) + " mm");
+
+                double h = 2 * m + c;
+                h_Ausgabe.Text = Convert.ToString(Math.Round(h, 2) + " mm");
+
+                double ha = m;
+                ha_Ausgabe.Text = Convert.ToString(Math.Round(ha, 2) + " mm");
+
+                double hf = m + c;
+                hf_Ausgabe.Text = Convert.ToString(Math.Round(hf, 2) + " mm");
+
+                double a = 10 * 10;
+                a_Ausgabe.Text = Convert.ToString(Math.Round(a, 2) + " mm");
+
+
+                mt_Ausgabe.Text = Convert.ToString("");
+
+                pt_Ausgabe.Text = Convert.ToString("");
+
+                //Berechnung schräg
+
+                if (Dicke.Text != "")
+                {
+                    dicke_Ausgabe.Text = Dicke.Text + " mm";
+                }
+                else
+                {
+                    dicke_Ausgabe.Text = "";
+                }
+            }
+            else
+            {
+                if (z % 1 != 0)
+                {
+                    txtbx_eingabe1.Background = Brushes.Red;
+                    MessageBox.Show("Es gibt nur ganzzahlige Zähnezahlen ");
+                }
+                if (z <= 4)
+                {
+                    txtbx_eingabe1.Background = Brushes.Red;
+                    MessageBox.Show("Bitte mindestens eine Zähnzahl von 5 eingeben");
+                }
+
+            }
+        }
+
+        private void RechnungEinfachverzahntSelect1(double d, double m)
+        {
+            if (d >= 5)
+            {
+                txtbx_eingabe1.Background = Brushes.White;
+
+                
+                double z = d / m;
+
+                d_Ausgabe.Text = Convert.ToString(Math.Round(z, 2));
+
+                double p = Math.PI * m;
+                p_Ausgabe.Text = Convert.ToString(Math.Round(p, 2));
+
+                double da = d - 2 * m;
+                da_Ausgabe.Text = Convert.ToString(Math.Round(da, 2) + " mm");
+
+                double c = 0.167;
+                c_Ausgabe.Text = Convert.ToString(Math.Round(c, 2) + " mm");
+
+                double df = d + 2 * (m + c);
+                df_Ausgabe.Text = Convert.ToString(Math.Round(df, 2) + " mm");
+
+                double h = 2 * m + c;
+                h_Ausgabe.Text = Convert.ToString(Math.Round(h, 2) + " mm");
+
+                double ha = m;
+                ha_Ausgabe.Text = Convert.ToString(Math.Round(ha, 2) + " mm");
+
+                double hf = m + c;
+                hf_Ausgabe.Text = Convert.ToString(Math.Round(hf, 2) + " mm");
+
+                double a = 10 * 10;
+                a_Ausgabe.Text = Convert.ToString(Math.Round(a, 2) + " mm");
+
+
+                mt_Ausgabe.Text = Convert.ToString("");
+
+                pt_Ausgabe.Text = Convert.ToString("");
+
+               
+
+                if (Dicke.Text != "")
+                {
+                    dicke_Ausgabe.Text = Dicke.Text + " mm";
+                }
+                else
+                {
+                    dicke_Ausgabe.Text = "";
+                }
+            }
+            else
+            {
+
+                if (d <= 4)
+                {
+                    txtbx_eingabe1.Background = Brushes.Red;
+                    MessageBox.Show("Bitte mindestens einen Teilkreisdurchmesser von 5 mm eingeben");
+                }
+                
             }
         }
 
