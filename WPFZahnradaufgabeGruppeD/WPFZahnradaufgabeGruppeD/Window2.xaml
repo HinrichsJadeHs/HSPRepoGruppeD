@@ -60,12 +60,12 @@
                 <ComboBoxItem>Teilkreisdurchmesser/Modul</ComboBoxItem>
             </ComboBox>
 
-            <Label  Name="lbl_eingabe1"    Content="Zähnezahl :"      HorizontalAlignment="Left" Margin="5,55,0,0" VerticalAlignment="Top" Height="25" Width="75"/>
-            <TextBox  Name="txtbx_eingabe1"           HorizontalAlignment="Left" Margin="80,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
-            <Label  Name="lbl_mm"    Content=""      HorizontalAlignment="Left" Margin="120,60,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
+            <Label  Name="lbl_eingabe1"    Content="Zähnezahl :"      HorizontalAlignment="Left" Margin="5,95,0,0" VerticalAlignment="Top" Height="25" Width="75"/>
+            <TextBox  Name="txtbx_eingabe1"           HorizontalAlignment="Left" Margin="80,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <Label  Name="lbl_mm"    Content=""      HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
 
-            <Label Name="lbl_eingabe2" Content="Modul :"             HorizontalAlignment="Left" Margin="5,95,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,95,0,0" VerticalAlignment="Top" Width="45" Height="25" SelectedIndex="17" >
+            <Label Name="lbl_eingabe2" Content="Modul :"             HorizontalAlignment="Left" Margin="5,130,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
+            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,130,0,0" VerticalAlignment="Top" Width="45" Height="25" SelectedIndex="17" >
                 <ComboBoxItem>0,1</ComboBoxItem>
                 <ComboBoxItem>0,12</ComboBoxItem>
                 <ComboBoxItem>0,16</ComboBoxItem>
@@ -98,11 +98,11 @@
                 <ComboBoxItem>50</ComboBoxItem>
                 <ComboBoxItem>60</ComboBoxItem>
             </ComboBox>
-            <Label Content="mm"             HorizontalAlignment="Left" Margin="121,98,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
+            <Label Content="mm"             HorizontalAlignment="Left" Margin="121,133,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
-            <Label Content="Zähne :"             HorizontalAlignment="Left" Margin="5,130,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <CheckBox Name="einfachCheck"        Content="einfach" Canvas.Left="80" Canvas.Top="135"   Checked="einfachCheck_Checked" Unchecked="einfachCheck_Unchecked" />
-            <CheckBox Name="schraegCheck"        Content="schräg" Canvas.Left="150" Canvas.Top="135"  Checked="schraegCheck_Checked" Unchecked="schraegCheck_Unchecked" />
+            <Label Content="Zähne :"             HorizontalAlignment="Left" Margin="5,60,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
+            <CheckBox Name="einfachCheck"        Content="einfach" Canvas.Left="80" Canvas.Top="66"   Checked="einfachCheck_Checked" Unchecked="einfachCheck_Unchecked" />
+            <CheckBox Name="schraegCheck"        Content="schräg" Canvas.Left="150" Canvas.Top="66"  Checked="schraegCheck_Checked" Unchecked="schraegCheck_Unchecked" />
 
             <Label Content="Dicke :"             HorizontalAlignment="Left" Margin="5,160,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
             <TextBox  Name="Dicke"           HorizontalAlignment="Left" Margin="80,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />

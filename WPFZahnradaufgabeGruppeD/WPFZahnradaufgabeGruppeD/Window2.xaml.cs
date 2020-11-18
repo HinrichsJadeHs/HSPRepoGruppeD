@@ -148,14 +148,25 @@ namespace WPFZahnradaufgabeGruppeD
                                 double da = d + 2 * m;
                                 da_Ausgabe.Text = Convert.ToString(Math.Round(da, 2) + " mm");
 
-                                c_Ausgabe.Text = Convert.ToString("");
-                                df_Ausgabe.Text = Convert.ToString("");
-                                h_Ausgabe.Text = Convert.ToString("");
-                                ha_Ausgabe.Text = Convert.ToString("");
-                                hf_Ausgabe.Text = Convert.ToString("");
+                                double c = 0.167 * m;
+                                c_Ausgabe.Text = Convert.ToString(Math.Round(c, 2) + " mm");
+
+                                double df = d - 2 * (m + c);
+                                df_Ausgabe.Text = Convert.ToString(Math.Round(df, 2) + " mm");
+
+                                double h = 2 * m + c;
+                                h_Ausgabe.Text = Convert.ToString(Math.Round(h, 2) + " mm");
+
+                                double ha = m;
+                                ha_Ausgabe.Text = Convert.ToString(Math.Round(ha, 2) + " mm");
+
+                                double hf = m + c;
+                                hf_Ausgabe.Text = Convert.ToString(Math.Round(hf, 2) + " mm");
+
+
                                 a_Ausgabe.Text = Convert.ToString("");
 
-                                double mt = p / Math.PI;
+                                double mt = m / Math.Cos(Winkel);
                                 mt_Ausgabe.Text = Convert.ToString(Math.Round(mt, 2));
 
                                 double pt = p / cosbeta;
@@ -330,14 +341,25 @@ namespace WPFZahnradaufgabeGruppeD
                                 double da = d + 2 * m;
                                 da_Ausgabe.Text = Convert.ToString(Math.Round(da, 2) + " mm");
 
-                                c_Ausgabe.Text = Convert.ToString("");
-                                df_Ausgabe.Text = Convert.ToString("");
-                                h_Ausgabe.Text = Convert.ToString("");
-                                ha_Ausgabe.Text = Convert.ToString("");
-                                hf_Ausgabe.Text = Convert.ToString("");
+                                double c = 0.167 * m;
+                                c_Ausgabe.Text = Convert.ToString(Math.Round(c, 2) + " mm");
+
+                                double df = d - 2 * (m + c);
+                                df_Ausgabe.Text = Convert.ToString(Math.Round(df, 2) + " mm");
+
+                                double h = 2 * m + c;
+                                h_Ausgabe.Text = Convert.ToString(Math.Round(h, 2) + " mm");
+
+                                double ha = m;
+                                ha_Ausgabe.Text = Convert.ToString(Math.Round(ha, 2) + " mm");
+
+                                double hf = m + c;
+                                hf_Ausgabe.Text = Convert.ToString(Math.Round(hf, 2) + " mm");
+
+
                                 a_Ausgabe.Text = Convert.ToString("");
 
-                                double mt = p / Math.PI;
+                                double mt = m / Math.Cos(Winkel);
                                 mt_Ausgabe.Text = Convert.ToString(Math.Round(mt, 2));
 
                                 double pt = p / cosbeta;
