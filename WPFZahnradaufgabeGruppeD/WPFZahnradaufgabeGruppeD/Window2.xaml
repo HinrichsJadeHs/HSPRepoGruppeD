@@ -65,7 +65,7 @@
             <Label  Name="lbl_mm"    Content=""      HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
 
             <Label Name="lbl_eingabe2" Content="Modul :"             HorizontalAlignment="Left" Margin="5,130,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,130,0,0" VerticalAlignment="Top" Width="45" Height="25" SelectedIndex="17" >
+            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,130,0,0" VerticalAlignment="Top" Width="55" Height="25" SelectedIndex="17" >
                 <ComboBoxItem>0,1</ComboBoxItem>
                 <ComboBoxItem>0,12</ComboBoxItem>
                 <ComboBoxItem>0,16</ComboBoxItem>
@@ -98,7 +98,7 @@
                 <ComboBoxItem>50</ComboBoxItem>
                 <ComboBoxItem>60</ComboBoxItem>
             </ComboBox>
-            <Label Content="mm"             HorizontalAlignment="Left" Margin="121,133,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
+            <Label Content="mm"             HorizontalAlignment="Left" Margin="131,133,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Zähne :"             HorizontalAlignment="Left" Margin="5,60,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
             <CheckBox Name="einfachCheck"        Content="einfach" Canvas.Left="80" Canvas.Top="66"   Checked="einfachCheck_Checked" Unchecked="einfachCheck_Unchecked" />
