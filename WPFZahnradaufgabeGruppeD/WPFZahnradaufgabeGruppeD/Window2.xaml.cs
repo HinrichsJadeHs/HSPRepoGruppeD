@@ -488,7 +488,6 @@ namespace WPFZahnradaufgabeGruppeD
             }
             else
             {
-
                 if (d <= 4)
                 {
                     txtbx_eingabe1.Background = Brushes.Red;
