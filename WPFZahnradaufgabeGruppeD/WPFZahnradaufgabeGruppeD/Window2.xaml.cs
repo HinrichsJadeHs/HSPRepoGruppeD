@@ -20,7 +20,6 @@ namespace WPFZahnradaufgabeGruppeD
         public Window2()
         {
             InitializeComponent();
-
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
@@ -176,6 +175,7 @@ namespace WPFZahnradaufgabeGruppeD
                 MessageBox.Show("Wählen Sie eine Eingabemöglichkeit aus!");
             }
         }
+
 
         private void einfachCheck_Checked(object sender, RoutedEventArgs e)
         {
