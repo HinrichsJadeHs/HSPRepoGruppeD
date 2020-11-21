@@ -266,5 +266,16 @@ namespace WPFZahnradaufgabeGruppeD
 
 
         }
+
+        private void btn_info_Click(object sender, RoutedEventArgs e)
+        {
+            InfoWindow Infowndw = new InfoWindow();
+            Infowndw.Show();
+        }
+
+        private void btn_option_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

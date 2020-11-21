@@ -26,6 +26,7 @@ namespace WPFZahnradaufgabeGruppeD
         {
             if (EingabeAuswahlDrop.SelectedIndex == 0)
             {
+                EingabeAuswahlDrop.Background = Brushes.White;
 
                 if (einfachCheck.IsChecked == true)
 
@@ -40,16 +41,20 @@ namespace WPFZahnradaufgabeGruppeD
                             double z = Convert.ToDouble(txtbx_eingabe1.Text);
                             double m = Convert.ToDouble(Drp_eingabe2.Text);
 
+                            txtbx_eingabe1.Background = Brushes.White;
+
                             RechnungEinfachverzahntSelect0(z, m);
                             
                         }
                         else if (isteingabedouble(zahlcheck) == false)
                         {
+                            txtbx_eingabe1.Background = Brushes.OrangeRed;
                             MessageBox.Show("Sie müssen als Zähnezahl eine Zahl eingeben");
                         }
                     }
                     else
                     {
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
                         MessageBox.Show("Zähnezahl eingeben!");
                     }
 
@@ -68,6 +73,8 @@ namespace WPFZahnradaufgabeGruppeD
                             double m = Convert.ToDouble(Drp_eingabe2.Text);
                             double Winkel = Convert.ToDouble(Winkeleingabe.Text);
                             Winkel = Winkel * Math.PI / 180;
+                            txtbx_eingabe1.Background = Brushes.White;
+                            Winkeleingabe.Background = Brushes.White;
 
                             RechnungSchrägverzahntSelect0( z , m , Winkel );
 
@@ -75,15 +82,17 @@ namespace WPFZahnradaufgabeGruppeD
                         }
                         else if (isteingabedouble(zahlencheck) == false)
                         {
+                            txtbx_eingabe1.Background = Brushes.OrangeRed;
                             MessageBox.Show("Zähnezahl eingeben!");
                         }
                         else if (isteingabedouble(zahlencheck2) == false)
                         {
+                            Winkeleingabe.Background = Brushes.OrangeRed;
                             MessageBox.Show("Der winkel muss eine Zahl sein!");
                         }
                         else
                         {
-                            MessageBox.Show("überprüfen sei ihre eingaben!");
+                            MessageBox.Show("überprüfen sei ihre Eingaben!");
                         }
                     }
                     else
@@ -100,6 +109,7 @@ namespace WPFZahnradaufgabeGruppeD
             }
             else if (EingabeAuswahlDrop.SelectedIndex == 1)
             {
+                EingabeAuswahlDrop.Background = Brushes.White;
                 if (einfachCheck.IsChecked == true)
 
                 {
@@ -113,16 +123,20 @@ namespace WPFZahnradaufgabeGruppeD
                             double d = Convert.ToDouble(txtbx_eingabe1.Text);
                             double m = Convert.ToDouble(Drp_eingabe2.Text);
 
+                            txtbx_eingabe1.Background = Brushes.White;
+
                             RechnungEinfachverzahntSelect1(d, m);
                            
                         }
                         else if (isteingabedouble(zahlcheck) == false)
                         {
+                            txtbx_eingabe1.Background = Brushes.OrangeRed;
                             MessageBox.Show("Sie müssen als Teilkreisdurchmesser eine Zahl eingeben");
                         }
                     }
                     else
                     {
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
                         MessageBox.Show("Teilkreisdurchmesser eingeben!");
                     }
 
@@ -142,15 +156,20 @@ namespace WPFZahnradaufgabeGruppeD
                             double Winkel = Convert.ToDouble(Winkeleingabe.Text);
                             Winkel = Winkel * Math.PI / 180;
 
+                            txtbx_eingabe1.Background = Brushes.White;
+                            Winkeleingabe.Background = Brushes.White;
+
                             RechnungSchrägverzahntSelect1(d, m, Winkel);
                            
                         }
                         else if (isteingabedouble(zahlencheck) == false)
                         {
+                            txtbx_eingabe1.Background = Brushes.OrangeRed;
                             MessageBox.Show("Der Teilkreisdurchmesser muss eine Zahl sein!");
                         }
                         else if (isteingabedouble(zahlencheck2) == false)
                         {
+                            Winkeleingabe.Background = Brushes.OrangeRed;
                             MessageBox.Show("Der winkel muss eine Zahl sein!");
                         }
                         else
@@ -172,6 +191,7 @@ namespace WPFZahnradaufgabeGruppeD
             }
             else if (EingabeAuswahlDrop.SelectedIndex != 1 && EingabeAuswahlDrop.SelectedIndex != 0)
             {
+                EingabeAuswahlDrop.Background = Brushes.OrangeRed;
                 MessageBox.Show("Wählen Sie eine Eingabemöglichkeit aus!");
             }
         }
@@ -509,6 +529,20 @@ namespace WPFZahnradaufgabeGruppeD
                 }
 
             }
+        }
+
+        public void btn_info_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            InfoWindow Infowndw = new InfoWindow();
+            Infowndw.Show();
+        }
+
+        private void btn_option_Click(object sender, RoutedEventArgs e)
+        {
+            Option_wndw option_Wndw = new Option_wndw();
+            option_Wndw.Show();
         }
     }
 }

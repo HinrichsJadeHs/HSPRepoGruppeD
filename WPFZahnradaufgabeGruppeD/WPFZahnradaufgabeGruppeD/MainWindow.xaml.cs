@@ -26,6 +26,8 @@ namespace WPFZahnradaufgabeGruppeD
         {
             
             InitializeComponent();
+
+            int i = 0;
                      
         }
 

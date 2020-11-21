@@ -106,6 +106,9 @@
 
         </Canvas>
         <Button Name="Close" Content="zurück" Margin="470,439,234,28" Background="#FF53E8FF"  Foreground="Black" Click="Close_Click_1" FontFamily="Bookman Old Style" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="btn_Optionen" Content="Optionen" HorizontalAlignment="Left" Margin="148,344,0,0" VerticalAlignment="Top" Height="31" Width="74" Background="#FF53E8FF" FontFamily="Bookman Old Style" Click="btn_option_Click"/>
+        <Button x:Name="btn_info" Content="Info" HorizontalAlignment="Left" Margin="148,390,0,0" VerticalAlignment="Top" Height="31" Width="74" Background="#FF53E8FF" FontFamily="Bookman Old Style" Click="btn_info_Click"/>
+
 
     </Grid>
 </Window>
