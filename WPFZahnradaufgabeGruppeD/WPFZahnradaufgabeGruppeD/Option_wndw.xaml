@@ -16,7 +16,12 @@
         <Label Content="Optionen" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontSize="18" FontWeight="Bold" Height="34" Width="96"/>
         <Button Content="schließen" HorizontalAlignment="Center" Margin="0,347,0,0" VerticalAlignment="Top" Height="48" Width="151" FontFamily="Bookman Old Style" FontSize="18" Background="#FF00FFF3" Click="btn_close"/>
         <Label Content="Nachkommarstellen:" HorizontalAlignment="Center" Margin="0,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
-        <ComboBox HorizontalAlignment="Center" Margin="0,139,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbx_nachkommar" HorizontalAlignment="Center" Margin="0,139,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" >
+            <ComboBoxItem>0</ComboBoxItem>
+            <ComboBoxItem>1</ComboBoxItem>
+            <ComboBoxItem>2</ComboBoxItem>
+            <ComboBoxItem>3</ComboBoxItem>
+        </ComboBox>
 
 
 

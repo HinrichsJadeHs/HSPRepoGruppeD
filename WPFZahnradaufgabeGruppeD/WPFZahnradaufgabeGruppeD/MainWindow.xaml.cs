@@ -21,17 +21,16 @@ namespace WPFZahnradaufgabeGruppeD
     /// </summary>
     public partial class MainWindow : Window
     {
+        public int Rundungsvariable = 0;
       
         public MainWindow()
-        {
-            
+        {         
             InitializeComponent();
-
-            int i = 0;
-                     
         }
 
        
+        
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

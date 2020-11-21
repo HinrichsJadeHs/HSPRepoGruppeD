@@ -17,9 +17,12 @@ namespace WPFZahnradaufgabeGruppeD
     /// </summary>
     public partial class Option_wndw : Window
     {
+        
         public Option_wndw()
         {
+         
             InitializeComponent();
+
         }
 
         private void btn_close(object sender, RoutedEventArgs e)
