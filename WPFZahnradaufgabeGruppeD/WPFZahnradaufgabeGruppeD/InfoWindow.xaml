@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFZahnradaufgabeGruppeD"
         mc:Ignorable="d"
-        Title="Infos" Height="550" Width="800" Icon="Niklas2.png">
+        Title="Infos" Height="650
+        " MinHeight="650" MaxHeight="650" MinWidth="800" MaxWidth="800" Width="800" Icon="Niklas2.png">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -17,10 +18,19 @@
         <Label Content="Wissenswertes" HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top" FontFamily="Bookman Old Style" FontSize="18" FontWeight="Bold" Height="34" Width="152"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="371,191,0,0" VerticalAlignment="Top" Width="100"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="306,136,0,0" VerticalAlignment="Top" Width="100"/>
-        <Image x:Name="img_allgmein" Margin="10,83,496,121" Stretch="Fill" Source="/125857002_658623658149469_8284725634291251014_n.jpg"/>
+        <Image x:Name="img_allgmein" Margin="68,98,409,116" Stretch="Fill" Source="125857002_658623658149469_8284725634291251014_n.jpg"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="491,161,0,0" VerticalAlignment="Top" Width="100"/>
-        <Image x:Name="img_schraeg" Margin="309,136,10,121" Stretch="Fill" Source="/126046674_2793894470875615_3532936385364282630_n.jpg"/>
-        <Button Content="schließen" HorizontalAlignment="Center" Margin="0,453,0,0" VerticalAlignment="Top" Height="48" Width="151" FontFamily="Bookman Old Style" FontSize="18" Background="#FF00FFF3" Click="btn_close"/>
+        <Image x:Name="img_schraeg" Margin="361,116,20,152" Stretch="Fill" Source="126046674_2793894470875615_3532936385364282630_n.jpg" RenderTransformOrigin="0.623,0.612" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform X="-76.06" Y="21.848"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Button Content="schließen" Margin="324,550,324,0" VerticalAlignment="Top" Height="48" FontFamily="Bookman Old Style" FontSize="18" Background="#FF00FFF3" Click="btn_close"/>
 
 
 

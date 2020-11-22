@@ -17,6 +17,9 @@ namespace WPFZahnradaufgabeGruppeD
     /// </summary>
     public partial class Window3 : Window
     {
+       
+       public int decimalzahl = 0;
+
         public Window3()
         {
             InitializeComponent();
@@ -123,31 +126,30 @@ namespace WPFZahnradaufgabeGruppeD
 
                 // Berechnung einfach
                 double d = m * z;
-                d_Ausgabe.Text = Convert.ToString(Math.Round(d, 2) + " mm");
+                d_Ausgabe.Text = Convert.ToString(Math.Round(d, decimalzahl) + " mm");
 
                 double p = Math.PI * m;
-                p_Ausgabe.Text = Convert.ToString(Math.Round(p, 2));
+                p_Ausgabe.Text = Convert.ToString(Math.Round(p, decimalzahl));
 
                 double da = d - 2 * m;
-                da_Ausgabe.Text = Convert.ToString(Math.Round(da, 2) + " mm");
+                da_Ausgabe.Text = Convert.ToString(Math.Round(da, decimalzahl) + " mm");
 
                 double c = 0.167;
-                c_Ausgabe.Text = Convert.ToString(Math.Round(c, 2) + " mm");
+                c_Ausgabe.Text = Convert.ToString(Math.Round(c, decimalzahl) + " mm");
 
                 double df = d + 2 * (m + c);
-                df_Ausgabe.Text = Convert.ToString(Math.Round(df, 2) + " mm");
+                df_Ausgabe.Text = Convert.ToString(Math.Round(df, decimalzahl) + " mm");
 
                 double h = 2 * m + c;
-                h_Ausgabe.Text = Convert.ToString(Math.Round(h, 2) + " mm");
+                h_Ausgabe.Text = Convert.ToString(Math.Round(h, decimalzahl) + " mm");
 
                 double ha = m;
-                ha_Ausgabe.Text = Convert.ToString(Math.Round(ha, 2) + " mm");
+                ha_Ausgabe.Text = Convert.ToString(Math.Round(ha, decimalzahl) + " mm");
 
                 double hf = m + c;
-                hf_Ausgabe.Text = Convert.ToString(Math.Round(hf, 2) + " mm");
+                hf_Ausgabe.Text = Convert.ToString(Math.Round(hf, decimalzahl) + " mm");
 
-                double a = 10 * 10;
-                a_Ausgabe.Text = Convert.ToString(Math.Round(a, 2) + " mm");
+                
 
 
                 mt_Ausgabe.Text = Convert.ToString("");
@@ -190,31 +192,30 @@ namespace WPFZahnradaufgabeGruppeD
                 
                 double z = d / m;
 
-                d_Ausgabe.Text = Convert.ToString(Math.Round(z, 2));
+                d_Ausgabe.Text = Convert.ToString(Math.Round(z, 0));
 
                 double p = Math.PI * m;
-                p_Ausgabe.Text = Convert.ToString(Math.Round(p, 2));
+                p_Ausgabe.Text = Convert.ToString(Math.Round(p, decimalzahl));
 
                 double da = d - 2 * m;
-                da_Ausgabe.Text = Convert.ToString(Math.Round(da, 2) + " mm");
+                da_Ausgabe.Text = Convert.ToString(Math.Round(da, decimalzahl) + " mm");
 
                 double c = 0.167;
-                c_Ausgabe.Text = Convert.ToString(Math.Round(c, 2) + " mm");
+                c_Ausgabe.Text = Convert.ToString(Math.Round(c, decimalzahl) + " mm");
 
                 double df = d + 2 * (m + c);
-                df_Ausgabe.Text = Convert.ToString(Math.Round(df, 2) + " mm");
+                df_Ausgabe.Text = Convert.ToString(Math.Round(df, decimalzahl) + " mm");
 
                 double h = 2 * m + c;
-                h_Ausgabe.Text = Convert.ToString(Math.Round(h, 2) + " mm");
+                h_Ausgabe.Text = Convert.ToString(Math.Round(h, decimalzahl) + " mm");
 
                 double ha = m;
-                ha_Ausgabe.Text = Convert.ToString(Math.Round(ha, 2) + " mm");
+                ha_Ausgabe.Text = Convert.ToString(Math.Round(ha, decimalzahl) + " mm");
 
                 double hf = m + c;
-                hf_Ausgabe.Text = Convert.ToString(Math.Round(hf, 2) + " mm");
+                hf_Ausgabe.Text = Convert.ToString(Math.Round(hf, decimalzahl) + " mm");
 
-                double a = 10 * 10;
-                a_Ausgabe.Text = Convert.ToString(Math.Round(a, 2) + " mm");
+                
 
 
                 mt_Ausgabe.Text = Convert.ToString("");
@@ -276,6 +277,13 @@ namespace WPFZahnradaufgabeGruppeD
         private void btn_option_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void cmbx_nachkommar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+                decimalzahl = Convert.ToInt32(cmbx_nachkommar.SelectedIndex);
+            
         }
     }
 }
