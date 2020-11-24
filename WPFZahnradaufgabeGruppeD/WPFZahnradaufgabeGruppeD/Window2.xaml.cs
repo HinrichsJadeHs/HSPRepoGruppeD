@@ -290,6 +290,10 @@ namespace WPFZahnradaufgabeGruppeD
 
                     Masse_Ausgabe.Text = Convert.ToString(Math.Round(Masse, decimalzahl) + "Gramm");
                 }
+                else
+                {
+                    MessageBox.Show("Bohrungsmaß übderdenken");
+                }
 
             }
             else if (isteingabedouble(zahlencheck1) == false && isteingabedouble(zahlencheck2) == true)
