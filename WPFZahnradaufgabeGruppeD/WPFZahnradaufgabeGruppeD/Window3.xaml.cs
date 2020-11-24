@@ -274,10 +274,7 @@ namespace WPFZahnradaufgabeGruppeD
             Infowndw.Show();
         }
 
-        private void btn_option_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void cmbx_nachkommar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
