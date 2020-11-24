@@ -43,11 +43,11 @@
 
             <Label Content="Stirnmodul mt: "           HorizontalAlignment="Left" Margin="250,55,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
             <Label Content="Stirnteilung pt: "         HorizontalAlignment="Left" Margin="250,85,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
-            <Label Content="Dicke für Catia: "         HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Masse: "         HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
 
             <TextBlock Name="mt_Ausgabe"        HorizontalAlignment="Left" Margin="401,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
             <TextBlock Name="pt_Ausgabe"        HorizontalAlignment="Left" Margin="401,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
-            <TextBlock Name="dicke_Ausgabe"     HorizontalAlignment="Left" Margin="401,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="Masse_Ausgabe"     HorizontalAlignment="Left" Margin="401,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
 
         </Canvas>
 
@@ -103,16 +103,29 @@
             <CheckBox Name="einfachCheck"        Content="einfach" Canvas.Left="80" Canvas.Top="66"   Checked="einfachCheck_Checked" Unchecked="einfachCheck_Unchecked" />
             <CheckBox Name="schraegCheck"        Content="schräg" Canvas.Left="150" Canvas.Top="66"  Checked="schraegCheck_Checked" Unchecked="schraegCheck_Unchecked" />
 
-            <Label Content="Dicke :"             HorizontalAlignment="Left" Margin="5,160,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <TextBox  Name="Dicke"           HorizontalAlignment="Left" Margin="80,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
-            <Label Content="mm"             HorizontalAlignment="Left" Margin="116,164,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
+            <Label Content="Dicke :"             HorizontalAlignment="Left" Margin="5,195,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
+            <TextBox  Name="txbx_Dicke"           HorizontalAlignment="Left" Margin="80,195,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <Label Content="mm"             HorizontalAlignment="Left" Margin="116,199,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
-            <Label Content="Winkel :"             HorizontalAlignment="Left" Margin="5,190,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <TextBox  Name="Winkeleingabe"           HorizontalAlignment="Left" Margin="80,190,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
-            <Label Content="°"             HorizontalAlignment="Left" Margin="116,182,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
+            <Label Content="Winkel :"             HorizontalAlignment="Left" Margin="5,160,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
+            <TextBox  Name="Winkeleingabe"           HorizontalAlignment="Left" Margin="80,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <Label Content="°"             HorizontalAlignment="Left" Margin="116,152,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
-            <Label Content="Rundung :"             HorizontalAlignment="Left" Margin="5,220,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-            <ComboBox x:Name="cmbx_nachkommar"  Width="55" SelectedIndex="0" SelectionChanged="cmbx_nachkommar_SelectionChanged" Canvas.Left="80" Canvas.Top="220" >
+            <Label Content="Bohrung :"             HorizontalAlignment="Left" Margin="5,225,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
+            <TextBox  Name="txbx_Bohrungsdurchmesser"           HorizontalAlignment="Left" Margin="80,225,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <Label Content="mm"             HorizontalAlignment="Left" Margin="116,229,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
+            
+            <Label Content="Material :"             HorizontalAlignment="Left" Margin="5,255,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
+            <ComboBox x:Name="cmbx_material"  Width="55" SelectedIndex="0" SelectionChanged="cmbx_material_SelectionChanged" Canvas.Left="80" Canvas.Top="255" >
+                <ComboBoxItem>Stahl</ComboBoxItem>
+                <ComboBoxItem>Holz</ComboBoxItem>
+                <ComboBoxItem>Aluminium</ComboBoxItem>
+                <ComboBoxItem>Kupfer</ComboBoxItem>
+            </ComboBox>
+            
+            
+            <Label Content="Rundung :"             HorizontalAlignment="Left" Margin="5,290,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
+            <ComboBox x:Name="cmbx_nachkommar"  Width="55" SelectedIndex="0" SelectionChanged="cmbx_nachkommar_SelectionChanged" Canvas.Left="80" Canvas.Top="290" >
                 <ComboBoxItem>0</ComboBoxItem>
                 <ComboBoxItem>1</ComboBoxItem>
                 <ComboBoxItem>2</ComboBoxItem>
