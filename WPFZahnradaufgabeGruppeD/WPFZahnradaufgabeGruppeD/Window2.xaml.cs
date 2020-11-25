@@ -644,7 +644,6 @@ namespace WPFZahnradaufgabeGruppeD
         }
 
         
-
         public void cmbx_nachkommar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             decimalzahl = Convert.ToInt32(cmbx_nachkommar.SelectedIndex);
