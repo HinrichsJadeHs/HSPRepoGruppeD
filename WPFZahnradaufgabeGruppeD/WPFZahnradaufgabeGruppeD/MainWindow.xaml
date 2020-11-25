@@ -22,7 +22,48 @@
         <Button Name="Close" Content="Beenden" Margin="363,432,363,42" Background="#FF53E8FF" BorderBrush="#FF7E7E7E" Foreground="Black" Click="Close_Click_1" BorderThickness="3,3,3,3" FontSize="16" FontWeight="Bold"/>
         <Button Content="Außenverzahnung" Margin="235,295,541,164" Click="Button_Click" Background="#FFFF6363" FontSize="16" FontWeight="Bold" BorderThickness="3,3,3,3" SnapsToDevicePixels="True" />
         <Button Content="Innenverzahnung" Margin="533,295,243,164" Click="Button_Click_2" Background="#FF1CCB00" FontSize="16" FontWeight="Bold" BorderThickness="3,3,3,3" />
-        <Image HorizontalAlignment="Center" Height="177" Margin="0,90,0,0" VerticalAlignment="Top" Width="182" Source="Niklas2.png" />
+        <Image HorizontalAlignment="Center" Height="180" Margin="0,90,0,0" VerticalAlignment="Top" Width="180" Source="ni1.png" >
+        <Image.RenderTransform>
+            <RotateTransform CenterX="90" CenterY="90" />
+        </Image.RenderTransform>
+        <Image.Style>
+            <Style>
+                <Style.Triggers>
+                    <Trigger Property="Image.IsEnabled" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle" From="0" To="360" Duration="0:0:12" RepeatBehavior="Forever" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Image.Style>
+        </Image>
+        <Image HorizontalAlignment="Center" Height="100" Margin="0,130,0,0" VerticalAlignment="Top" Width="100" Source="ni2.png">
+            <Image.RenderTransform>
+                <RotateTransform CenterX="50" CenterY="50" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style>
+                    <Style.Triggers>
+                        <Trigger Property="Image.IsEnabled" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle" From="360" To="0" Duration="0:0:9" RepeatBehavior="Forever" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
 
     </Grid>
 </Window>
