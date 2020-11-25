@@ -94,13 +94,6 @@ namespace WPFZahnradaufgabeGruppeD
             }
         }
 
-        
-
-        
-        
-
-       
-
         private void Close_Click_1(object sender, RoutedEventArgs e)
         {
 
