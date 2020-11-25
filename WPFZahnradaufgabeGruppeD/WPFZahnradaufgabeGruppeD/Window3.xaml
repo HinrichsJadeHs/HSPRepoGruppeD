@@ -95,12 +95,12 @@
             <TextBox  Name="txbx_Dicke"           HorizontalAlignment="Left" Margin="80,130,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Wie dick soll das Zahnrad werden ?" />
             <Label Content="mm"             HorizontalAlignment="Left" Margin="116,134,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
-            <Label Content="Bohrung :"             HorizontalAlignment="Left" Margin="5,180,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-            <TextBox  Name="txbx_Bohrungsdurchmesser"           HorizontalAlignment="Left" Margin="80,180,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Bohrungsdurchmesser angeben" />
+            <Label Content="Außenmaß :"             HorizontalAlignment="Left" Margin="5,180,0,0" VerticalAlignment="Top" Height="30" Width="73"/>
+            <TextBox  Name="txbx_Außendurchmesser"           HorizontalAlignment="Left" Margin="80,180,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Außendurchmesser angeben" />
             <Label Content="mm"             HorizontalAlignment="Left" Margin="116,184,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Material :"             HorizontalAlignment="Left" Margin="5,210,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-            <ComboBox x:Name="cmbx_material"  Width="80" SelectedIndex="0" SelectionChanged="cmbx_material_SelectionChanged" Canvas.Left="80" Canvas.Top="210" >
+            <ComboBox x:Name="cmbx_material"  Width="100" SelectedIndex="0" SelectionChanged="cmbx_material_SelectionChanged" Canvas.Left="80" Canvas.Top="210" >
                 <ComboBoxItem>Stahl</ComboBoxItem>
                 <ComboBoxItem>Holz</ComboBoxItem>
                 <ComboBoxItem>Aluminium</ComboBoxItem>

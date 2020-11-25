@@ -124,21 +124,21 @@ namespace WPFZahnradaufgabeGruppeD
         {
             string zahlencheck1, zahlencheck2;
             zahlencheck1 = txbx_Dicke.Text;
-            zahlencheck2 = txbx_Bohrungsdurchmesser.Text;
+            zahlencheck2 = txbx_Außendurchmesser.Text;
 
             if (isteingabedouble(zahlencheck1) == true && isteingabedouble(zahlencheck2) == true)
             {
                 double Dicke = Convert.ToDouble(txbx_Dicke.Text);
-                double Bohrung = Convert.ToDouble(txbx_Bohrungsdurchmesser.Text);
+                double Außenmaß = Convert.ToDouble(txbx_Außendurchmesser.Text);
 
                 double d = z * m;
 
-                if (Bohrung <= d - 10)
+                if (Außenmaß >= d + 15)
                 {
                     txbx_Dicke.Background = Brushes.White;
-                    txbx_Bohrungsdurchmesser.Background = Brushes.White;
+                    txbx_Außendurchmesser.Background = Brushes.White;
 
-                    double Masse = (Math.PI / 4) * ((d * d) - (Bohrung * Bohrung)) * Dicke * material;
+                    double Masse = (Math.PI / 4) * ((Außenmaß * Außenmaß) - (d * d)) * Dicke * material;
 
                     Masse_Ausgabe.Text = Convert.ToString(Math.Round(Masse, decimalzahl) + "Gramm");
                 }
@@ -155,13 +155,13 @@ namespace WPFZahnradaufgabeGruppeD
             }
             else if (isteingabedouble(zahlencheck1) == true && true && isteingabedouble(zahlencheck2) == false)
             {
-                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+                txbx_Außendurchmesser.Background = Brushes.OrangeRed;
                 MessageBox.Show("Die Eingabe des Bohrungsdurchmessers ist nicht in Ordnung");
             }
             else
             {
                 txbx_Dicke.Background = Brushes.OrangeRed;
-                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+                txbx_Außendurchmesser.Background = Brushes.OrangeRed;
                 MessageBox.Show("Die Eingabe des Bohrungsdurchmessers und der Dicke ist nicht in Ordnung");
             }
         }
@@ -170,19 +170,19 @@ namespace WPFZahnradaufgabeGruppeD
         {
             string zahlencheck1, zahlencheck2;
             zahlencheck1 = txbx_Dicke.Text;
-            zahlencheck2 = txbx_Bohrungsdurchmesser.Text;
+            zahlencheck2 = txbx_Außendurchmesser.Text;
 
             if (isteingabedouble(zahlencheck1) == true && isteingabedouble(zahlencheck2) == true)
             {
                 double Dicke = Convert.ToDouble(txbx_Dicke.Text);
-                double Bohrung = Convert.ToDouble(txbx_Bohrungsdurchmesser.Text);
+                double Außenmaß = Convert.ToDouble(txbx_Außendurchmesser.Text);
 
-                if (Bohrung <= d - 10)
+                if (Außenmaß >= d + 10)
                 {
                     txbx_Dicke.Background = Brushes.White;
-                    txbx_Bohrungsdurchmesser.Background = Brushes.White;
+                    txbx_Außendurchmesser.Background = Brushes.White;
 
-                    double Masse = (Math.PI / 4) * ((d * d) - (Bohrung * Bohrung)) * Dicke * material;
+                    double Masse = (Math.PI / 4) * ((Außenmaß * Außenmaß) - (d * d)) * Dicke * material;
 
                     Masse_Ausgabe.Text = Convert.ToString(Math.Round(Masse, decimalzahl) + "Gramm");
                 }
@@ -199,13 +199,13 @@ namespace WPFZahnradaufgabeGruppeD
             }
             else if (isteingabedouble(zahlencheck1) == true && true && isteingabedouble(zahlencheck2) == false)
             {
-                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+                txbx_Außendurchmesser.Background = Brushes.OrangeRed;
                 MessageBox.Show("Die Eingabe des Bohrungsdurchmessers ist nicht in Ordnung");
             }
             else
             {
                 txbx_Dicke.Background = Brushes.OrangeRed;
-                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+                txbx_Außendurchmesser.Background = Brushes.OrangeRed;
                 MessageBox.Show("Die Eingabe des Bohrungsdurchmessers und der Dicke ist nicht in Ordnung");
             }
         }
@@ -373,7 +373,7 @@ namespace WPFZahnradaufgabeGruppeD
         {
             txtbx_eingabe1.Clear();
             txbx_Dicke.Clear();
-            txbx_Bohrungsdurchmesser.Clear();
+            txbx_Außendurchmesser.Clear();
             d_Ausgabe.Text = "";
             p_Ausgabe.Text = "";
             da_Ausgabe.Text = "";

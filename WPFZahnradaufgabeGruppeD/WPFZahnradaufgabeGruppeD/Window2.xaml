@@ -116,7 +116,7 @@
             <Label Content="mm"             HorizontalAlignment="Left" Margin="116,229,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Material :"             HorizontalAlignment="Left" Margin="5,255,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-            <ComboBox x:Name="cmbx_material"  Width="80" SelectedIndex="0" SelectionChanged="cmbx_material_SelectionChanged" Canvas.Left="80" Canvas.Top="255" >
+            <ComboBox x:Name="cmbx_material"  Width="100" SelectedIndex="0" SelectionChanged="cmbx_material_SelectionChanged" Canvas.Left="80" Canvas.Top="255" >
                 <ComboBoxItem>Stahl</ComboBoxItem>
                 <ComboBoxItem>Holz</ComboBoxItem>
                 <ComboBoxItem>Aluminium</ComboBoxItem>
