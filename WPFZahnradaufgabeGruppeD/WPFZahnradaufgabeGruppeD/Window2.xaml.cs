@@ -25,7 +25,8 @@ namespace WPFZahnradaufgabeGruppeD
         {
             InitializeComponent();
             
-          
+
+
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
@@ -50,7 +51,7 @@ namespace WPFZahnradaufgabeGruppeD
                             txtbx_eingabe1.Background = Brushes.White;
 
                             RechnungEinfachverzahntSelect0(z, m);
-                            
+                            MassenberechnungZähnezahlEingabe(z, m);
                         }
                         else if (isteingabedouble(zahlcheck) == false)
                         {
@@ -83,8 +84,8 @@ namespace WPFZahnradaufgabeGruppeD
                             Winkeleingabe.Background = Brushes.White;
 
                             RechnungSchrägverzahntSelect0( z , m , Winkel );
+                            MassenberechnungZähnezahlEingabe(z, m);
 
-                            
                         }
                         else if (isteingabedouble(zahlencheck) == false)
                         {
@@ -132,7 +133,7 @@ namespace WPFZahnradaufgabeGruppeD
                             txtbx_eingabe1.Background = Brushes.White;
 
                             RechnungEinfachverzahntSelect1(d, m);
-                            Massenberechnung(d);
+                            MassenberechnungDurchmesserEingabe(d);
 
 
                         }
@@ -168,7 +169,8 @@ namespace WPFZahnradaufgabeGruppeD
                             Winkeleingabe.Background = Brushes.White;
 
                             RechnungSchrägverzahntSelect1(d, m, Winkel);
-                           
+                            MassenberechnungDurchmesserEingabe(d);
+
                         }
                         else if (isteingabedouble(zahlencheck) == false)
                         {
@@ -208,23 +210,26 @@ namespace WPFZahnradaufgabeGruppeD
         private void einfachCheck_Checked(object sender, RoutedEventArgs e)
         {
             schraegCheck.IsChecked = false;
+            Winkeleingabe.Visibility = Visibility.Hidden;
 
         }
 
         private void schraegCheck_Checked(object sender, RoutedEventArgs e)
         {
             einfachCheck.IsChecked = false;
-
+            Winkeleingabe.Visibility = Visibility.Visible;
         }
 
         private void einfachCheck_Unchecked(object sender, RoutedEventArgs e)
         {
             schraegCheck.IsChecked = true;
+            Winkeleingabe.Visibility = Visibility.Visible;
         }
 
         private void schraegCheck_Unchecked(object sender, RoutedEventArgs e)
         {
             einfachCheck.IsChecked = true;
+            Winkeleingabe.Visibility = Visibility.Hidden;
         }
 
         private void Close_Click_1(object sender, RoutedEventArgs e)
@@ -270,7 +275,7 @@ namespace WPFZahnradaufgabeGruppeD
 
         }
 
-        public void Massenberechnung(double d)
+        public void MassenberechnungDurchmesserEingabe(double d)
         {
             string zahlencheck1, zahlencheck2;
             zahlencheck1 = txbx_Dicke.Text;
@@ -280,6 +285,52 @@ namespace WPFZahnradaufgabeGruppeD
             {
                 double Dicke = Convert.ToDouble(txbx_Dicke.Text);
                 double Bohrung = Convert.ToDouble(txbx_Bohrungsdurchmesser.Text);
+
+                if (Bohrung <= d - 10)
+                {
+                    txbx_Dicke.Background = Brushes.White;
+                    txbx_Bohrungsdurchmesser.Background = Brushes.White;
+
+                    double Masse = (Math.PI / 4) * ((d * d) - (Bohrung * Bohrung)) * Dicke * material;
+
+                    Masse_Ausgabe.Text = Convert.ToString(Math.Round(Masse, decimalzahl) + "Gramm");
+                }
+                else
+                {
+                    MessageBox.Show("Bohrungsmaß übderdenken");
+                }
+
+            }
+            else if (isteingabedouble(zahlencheck1) == false && isteingabedouble(zahlencheck2) == true)
+            {
+                txbx_Dicke.Background = Brushes.OrangeRed;
+                MessageBox.Show("Die Eingabe der Dicke ist nicht in Ordnung");
+            }
+            else if (isteingabedouble(zahlencheck1) == true && true && isteingabedouble(zahlencheck2) == false)
+            {
+                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+                MessageBox.Show("Die Eingabe des Bohrungsdurchmessers ist nicht in Ordnung");
+            }
+            else
+            {
+                txbx_Dicke.Background = Brushes.OrangeRed;
+                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+                MessageBox.Show("Die Eingabe des Bohrungsdurchmessers und der Dicke ist nicht in Ordnung");
+            }
+        }
+
+        public void MassenberechnungZähnezahlEingabe(double z, double m)
+        {
+            string zahlencheck1, zahlencheck2;
+            zahlencheck1 = txbx_Dicke.Text;
+            zahlencheck2 = txbx_Bohrungsdurchmesser.Text;
+
+            if (isteingabedouble(zahlencheck1) == true && isteingabedouble(zahlencheck2) == true)
+            {
+                double Dicke = Convert.ToDouble(txbx_Dicke.Text);
+                double Bohrung = Convert.ToDouble(txbx_Bohrungsdurchmesser.Text);
+
+                double d = z * m;
 
                 if (Bohrung <= d - 10)
                 {
@@ -587,6 +638,25 @@ namespace WPFZahnradaufgabeGruppeD
             {
                 material = 0.00896;
             }
+        }
+
+        private void btn_clear_Click(object sender, RoutedEventArgs e)
+        {
+            txtbx_eingabe1.Clear();
+            txbx_Dicke.Clear();
+            txbx_Bohrungsdurchmesser.Clear();
+            Winkeleingabe.Clear();
+            d_Ausgabe.Text = "";
+            p_Ausgabe.Text = "";
+            da_Ausgabe.Text = "";
+            df_Ausgabe.Text = "";
+            h_Ausgabe.Text = "";
+            ha_Ausgabe.Text = "";
+            hf_Ausgabe.Text = "";
+            c_Ausgabe.Text = "";
+            mt_Ausgabe.Text = "";
+            pt_Ausgabe.Text = "";
+            Masse_Ausgabe.Text = "";
         }
     }
 }

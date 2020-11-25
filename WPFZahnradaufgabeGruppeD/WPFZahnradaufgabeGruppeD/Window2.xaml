@@ -51,7 +51,7 @@
 
         </Canvas>
 
-        <Canvas Margin="40,70,0,149" Background="#FFC1C1C1" HorizontalAlignment="Left" Width="290">
+        <Canvas Margin="40,70,0,149" Background="#FFC1C1C1" HorizontalAlignment="Left" Width="290" Height="315">
             <Label Content="Eingabe:"            HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="150" Height="31" RenderTransformOrigin="1.618,0.362" FontWeight="Bold" FontSize="16"/>
 
             <ComboBox Name="EingabeAuswahlDrop" HorizontalAlignment="Left" Margin="80,10,0,0" VerticalAlignment="Top" Width="150" Height="25"  SelectionChanged="EingabeAuswahlDrop_SelectionChanged" >
@@ -59,12 +59,12 @@
                 <ComboBoxItem>Teilkreisdurchmesser/Modul</ComboBoxItem>
             </ComboBox>
 
-            <Label  Name="lbl_eingabe1"    Content="Zähnezahl :"      HorizontalAlignment="Left" Margin="5,95,0,0" VerticalAlignment="Top" Height="25" Width="75"/>
-            <TextBox  Name="txtbx_eingabe1"           HorizontalAlignment="Left" Margin="80,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <Label  Name="lbl_eingabe1"    Content="Zähnezahl :"      HorizontalAlignment="Left" Margin="5,95,0,0" VerticalAlignment="Top" Height="25" Width="75" />
+            <TextBox  Name="txtbx_eingabe1"           HorizontalAlignment="Left" Margin="80,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Hier je nach Eingabe mind. 5 Zähne oder einen Teilkreisdurchmesser eingeben" />
             <Label  Name="lbl_mm"    Content=""      HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
 
             <Label Name="lbl_eingabe2" Content="Modul :"             HorizontalAlignment="Left" Margin="5,130,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,130,0,0" VerticalAlignment="Top" Width="55" Height="25" SelectedIndex="17" >
+            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,130,0,0" VerticalAlignment="Top" Width="55" Height="25" SelectedIndex="17" ToolTip="Gängiges Modul auswählen" >
                 <ComboBoxItem>0,1</ComboBoxItem>
                 <ComboBoxItem>0,12</ComboBoxItem>
                 <ComboBoxItem>0,16</ComboBoxItem>
@@ -99,33 +99,33 @@
             </ComboBox>
             <Label Content="mm"             HorizontalAlignment="Left" Margin="131,133,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
-            <Label Content="Zähne :"             HorizontalAlignment="Left" Margin="5,60,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
+            <Label Content="Zähne :"             HorizontalAlignment="Left" Margin="5,60,0,0" VerticalAlignment="Top" Height="25" Width="65" ToolTip="Geben Sie die Verzahnung an" />
             <CheckBox Name="einfachCheck"        Content="einfach" Canvas.Left="80" Canvas.Top="66"   Checked="einfachCheck_Checked" Unchecked="einfachCheck_Unchecked" />
             <CheckBox Name="schraegCheck"        Content="schräg" Canvas.Left="150" Canvas.Top="66"  Checked="schraegCheck_Checked" Unchecked="schraegCheck_Unchecked" />
 
             <Label Content="Dicke :"             HorizontalAlignment="Left" Margin="5,195,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <TextBox  Name="txbx_Dicke"           HorizontalAlignment="Left" Margin="80,195,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <TextBox  Name="txbx_Dicke"           HorizontalAlignment="Left" Margin="80,195,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Dicke des zu erstellenden Zahnrades" />
             <Label Content="mm"             HorizontalAlignment="Left" Margin="116,199,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Winkel :"             HorizontalAlignment="Left" Margin="5,160,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <TextBox  Name="Winkeleingabe"           HorizontalAlignment="Left" Margin="80,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <TextBox  Name="Winkeleingabe"           HorizontalAlignment="Left" Margin="80,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Schrägverzahnungswinkel meist 8° - 25° " />
             <Label Content="°"             HorizontalAlignment="Left" Margin="116,152,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Bohrung :"             HorizontalAlignment="Left" Margin="5,225,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <TextBox  Name="txbx_Bohrungsdurchmesser"           HorizontalAlignment="Left" Margin="80,225,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" />
+            <TextBox  Name="txbx_Bohrungsdurchmesser"           HorizontalAlignment="Left" Margin="80,225,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Bohrungsdurchmesser angeben" />
             <Label Content="mm"             HorizontalAlignment="Left" Margin="116,229,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
-            
+
             <Label Content="Material :"             HorizontalAlignment="Left" Margin="5,255,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-            <ComboBox x:Name="cmbx_material"  Width="55" SelectedIndex="0" SelectionChanged="cmbx_material_SelectionChanged" Canvas.Left="80" Canvas.Top="255" >
+            <ComboBox x:Name="cmbx_material"  Width="80" SelectedIndex="0" SelectionChanged="cmbx_material_SelectionChanged" Canvas.Left="80" Canvas.Top="255" >
                 <ComboBoxItem>Stahl</ComboBoxItem>
                 <ComboBoxItem>Holz</ComboBoxItem>
                 <ComboBoxItem>Aluminium</ComboBoxItem>
                 <ComboBoxItem>Kupfer</ComboBoxItem>
             </ComboBox>
-            
-            
+
+
             <Label Content="Rundung :"             HorizontalAlignment="Left" Margin="5,290,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-            <ComboBox x:Name="cmbx_nachkommar"  Width="55" SelectedIndex="0" SelectionChanged="cmbx_nachkommar_SelectionChanged" Canvas.Left="80" Canvas.Top="290" >
+            <ComboBox x:Name="cmbx_nachkommar"  Width="55" SelectedIndex="0" SelectionChanged="cmbx_nachkommar_SelectionChanged" Canvas.Left="80" Canvas.Top="290" ToolTip="Auf wie viele Stellen nach dem Kommar soll gerundet werden" >
                 <ComboBoxItem>0</ComboBoxItem>
                 <ComboBoxItem>1</ComboBoxItem>
                 <ComboBoxItem>2</ComboBoxItem>
@@ -134,8 +134,30 @@
 
         </Canvas>
         <Button Content="Berechnen" Margin="40,439,670,28" Click="Button_Click" Background="#FF53E8FF" FontSize="16" FontWeight="Bold" FontStyle="Normal" FontFamily="Bookman Old Style"/>
-        <Button Name="Close" Content="zurück" Margin="474,439,238,28" Background="#FF53E8FF"  Foreground="Black" Click="Close_Click_1" FontWeight="Bold" FontSize="16" FontFamily="Bookman Old Style"/>
-        <Button x:Name="btn_info" Content="Info" HorizontalAlignment="Left" Margin="148,390,0,0" VerticalAlignment="Top" Height="31" Width="74" Background="#FF53E8FF" FontFamily="Bookman Old Style" Click="btn_info_Click"/>
+        <Button Name="Close" Content="Fenster schließen" Margin="474,439,238,28" Background="#FF53E8FF"  Foreground="Black" Click="Close_Click_1" FontWeight="Bold" FontSize="16" FontFamily="Bookman Old Style"/>
+        <Button x:Name="btn_info" Content="Info" HorizontalAlignment="Left" Margin="40,390,0,0" VerticalAlignment="Top" Height="31" Width="74" Background="#FF53E8FF" FontFamily="Bookman Old Style" Click="btn_info_Click"/>
+        <Button x:Name="btn_clear" Content="Clear" HorizontalAlignment="Left" Margin="256,390,0,0" VerticalAlignment="Top" Height="31" Width="74" Background="#FF53E8FF" FontFamily="Bookman Old Style" Click="btn_clear_Click"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="877,10,0,0" VerticalAlignment="Top" Width="100" Source="ni2.png" RenderTransformOrigin=".5,.5">
+            <Image.RenderTransform>
+                <RotateTransform CenterX="0" CenterY="0" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style>
+                    <Style.Triggers>
+                        <Trigger Property="Image.IsEnabled" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle" From="0" To="360" Duration="0:0:5" RepeatBehavior="Forever" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
 
     </Grid>
 </Window>

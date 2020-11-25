@@ -9,12 +9,16 @@
   <ItemGroup>
     <None Remove="125857002_658623658149469_8284725634291251014_n.jpg" />
     <None Remove="126046674_2793894470875615_3532936385364282630_n.jpg" />
+    <None Remove="ni1.png" />
+    <None Remove="ni2.png" />
     <None Remove="Niklas2.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="125857002_658623658149469_8284725634291251014_n.jpg" />
     <Resource Include="126046674_2793894470875615_3532936385364282630_n.jpg" />
+    <Resource Include="ni1.png" />
+    <Resource Include="ni2.png" />
     <Resource Include="Niklas2.png" />
   </ItemGroup>
 

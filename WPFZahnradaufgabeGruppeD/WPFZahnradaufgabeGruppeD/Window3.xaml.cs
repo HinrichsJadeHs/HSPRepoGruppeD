@@ -19,7 +19,7 @@ namespace WPFZahnradaufgabeGruppeD
     {
        
        public int decimalzahl = 0;
-
+       public double material;
         public Window3()
         {
             InitializeComponent();
@@ -42,6 +42,7 @@ namespace WPFZahnradaufgabeGruppeD
                         double m = Convert.ToDouble(Drp_eingabe2.Text);
 
                         RechnungEinfachverzahntSelect0(z, m);
+                        MassenberechnungZähnezahlEingabe(z, m);
                     }
                     else if (isteingabedouble(zahlcheck) == false)
                     {
@@ -71,8 +72,9 @@ namespace WPFZahnradaufgabeGruppeD
                             double m = Convert.ToDouble(Drp_eingabe2.Text);
 
                         RechnungEinfachverzahntSelect1(d, m);
+                        MassenberechnungDurchmesserEingabe(d);
 
-                            
+
                         }
                         else if (isteingabedouble(zahlcheck) == false)
                         {
@@ -118,6 +120,96 @@ namespace WPFZahnradaufgabeGruppeD
             }
         }
 
+        public void MassenberechnungZähnezahlEingabe(double z, double m)
+        {
+            string zahlencheck1, zahlencheck2;
+            zahlencheck1 = txbx_Dicke.Text;
+            zahlencheck2 = txbx_Bohrungsdurchmesser.Text;
+
+            if (isteingabedouble(zahlencheck1) == true && isteingabedouble(zahlencheck2) == true)
+            {
+                double Dicke = Convert.ToDouble(txbx_Dicke.Text);
+                double Bohrung = Convert.ToDouble(txbx_Bohrungsdurchmesser.Text);
+
+                double d = z * m;
+
+                if (Bohrung <= d - 10)
+                {
+                    txbx_Dicke.Background = Brushes.White;
+                    txbx_Bohrungsdurchmesser.Background = Brushes.White;
+
+                    double Masse = (Math.PI / 4) * ((d * d) - (Bohrung * Bohrung)) * Dicke * material;
+
+                    Masse_Ausgabe.Text = Convert.ToString(Math.Round(Masse, decimalzahl) + "Gramm");
+                }
+                else
+                {
+                    MessageBox.Show("Bohrungsmaß übderdenken");
+                }
+
+            }
+            else if (isteingabedouble(zahlencheck1) == false && isteingabedouble(zahlencheck2) == true)
+            {
+                txbx_Dicke.Background = Brushes.OrangeRed;
+                MessageBox.Show("Die Eingabe der Dicke ist nicht in Ordnung");
+            }
+            else if (isteingabedouble(zahlencheck1) == true && true && isteingabedouble(zahlencheck2) == false)
+            {
+                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+                MessageBox.Show("Die Eingabe des Bohrungsdurchmessers ist nicht in Ordnung");
+            }
+            else
+            {
+                txbx_Dicke.Background = Brushes.OrangeRed;
+                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+                MessageBox.Show("Die Eingabe des Bohrungsdurchmessers und der Dicke ist nicht in Ordnung");
+            }
+        }
+
+        public void MassenberechnungDurchmesserEingabe(double d)
+        {
+            string zahlencheck1, zahlencheck2;
+            zahlencheck1 = txbx_Dicke.Text;
+            zahlencheck2 = txbx_Bohrungsdurchmesser.Text;
+
+            if (isteingabedouble(zahlencheck1) == true && isteingabedouble(zahlencheck2) == true)
+            {
+                double Dicke = Convert.ToDouble(txbx_Dicke.Text);
+                double Bohrung = Convert.ToDouble(txbx_Bohrungsdurchmesser.Text);
+
+                if (Bohrung <= d - 10)
+                {
+                    txbx_Dicke.Background = Brushes.White;
+                    txbx_Bohrungsdurchmesser.Background = Brushes.White;
+
+                    double Masse = (Math.PI / 4) * ((d * d) - (Bohrung * Bohrung)) * Dicke * material;
+
+                    Masse_Ausgabe.Text = Convert.ToString(Math.Round(Masse, decimalzahl) + "Gramm");
+                }
+                else
+                {
+                    MessageBox.Show("Bohrungsmaß übderdenken");
+                }
+
+            }
+            else if (isteingabedouble(zahlencheck1) == false && isteingabedouble(zahlencheck2) == true)
+            {
+                txbx_Dicke.Background = Brushes.OrangeRed;
+                MessageBox.Show("Die Eingabe der Dicke ist nicht in Ordnung");
+            }
+            else if (isteingabedouble(zahlencheck1) == true && true && isteingabedouble(zahlencheck2) == false)
+            {
+                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+                MessageBox.Show("Die Eingabe des Bohrungsdurchmessers ist nicht in Ordnung");
+            }
+            else
+            {
+                txbx_Dicke.Background = Brushes.OrangeRed;
+                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+                MessageBox.Show("Die Eingabe des Bohrungsdurchmessers und der Dicke ist nicht in Ordnung");
+            }
+        }
+
         private void RechnungEinfachverzahntSelect0(double z, double m)
         {
             if (z % 1 == 0 && z >= 5)
@@ -152,20 +244,7 @@ namespace WPFZahnradaufgabeGruppeD
                 
 
 
-                mt_Ausgabe.Text = Convert.ToString("");
-
-                pt_Ausgabe.Text = Convert.ToString("");
-
-                //Berechnung schräg
-
-                if (Dicke.Text != "")
-                {
-                    dicke_Ausgabe.Text = Dicke.Text + " mm";
-                }
-                else
-                {
-                    dicke_Ausgabe.Text = "";
-                }
+                
             }
             else
             {
@@ -218,20 +297,7 @@ namespace WPFZahnradaufgabeGruppeD
                 
 
 
-                mt_Ausgabe.Text = Convert.ToString("");
-
-                pt_Ausgabe.Text = Convert.ToString("");
-
-               
-
-                if (Dicke.Text != "")
-                {
-                    dicke_Ausgabe.Text = Dicke.Text + " mm";
-                }
-                else
-                {
-                    dicke_Ausgabe.Text = "";
-                }
+                
             }
             else
             {
@@ -281,6 +347,42 @@ namespace WPFZahnradaufgabeGruppeD
            
                 decimalzahl = Convert.ToInt32(cmbx_nachkommar.SelectedIndex);
             
+        }
+
+        private void cmbx_material_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbx_material.SelectedIndex == 0)
+            {
+                material = 0.00786;
+            }
+            else if (cmbx_material.SelectedIndex == 1)
+            {
+                material = 0.00067;
+            }
+            else if (cmbx_material.SelectedIndex == 2)
+            {
+                material = 0.0027;
+            }
+            else if (cmbx_material.SelectedIndex == 3)
+            {
+                material = 0.00896;
+            }
+        }
+
+        private void btn_clear_Click(object sender, RoutedEventArgs e)
+        {
+            txtbx_eingabe1.Clear();
+            txbx_Dicke.Clear();
+            txbx_Bohrungsdurchmesser.Clear();
+            d_Ausgabe.Text = "";
+            p_Ausgabe.Text = "";
+            da_Ausgabe.Text = "";
+            df_Ausgabe.Text = "";
+            h_Ausgabe.Text = "";
+            ha_Ausgabe.Text = "";
+            hf_Ausgabe.Text = "";
+            c_Ausgabe.Text = "";
+            Masse_Ausgabe.Text = "";
         }
     }
 }
