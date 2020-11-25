@@ -30,6 +30,7 @@ namespace WPFZahnradaufgabeGruppeD
         {
             if (EingabeAuswahlDrop.SelectedIndex == 0)
             {
+                lbl_eingabe.Foreground = Brushes.Black;
 
                 if (txtbx_eingabe1.Text != "")
                 {
@@ -37,7 +38,7 @@ namespace WPFZahnradaufgabeGruppeD
 
                     if (isteingabedouble(zahlcheck) == true)
                     {
-
+                        txtbx_eingabe1.Background = Brushes.White;
                         double z = Convert.ToDouble(txtbx_eingabe1.Text);
                         double m = Convert.ToDouble(Drp_eingabe2.Text);
 
@@ -46,11 +47,13 @@ namespace WPFZahnradaufgabeGruppeD
                     }
                     else if (isteingabedouble(zahlcheck) == false)
                     {
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
                         MessageBox.Show("Sie müssen als Zähnezahl eine Zahl eingeben");
                     }
                 }
                 else
                 {
+                    txtbx_eingabe1.Background = Brushes.OrangeRed;
                     MessageBox.Show("Zähnezahl eingeben!");
                 }
 
@@ -60,15 +63,16 @@ namespace WPFZahnradaufgabeGruppeD
             }
             else if (EingabeAuswahlDrop.SelectedIndex == 1)
             {
+                lbl_eingabe.Foreground = Brushes.Black;
 
-                    if (txtbx_eingabe1.Text != "")
+                if (txtbx_eingabe1.Text != "")
                     {
                         string zahlcheck = txtbx_eingabe1.Text;
 
                         if (isteingabedouble(zahlcheck) == true)
                         {
-
-                            double d = Convert.ToDouble(txtbx_eingabe1.Text);
+                        txtbx_eingabe1.Background = Brushes.White;
+                        double d = Convert.ToDouble(txtbx_eingabe1.Text);
                             double m = Convert.ToDouble(Drp_eingabe2.Text);
 
                         RechnungEinfachverzahntSelect1(d, m);
@@ -78,18 +82,22 @@ namespace WPFZahnradaufgabeGruppeD
                         }
                         else if (isteingabedouble(zahlcheck) == false)
                         {
-                            MessageBox.Show("Sie müssen als Teilkreisdurchmesser eine Zahl eingeben");
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
+                        MessageBox.Show("Sie müssen als Teilkreisdurchmesser eine Zahl eingeben");
                         }
                     }
                     else
-                    {
-                        MessageBox.Show("Teilkreisdurchmesser eingeben!");
+                {
+                    txtbx_eingabe1.Background = Brushes.OrangeRed;
+
+                    MessageBox.Show("Teilkreisdurchmesser eingeben!");
                     }
 
             
             }
             else if (EingabeAuswahlDrop.SelectedIndex != 1 && EingabeAuswahlDrop.SelectedIndex != 0)
             {
+                lbl_eingabe.Foreground = Brushes.OrangeRed;
                 MessageBox.Show("Wählen Sie eine Eingabemöglichkeit aus!");
             }
         }
@@ -306,6 +314,7 @@ namespace WPFZahnradaufgabeGruppeD
 
         private void EingabeAuswahlDrop_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            lbl_eingabe.Foreground = Brushes.Black;
             if (EingabeAuswahlDrop.SelectedIndex == 0)
             {
                 lbl_mm.Content = "";
@@ -364,9 +373,13 @@ namespace WPFZahnradaufgabeGruppeD
 
         private void btn_clear_Click(object sender, RoutedEventArgs e)
         {
+            lbl_eingabe.Foreground = Brushes.Black;
             txtbx_eingabe1.Clear();
+            txtbx_eingabe1.Background = Brushes.White;
             txbx_Dicke.Clear();
+            txbx_Dicke.Background = Brushes.White;
             txbx_Außendurchmesser.Clear();
+            txbx_Außendurchmesser.Background = Brushes.White;
             d_Ausgabe.Text = "";
             p_Ausgabe.Text = "";
             da_Ausgabe.Text = "";

@@ -33,6 +33,7 @@ namespace WPFZahnradaufgabeGruppeD
         {
             if (EingabeAuswahlDrop.SelectedIndex == 0)
             {
+                lbl_eingabe.Foreground = Brushes.Black;
                 EingabeAuswahlDrop.Background = Brushes.White;
 
                 if (einfachCheck.IsChecked == true)
@@ -99,11 +100,25 @@ namespace WPFZahnradaufgabeGruppeD
                         }
                         else
                         {
+                            txtbx_eingabe1.Background = Brushes.OrangeRed;
+                            Winkeleingabe.Background = Brushes.OrangeRed;
                             MessageBox.Show("überprüfen sei ihre Eingaben!");
                         }
                     }
-                    else
+                    else if (txtbx_eingabe1.Text == "")
                     {
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
+                        MessageBox.Show("Zähnezahl eingeben !");
+                    }
+                    else if (Winkeleingabe.Text == "")
+                    {
+                        Winkeleingabe.Background = Brushes.OrangeRed;
+                        MessageBox.Show("Winkel eingeben!");
+                    }
+                    else if (txtbx_eingabe1.Text == "" && Winkeleingabe.Text == "")
+                    {
+                        Winkeleingabe.Background = Brushes.OrangeRed;
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
                         MessageBox.Show("Zähnezahl eingeben und oder Winkel eingeben!");
                     }
 
@@ -116,6 +131,7 @@ namespace WPFZahnradaufgabeGruppeD
             }
             else if (EingabeAuswahlDrop.SelectedIndex == 1)
             {
+                lbl_eingabe.Foreground = Brushes.Black;
                 EingabeAuswahlDrop.Background = Brushes.White;
                 if (einfachCheck.IsChecked == true)
 
@@ -184,12 +200,26 @@ namespace WPFZahnradaufgabeGruppeD
                         }
                         else
                         {
-                            MessageBox.Show("überprüfen sei ihre eingaben!");
+                            txtbx_eingabe1.Background = Brushes.OrangeRed;
+                            Winkeleingabe.Background = Brushes.OrangeRed;
+                            MessageBox.Show("überprüfen sei ihre Eingaben!");
                         }
                     }
-                    else
+                    else if (txtbx_eingabe1.Text == "")
                     {
-                        MessageBox.Show("Teilkreisdurchmesser eingeben und oder Winkel eingeben!");
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
+                        MessageBox.Show("Zähnezahl eingeben !");
+                    }
+                    else if (Winkeleingabe.Text == "")
+                    {
+                        Winkeleingabe.Background = Brushes.OrangeRed;
+                        MessageBox.Show("Winkel eingeben!");
+                    }
+                    else if (txtbx_eingabe1.Text == "" && Winkeleingabe.Text == "")
+                    {
+                        Winkeleingabe.Background = Brushes.OrangeRed;
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
+                        MessageBox.Show("Zähnezahl eingeben und oder Winkel eingeben!");
                     }
 
 
@@ -201,7 +231,7 @@ namespace WPFZahnradaufgabeGruppeD
             }
             else if (EingabeAuswahlDrop.SelectedIndex != 1 && EingabeAuswahlDrop.SelectedIndex != 0)
             {
-                EingabeAuswahlDrop.Background = Brushes.OrangeRed;
+                lbl_eingabe.Foreground = Brushes.OrangeRed;
                 MessageBox.Show("Wählen Sie eine Eingabemöglichkeit aus!");
             }
         }
@@ -254,7 +284,8 @@ namespace WPFZahnradaufgabeGruppeD
 
         private void EingabeAuswahlDrop_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(EingabeAuswahlDrop.SelectedIndex == 0)
+            lbl_eingabe.Foreground = Brushes.Black;
+            if (EingabeAuswahlDrop.SelectedIndex == 0)
             {
                 lbl_mm.Content = "";
 
@@ -642,10 +673,15 @@ namespace WPFZahnradaufgabeGruppeD
 
         private void btn_clear_Click(object sender, RoutedEventArgs e)
         {
+            lbl_eingabe.Foreground = Brushes.Black;
             txtbx_eingabe1.Clear();
+            txtbx_eingabe1.Background = Brushes.White;
             txbx_Dicke.Clear();
+            txbx_Dicke.Background = Brushes.White;
             txbx_Bohrungsdurchmesser.Clear();
+            txbx_Bohrungsdurchmesser.Background = Brushes.White;
             Winkeleingabe.Clear();
+            Winkeleingabe.Background = Brushes.White;
             d_Ausgabe.Text = "";
             p_Ausgabe.Text = "";
             da_Ausgabe.Text = "";
