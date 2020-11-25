@@ -133,7 +133,7 @@
             </ComboBox>
 
         </Canvas>
-        <Button Content="Berechnen" Margin="40,439,670,28" Click="Button_Click" Background="#FF53E8FF" FontSize="16" FontWeight="Bold" FontStyle="Normal" FontFamily="Bookman Old Style"/>
+        <Button Content="Berechnen" Margin="40,439,0,28" Click="Button_Click" Background="#FF53E8FF" FontSize="16" FontWeight="Bold" FontStyle="Normal" Width="290" FontFamily="Bookman Old Style" HorizontalAlignment="Left"/>
         <Button Name="Close" Content="Fenster schließen" Margin="474,439,238,28" Background="#FF53E8FF"  Foreground="Black" Click="Close_Click_1" FontWeight="Bold" FontSize="16" FontFamily="Bookman Old Style"/>
         <Button x:Name="btn_info" Content="Info" HorizontalAlignment="Left" Margin="40,390,0,0" VerticalAlignment="Top" Height="31" Width="74" Background="#FF53E8FF" FontFamily="Bookman Old Style" Click="btn_info_Click"/>
         <Button x:Name="btn_clear" Content="Clear" HorizontalAlignment="Left" Margin="256,390,0,0" VerticalAlignment="Top" Height="31" Width="74" Background="#FF53E8FF" FontFamily="Bookman Old Style" Click="btn_clear_Click"/>
@@ -152,7 +152,7 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
-                            
+
                         </Trigger>
                     </Style.Triggers>
                 </Style>

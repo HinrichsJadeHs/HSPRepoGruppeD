@@ -19,7 +19,7 @@
         <Label Content="Wählen Sie zwischen einem Innen- oder Außenverzahnten Zahnrad" HorizontalAlignment="Left" Margin="40,45,0,0" VerticalAlignment="Top" Width="800" FontSize="18" FontWeight="Bold" />
 
 
-        <Button Name="Close" Content="Beenden" Margin="363,432,363,42" Background="#FFA953FF" BorderBrush="#FF7E7E7E" Foreground="Black" Click="Close_Click_1" BorderThickness="3,3,3,3" FontSize="16" FontWeight="Bold"/>
+        <Button Name="Close" Content="Beenden" Margin="363,432,363,42" Background="#FF53E8FF" BorderBrush="#FF7E7E7E" Foreground="Black" Click="Close_Click_1" BorderThickness="3,3,3,3" FontSize="16" FontWeight="Bold"/>
         <Button Content="Außenverzahnung" Margin="235,295,541,164" Click="Button_Click" Background="#FFFF6363" FontSize="16" FontWeight="Bold" BorderThickness="3,3,3,3" SnapsToDevicePixels="True" />
         <Button Content="Innenverzahnung" Margin="533,295,243,164" Click="Button_Click_2" Background="#FF1CCB00" FontSize="16" FontWeight="Bold" BorderThickness="3,3,3,3" />
         <Image HorizontalAlignment="Center" Height="177" Margin="0,90,0,0" VerticalAlignment="Top" Width="182" Source="Niklas2.png" />

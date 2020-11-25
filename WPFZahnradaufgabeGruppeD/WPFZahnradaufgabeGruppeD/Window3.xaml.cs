@@ -144,7 +144,7 @@ namespace WPFZahnradaufgabeGruppeD
                 }
                 else
                 {
-                    MessageBox.Show("Bohrungsmaß übderdenken");
+                    MessageBox.Show("Außendurchmesser übderdenken");
                 }
 
             }
@@ -156,13 +156,13 @@ namespace WPFZahnradaufgabeGruppeD
             else if (isteingabedouble(zahlencheck1) == true && true && isteingabedouble(zahlencheck2) == false)
             {
                 txbx_Außendurchmesser.Background = Brushes.OrangeRed;
-                MessageBox.Show("Die Eingabe des Bohrungsdurchmessers ist nicht in Ordnung");
+                MessageBox.Show("Die Eingabe des Außendurchmessers ist nicht in Ordnung");
             }
             else
             {
                 txbx_Dicke.Background = Brushes.OrangeRed;
                 txbx_Außendurchmesser.Background = Brushes.OrangeRed;
-                MessageBox.Show("Die Eingabe des Bohrungsdurchmessers und der Dicke ist nicht in Ordnung");
+                MessageBox.Show("Die Eingabe des Außendurchmessers und der Dicke ist nicht in Ordnung");
             }
         }
 
@@ -188,7 +188,7 @@ namespace WPFZahnradaufgabeGruppeD
                 }
                 else
                 {
-                    MessageBox.Show("Bohrungsmaß übderdenken");
+                    MessageBox.Show("Außendurchmesser übderdenken");
                 }
 
             }
@@ -200,13 +200,13 @@ namespace WPFZahnradaufgabeGruppeD
             else if (isteingabedouble(zahlencheck1) == true && true && isteingabedouble(zahlencheck2) == false)
             {
                 txbx_Außendurchmesser.Background = Brushes.OrangeRed;
-                MessageBox.Show("Die Eingabe des Bohrungsdurchmessers ist nicht in Ordnung");
+                MessageBox.Show("Die Eingabe des Außendurchmessers ist nicht in Ordnung");
             }
             else
             {
                 txbx_Dicke.Background = Brushes.OrangeRed;
                 txbx_Außendurchmesser.Background = Brushes.OrangeRed;
-                MessageBox.Show("Die Eingabe des Bohrungsdurchmessers und der Dicke ist nicht in Ordnung");
+                MessageBox.Show("Die Eingabe des Außendurchmessers und der Dicke ist nicht in Ordnung");
             }
         }
 
