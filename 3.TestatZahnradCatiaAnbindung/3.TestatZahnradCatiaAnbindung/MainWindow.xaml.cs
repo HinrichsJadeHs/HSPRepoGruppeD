@@ -26,5 +26,16 @@ namespace _3.TestatZahnradCatiaAnbindung
         {
             InitializeComponent();
         }
+
+        private void Btn_Aussenverzahnung_Click(object sender, RoutedEventArgs e)
+        {
+            Zahnrad1Window objaussenverzahnt = new Zahnrad1Window();
+            objaussenverzahnt.Show();
+        }
+
+        private void Close_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -64,7 +64,7 @@
             <Label  Name="lbl_mm"    Content=""      HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
 
             <Label Name="lbl_eingabe2" Content="Modul :"             HorizontalAlignment="Left" Margin="5,130,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,130,0,0" VerticalAlignment="Top" Width="55" Height="25" SelectedIndex="17" ToolTip="Gängiges Modul auswählen" >
+            <ComboBox Name="Drp_eingabe2"           HorizontalAlignment="Left" Margin="80,130,0,0" VerticalAlignment="Top" Width="55" Height="25" SelectedIndex="17" ToolTip="Gängiges Modul auswählen" SelectionChanged="Drp_eingabe2_SelectionChanged" >
                 <ComboBoxItem>0,1</ComboBoxItem>
                 <ComboBoxItem>0,12</ComboBoxItem>
                 <ComboBoxItem>0,16</ComboBoxItem>

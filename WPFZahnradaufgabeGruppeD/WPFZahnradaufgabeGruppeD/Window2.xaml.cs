@@ -696,6 +696,8 @@ namespace WPFZahnradaufgabeGruppeD
             pt_Ausgabe.Text = "";
             Masse_Ausgabe.Text = "";
         }
+
+        
     }
 
 
