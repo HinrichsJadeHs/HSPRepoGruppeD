@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace _3.TestatZahnradCatiaAnbindung
 {
     /// <summary>
@@ -73,17 +74,48 @@ namespace _3.TestatZahnradCatiaAnbindung
             txbx_Winkeleingabe.Visibility = Visibility.Hidden;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
             Zahnrad ZR1 = new Zahnrad();
 
-            if(EingabeAuswahlDrop.SelectedIndex == 0)
+            if(Eingabekontrolle() == true)
             {
-                
+                CatiaControl();              
             }
-            else if (EingabeAuswahlDrop.SelectedIndex == 1)
-            {
 
+        }
+
+        public void CatiaControl()
+        {
+            try
+            {
+                CatiaConnection cc = new CatiaConnection();
+
+                // Finde Catia Prozess
+                if (cc.CATIALaeuft())
+                {
+                    // Öffne ein neues Part
+                    cc.ErzeugePart();
+
+                    // Erstelle eine Skizze
+                    cc.ErstelleLeereSkizze();
+
+
+                    // Generiere ein Profil
+                    cc.ErzeugeProfil(Convert.ToDouble(txtbx_eingabe1.Text), 10);
+
+
+                    // Extrudiere Balken
+                    cc.ErzeugeBalken(Convert.ToDouble(txbx_Dicke.Text));
+                }
+                else
+                {
+                    MessageBox.Show("Laufende Catia Application nicht gefunden");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception aufgetreten");
             }
         }
 
@@ -104,6 +136,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 }
                 else if (isteingabedouble(zahlcheck) == true)
                 {
+                    txtbx_eingabe1.Background = Brushes.White;
                     double Parametercheck = Convert.ToDouble(txtbx_eingabe1.Text);
                     if (Parametercheck <8)
                     {
@@ -139,6 +172,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 }
                 else if (isteingabedouble(zahlcheck) == true)
                 {
+                    txtbx_eingabe1.Background = Brushes.White;
                     double Parametercheck = Convert.ToDouble(txtbx_eingabe1.Text);
                     if (Parametercheck < 5)
                     {
@@ -163,7 +197,16 @@ namespace _3.TestatZahnradCatiaAnbindung
                 MessageBox.Show("Wählen Sie eine Eingabemöglichkeit aus!");
             }
 
-            if (schraegCheck.IsChecked == true)
+            if (schraegCheck.IsChecked == false && einfachCheck.IsChecked == false)
+            {
+                Kontrollvariable++;
+                MessageBox.Show("Verzahnung anhaken");
+            }
+
+
+
+
+                if (schraegCheck.IsChecked == true)
             {
                 zahlcheck = txbx_Winkeleingabe.Text;
                 if (isteingabedouble(zahlcheck) == true)
@@ -174,13 +217,40 @@ namespace _3.TestatZahnradCatiaAnbindung
                 else if (isteingabedouble(zahlcheck) == false)
                 {
                     Kontrollvariable++;
-
-
+                    MessageBox.Show("Bitte geben Sie eine Zahl als Winkel ein");
+                    txbx_Winkeleingabe.Background = Brushes.OrangeRed;
                 }
             }
 
 
-                if (Kontrollvariable > 0)
+            zahlcheck = txbx_Dicke.Text;
+            if (isteingabedouble(zahlcheck) == true)
+            {
+                txbx_Dicke.Background = Brushes.White;
+            }
+            else if (isteingabedouble(zahlcheck) == false)
+            {
+                Kontrollvariable++;
+                MessageBox.Show("Bitte geben Sie eine Zahl als Winkel ein");
+                txbx_Dicke.Background = Brushes.OrangeRed;
+            }
+
+            zahlcheck = txbx_Bohrungsdurchmesser.Text;
+            if (isteingabedouble(zahlcheck) == true)
+            {
+                txbx_Bohrungsdurchmesser.Background = Brushes.White;
+            }
+            else if (isteingabedouble(zahlcheck) == false)
+            {
+                Kontrollvariable++;
+                MessageBox.Show("Bitte geben Sie eine Zahl für die Dicke ein");
+                txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
+            }
+
+
+
+
+            if (Kontrollvariable > 0)
             {
                 return false;
             }
@@ -202,5 +272,12 @@ namespace _3.TestatZahnradCatiaAnbindung
                 return false;
             }
         }
+
+
     }
+
+    
+
+
+
 }

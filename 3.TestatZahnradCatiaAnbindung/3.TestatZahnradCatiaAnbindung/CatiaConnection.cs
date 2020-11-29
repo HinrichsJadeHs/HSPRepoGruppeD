@@ -79,39 +79,46 @@ namespace _3.TestatZahnradCatiaAnbindung
         public void ErzeugeProfil(Double b, Double h)
         {
             // Skizze umbenennen
-            hsp_catiaProfil.set_Name("Rechteck");
+            hsp_catiaProfil.set_Name("Zahnrad");
 
             // Rechteck in Skizze einzeichnen
             // Skizze oeffnen
             Factory2D catFactory2D1 = hsp_catiaProfil.OpenEdition();
 
-            // Rechteck erzeugen
-
             // erst die Punkte
-            Point2D catPoint2D1 = catFactory2D1.CreatePoint(-50, 50);
-            Point2D catPoint2D2 = catFactory2D1.CreatePoint(50, 50);
-            Point2D catPoint2D3 = catFactory2D1.CreatePoint(50, -50);
-            Point2D catPoint2D4 = catFactory2D1.CreatePoint(-50, -50);
+
+            int n =Convert.ToInt32( b);
+            double Radius = Convert.ToInt32(h);
+            double Alpha = 2 * Math.PI / n;
+            double[] kreisPx = new double[n];
+            double[] kreisPy = new double[n];
+            Point2D[] catPoints = new  Point2D[n];
+
+            for(int  ii = 0 ; ii < n; ii++ )
+            {
+                kreisPx[ii] = Math.Cos(Alpha * ii) * Radius;
+                kreisPy[ii] = Math.Sin(Alpha * ii) * Radius;
+
+                catPoints[ii] = catFactory2D1.CreatePoint(kreisPx[ii], kreisPy[ii]);
+            }
+        
 
             // dann die Linien
-            Line2D catLine2D1 = catFactory2D1.CreateLine(-50, 50, 50, 50);
-            catLine2D1.StartPoint = catPoint2D1;
-            catLine2D1.EndPoint = catPoint2D2;
+            Line2D[] catLines = new Line2D[n];
+            for(int ii = 1 ; ii<n ; ii ++ ) // Achtung, mit 1 starten wg. -1
+            {
+                catLines[ii] =  catFactory2D1.CreateLine(kreisPx[ii - 1], kreisPy[ii - 1], kreisPx[ii], kreisPy[ii]);
+                catLines[ii]. StartPoint  =  catPoints[ii - 1];
+                catLines[ii]. EndPoint   =  catPoints[ii];
+            }
 
-            Line2D catLine2D2 = catFactory2D1.CreateLine(50, 50, 50, -50);
-            catLine2D2.StartPoint = catPoint2D2;
-            catLine2D2.EndPoint = catPoint2D3;
-
-            Line2D catLine2D3 = catFactory2D1.CreateLine(50, -50, -50, -50);
-            catLine2D3.StartPoint = catPoint2D3;
-            catLine2D3.EndPoint = catPoint2D4;
-
-            Line2D catLine2D4 = catFactory2D1.CreateLine(-50, -50, -50, 50);
-            catLine2D4.StartPoint = catPoint2D4;
-            catLine2D4.EndPoint = catPoint2D1;
+            // Jetzt noch mit erster Linie [0] den Kreis schliessen
+            catLines[0] =  catFactory2D1.CreateLine(kreisPx[n - 1], kreisPy[n - 1], kreisPx[0], kreisPy[0]);
+            catLines[0]. StartPoint  =  catPoints[n - 1];
+            catLines[0].EndPoint = catPoints[0];
 
             // Skizzierer verlassen
-            hsp_catiaProfil.CloseEdition();
+              hsp_catiaProfil.CloseEdition();
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
         }
