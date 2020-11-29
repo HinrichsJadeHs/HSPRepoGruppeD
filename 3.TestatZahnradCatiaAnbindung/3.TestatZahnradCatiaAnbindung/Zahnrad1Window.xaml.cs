@@ -79,11 +79,127 @@ namespace _3.TestatZahnradCatiaAnbindung
 
             if(EingabeAuswahlDrop.SelectedIndex == 0)
             {
-                ZR1.
+                
             }
             else if (EingabeAuswahlDrop.SelectedIndex == 1)
             {
 
+            }
+        }
+
+        private bool Eingabekontrolle()
+        { int Kontrollvariable = 0;
+            string zahlcheck = txtbx_eingabe1.Text;
+
+            if (EingabeAuswahlDrop.SelectedIndex == 0)
+            {
+
+                
+                
+                if (isteingabedouble(zahlcheck) == false)
+                {
+                    Kontrollvariable++;
+                    txtbx_eingabe1.Background = Brushes.OrangeRed;
+                    MessageBox.Show("Sie müssen als Zähnezahl eine Zahl eingeben");
+                }
+                else if (isteingabedouble(zahlcheck) == true)
+                {
+                    double Parametercheck = Convert.ToDouble(txtbx_eingabe1.Text);
+                    if (Parametercheck <8)
+                    {
+                        Kontrollvariable++;
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
+                        MessageBox.Show("Geben Sie mindestens 8 Zähne an");
+                    }
+                    if (Parametercheck% 1 != 0)
+                    {
+                        Kontrollvariable++;
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
+                        MessageBox.Show("Es gibt nur ganzzahlige Zähnezahlen ");
+                    }
+
+                }
+                if (txtbx_eingabe1.Text == "")
+                {
+                    Kontrollvariable++;
+                    txtbx_eingabe1.Background = Brushes.OrangeRed;
+                    MessageBox.Show("Sie müssen eine Zähnezahl eingeben");
+                }
+
+            }
+            else if (EingabeAuswahlDrop.SelectedIndex == 1)
+            {
+                
+
+                if (isteingabedouble(zahlcheck) == false)
+                {
+                    Kontrollvariable++;
+                    txtbx_eingabe1.Background = Brushes.OrangeRed;
+                    MessageBox.Show("Sie müssen als Teilkreisdurchmesser eine Zahl eingeben");
+                }
+                else if (isteingabedouble(zahlcheck) == true)
+                {
+                    double Parametercheck = Convert.ToDouble(txtbx_eingabe1.Text);
+                    if (Parametercheck < 5)
+                    {
+                        Kontrollvariable++;
+                        txtbx_eingabe1.Background = Brushes.OrangeRed;
+                        MessageBox.Show("Geben Sie mindestens einen Durchmesser von 5mm an");
+                    }
+                    
+
+                }
+                if (txtbx_eingabe1.Text == "")
+                {
+                    Kontrollvariable++;
+                    txtbx_eingabe1.Background = Brushes.OrangeRed;
+                    MessageBox.Show("Sie müssen eine Zähnezahl eingeben");
+                }
+            }
+            else if (EingabeAuswahlDrop.SelectedIndex != 1 && EingabeAuswahlDrop.SelectedIndex != 0)
+            {
+                Kontrollvariable++;
+                lbl_eingabe.Foreground = Brushes.OrangeRed;
+                MessageBox.Show("Wählen Sie eine Eingabemöglichkeit aus!");
+            }
+
+            if (schraegCheck.IsChecked == true)
+            {
+                zahlcheck = txbx_Winkeleingabe.Text;
+                if (isteingabedouble(zahlcheck) == true)
+                {
+                    txbx_Winkeleingabe.Background = Brushes.White;
+
+                }
+                else if (isteingabedouble(zahlcheck) == false)
+                {
+                    Kontrollvariable++;
+
+
+                }
+            }
+
+
+                if (Kontrollvariable > 0)
+            {
+                return false;
+            }
+            else
+            {
+                lbl_eingabe.Foreground = Brushes.Black; 
+                return true;
+            }
+        }
+        private bool isteingabedouble(string zahlcheck)
+        {
+            try
+            {
+                double doublezahl = double.Parse(zahlcheck);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
             }
         }
     }

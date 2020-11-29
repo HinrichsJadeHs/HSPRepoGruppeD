@@ -19,7 +19,7 @@ namespace WPFZahnradaufgabeGruppeD
     /// <summary>
     /// Interaktionslogik für Window2.xaml
     /// </summary>
-    public partial class Window2 : Window
+    public partial class Window2 
     {
         public int decimalzahl;
         public double material;
