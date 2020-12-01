@@ -123,6 +123,30 @@ namespace _3.TestatZahnradCatiaAnbindung
             hsp_catiaPart.Part.Update();
         }
 
+        public void ErzeugedasneueProfil(Zahnrad ZR1)
+        {
+            //Nullpunkt
+            double x0 = 0;
+            double y0 = 0;
+
+            //Hilfsgrößen von Wilkos PDF
+            double Teilkreisradius = ZR1.teilkreisdurchmesser / 2;
+            double Hilfskreisradius = Teilkreisradius * 0.94;
+            double Fußkreisradius = Teilkreisradius - (1.25 * ZR1.modul);
+            double Kopfkreisradius = Teilkreisradius + ZR1.modul;
+            double Verrundungsradius = 0.35 * ZR1.modul ;
+            double Alpha = 20;
+            double Beta = 90 / ZR1.zähnezahl;
+            double Betarad = Math.PI * Beta / 180;
+            double Gamma = 90 - (Alpha - Beta);
+            double Gammarad = Math.PI * Gamma / 180;
+            double Totalangel = 360.0 / ZR1.zähnezahl;
+            double Totalangelra = Math.PI * Totalangel / 180;
+
+            //Punkte
+
+        }
+
         public void ErzeugeBalken(Double l)
         {
             // Hauptkoerper in Bearbeitung definieren

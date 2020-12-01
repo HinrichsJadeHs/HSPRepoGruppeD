@@ -20,6 +20,7 @@ namespace _3.TestatZahnradCatiaAnbindung
     /// </summary>
     public partial class Zahnrad1Window : Window
     {
+        Zahnrad ZR1 = new Zahnrad();
         public Zahnrad1Window()
         {
             InitializeComponent();
@@ -49,34 +50,9 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
         }
 
-        private void einfachCheck_Checked(object sender, RoutedEventArgs e)
+        public void Button_Catia(object sender, RoutedEventArgs e)
         {
-            schraegCheck.IsChecked = false;
-            txbx_Winkeleingabe.Visibility = Visibility.Hidden;
-
-        }
-
-        private void schraegCheck_Checked(object sender, RoutedEventArgs e)
-        {
-            einfachCheck.IsChecked = false;
-            txbx_Winkeleingabe.Visibility = Visibility.Visible;
-        }
-
-        private void einfachCheck_Unchecked(object sender, RoutedEventArgs e)
-        {
-            schraegCheck.IsChecked = true;
-            txbx_Winkeleingabe.Visibility = Visibility.Visible;
-        }
-
-        private void schraegCheck_Unchecked(object sender, RoutedEventArgs e)
-        {
-            einfachCheck.IsChecked = true;
-            txbx_Winkeleingabe.Visibility = Visibility.Hidden;
-        }
-
-        public void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Zahnrad ZR1 = new Zahnrad();
+            
 
             if(Eingabekontrolle() == true)
             {
@@ -102,11 +78,11 @@ namespace _3.TestatZahnradCatiaAnbindung
 
 
                     // Generiere ein Profil
-                    cc.ErzeugeProfil(Convert.ToDouble(txtbx_eingabe1.Text), 10);
+                    cc.ErzeugeProfil(Convert.ToDouble(ZR1.zähnezahl), Convert.ToDouble(ZR1.teilkreisdurchmesser));
 
 
                     // Extrudiere Balken
-                    cc.ErzeugeBalken(Convert.ToDouble(txbx_Dicke.Text));
+                    cc.ErzeugeBalken(Convert.ToDouble(ZR1.dicke));
                 }
                 else
                 {
@@ -197,30 +173,13 @@ namespace _3.TestatZahnradCatiaAnbindung
                 MessageBox.Show("Wählen Sie eine Eingabemöglichkeit aus!");
             }
 
-            if (schraegCheck.IsChecked == false && einfachCheck.IsChecked == false)
-            {
-                Kontrollvariable++;
-                MessageBox.Show("Verzahnung anhaken");
-            }
+            
 
 
 
 
-                if (schraegCheck.IsChecked == true)
-            {
-                zahlcheck = txbx_Winkeleingabe.Text;
-                if (isteingabedouble(zahlcheck) == true)
-                {
-                    txbx_Winkeleingabe.Background = Brushes.White;
-
-                }
-                else if (isteingabedouble(zahlcheck) == false)
-                {
-                    Kontrollvariable++;
-                    MessageBox.Show("Bitte geben Sie eine Zahl als Winkel ein");
-                    txbx_Winkeleingabe.Background = Brushes.OrangeRed;
-                }
-            }
+                
+            
 
 
             zahlcheck = txbx_Dicke.Text;
@@ -273,7 +232,81 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
         }
 
+        private void Ergebnis_Click(object sender, RoutedEventArgs e)
+        {
+            Zahnradfüttern();
+            ZR1.Berechnung();
+            Canvasausgabe();
+            
+        }
+        
 
+        public void Zahnradfüttern()
+        {
+
+            if (Eingabekontrolle() == true)
+            {
+                if (EingabeAuswahlDrop.SelectedIndex == 0)
+                {                   
+                    ZR1.Eingabeparameter = Convert.ToString(1);                  
+                    ZR1.Zähnezahl = txtbx_eingabe1.Text;
+                    ZR1.Modul = Convert.ToString(Drp_Modul.Text);
+                    ZR1.Dicke = Convert.ToString(txbx_Dicke.Text);
+                    ZR1.Bohrung = Convert.ToString(txbx_Bohrungsdurchmesser.Text);
+                    
+                    ZR1.Nachkommarstellen = Convert.ToString(drp_nachkommar.Text);
+                }
+                else if (EingabeAuswahlDrop.SelectedIndex == 1)
+                {
+                    ZR1.Eingabeparameter = Convert.ToString(2);
+                    ZR1.Teilkreisdurchmesser = txtbx_eingabe1.Text;
+                    ZR1.Modul = Convert.ToString(Drp_Modul.Text);
+                    ZR1.Dicke = Convert.ToString(txbx_Dicke.Text);
+                    ZR1.Bohrung = Convert.ToString(txbx_Bohrungsdurchmesser.Text);
+                    
+                    ZR1.Nachkommarstellen = drp_nachkommar.Text;
+                    
+                }
+            }
+            
+
+
+            
+        }
+        public void Canvasausgabe()
+        {
+            m_Ausgabe.Text = Convert.ToString(ZR1.modul);
+            z_Ausgabe.Text = Convert.ToString(ZR1.zähnezahl);
+            d_Ausgabe.Text = Convert.ToString(ZR1.teilkreisdurchmesser + "mm");
+            p_Ausgabe.Text = Convert.ToString(ZR1.teilung + "mm");
+            da_Ausgabe.Text = Convert.ToString(ZR1.kopfkreisdurchmesser + "mm");
+            c_Ausgabe.Text = Convert.ToString(ZR1.kopfspiel + "mm");
+            df_Ausgabe.Text = Convert.ToString(ZR1.fußkreisdurchmesser + "mm");
+            h_Ausgabe.Text = Convert.ToString(ZR1.zahnhöhe + "mm");
+            ha_Ausgabe.Text = Convert.ToString(ZR1.zahnkopfhöhe + "mm");
+            hf_Ausgabe.Text = Convert.ToString(ZR1.zahnfußhöhe + "mm");
+            Masse_Ausgabe.Text = Convert.ToString(ZR1.masse + "g");
+        }
+
+        private void cmbx_material_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbx_material.SelectedIndex == 0)
+            {
+                ZR1.material = 0.00786;
+            }
+            else if (cmbx_material.SelectedIndex == 1)
+            {
+                ZR1.material = 0.00067;
+            }
+            else if (cmbx_material.SelectedIndex == 2)
+            {
+                ZR1.material = 0.0027;
+            }
+            else if (cmbx_material.SelectedIndex == 3)
+            {
+                ZR1.material = 0.00896;
+            }
+        }
     }
 
     

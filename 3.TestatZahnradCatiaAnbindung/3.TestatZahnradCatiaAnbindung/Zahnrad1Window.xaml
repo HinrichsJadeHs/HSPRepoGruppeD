@@ -66,23 +66,17 @@
             <Label Content="mm"             HorizontalAlignment="Left" Margin="131,133,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Zähne :"             HorizontalAlignment="Left" Margin="5,60,0,0" VerticalAlignment="Top" Height="25" Width="65" ToolTip="Geben Sie die Verzahnung an" />
-            <CheckBox Name="einfachCheck"        Content="einfach" Canvas.Left="80" Canvas.Top="66"   Checked="einfachCheck_Checked" Unchecked="einfachCheck_Unchecked" />
-            <CheckBox Name="schraegCheck"        Content="schräg" Canvas.Left="150" Canvas.Top="66"  Checked="schraegCheck_Checked" Unchecked="schraegCheck_Unchecked" />
 
             <Label Content="Dicke :"             HorizontalAlignment="Left" Margin="5,195,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
             <TextBox  Name="txbx_Dicke"           HorizontalAlignment="Left" Margin="80,195,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Dicke des zu erstellenden Zahnrades" />
             <Label Content="mm"             HorizontalAlignment="Left" Margin="116,199,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
-
-            <Label Content="Winkel :"             HorizontalAlignment="Left" Margin="5,160,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <TextBox  Name="txbx_Winkeleingabe"           HorizontalAlignment="Left" Margin="80,160,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Schrägverzahnungswinkel meist 8° - 25° " />
-            <Label Content="°"             HorizontalAlignment="Left" Margin="116,152,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Bohrung :"             HorizontalAlignment="Left" Margin="5,225,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
             <TextBox  Name="txbx_Bohrungsdurchmesser"           HorizontalAlignment="Left" Margin="80,225,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Bohrungsdurchmesser angeben" />
             <Label Content="mm"             HorizontalAlignment="Left" Margin="116,229,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Material :"             HorizontalAlignment="Left" Margin="5,255,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-            <ComboBox x:Name="cmbx_material"  Width="100" SelectedIndex="0"  Canvas.Left="80" Canvas.Top="255" >
+            <ComboBox x:Name="cmbx_material"  Width="100" SelectedIndex="0"  Canvas.Left="80" Canvas.Top="255" SelectionChanged="cmbx_material_SelectionChanged" >
                 <ComboBoxItem>Stahl</ComboBoxItem>
                 <ComboBoxItem>Holz</ComboBoxItem>
                 <ComboBoxItem>Aluminium</ComboBoxItem>
@@ -91,7 +85,7 @@
 
 
             <Label Content="Rundung :"             HorizontalAlignment="Left" Margin="5,290,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
-            <ComboBox x:Name="cmbx_nachkommar"  Width="55" SelectedIndex="0"  Canvas.Left="80" Canvas.Top="290" ToolTip="Auf wie viele Stellen nach dem Kommar soll gerundet werden" >
+            <ComboBox x:Name="drp_nachkommar"  Width="55" SelectedIndex="0"  Canvas.Left="80" Canvas.Top="290" ToolTip="Auf wie viele Stellen nach dem Kommar soll gerundet werden" >
                 <ComboBoxItem>0</ComboBoxItem>
                 <ComboBoxItem>1</ComboBoxItem>
                 <ComboBoxItem>2</ComboBoxItem>
@@ -99,7 +93,44 @@
             </ComboBox>
 
         </Canvas>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="499,233,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+        <Canvas Margin="364,70,0,0" Background="#FFC1C1C1" HorizontalAlignment="Left" Width="508" Height="315" VerticalAlignment="Top">
+            <Label Content="Berechnungen:" Margin="5,5,0,0" Width="150" Height="31" RenderTransformOrigin="1.618,0.362" FontWeight="Bold" FontSize="16" Canvas.Left="5" Canvas.Top="5"/>
+            <Label Content="Teilkreisdurchmesser d: "    Name="lbl_Ausgabe"       HorizontalAlignment="Left" Margin="5,55,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Teilung p: "                        HorizontalAlignment="Left" Margin="5,85,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Kopfkreisdurchmesser da: "          HorizontalAlignment="Left" Margin="5,115,0,0" VerticalAlignment="Top" Width="155" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Fußkreisdurchmesser df: "           HorizontalAlignment="Left" Margin="5,145,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Zahnhöhe h: "                       HorizontalAlignment="Left" Margin="5,175,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Zahnkopfhöhe ha"                    HorizontalAlignment="Left" Margin="5,205,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Zahnfußhöhe hf: "                   HorizontalAlignment="Left" Margin="5,235,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Kopfspiel c: "                      HorizontalAlignment="Left" Margin="5,265,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+
+
+            <TextBlock Name="d_Ausgabe"        HorizontalAlignment="Left" Margin="160,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="p_Ausgabe"        HorizontalAlignment="Left" Margin="160,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="da_Ausgabe"        HorizontalAlignment="Left" Margin="160,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="df_Ausgabe"        HorizontalAlignment="Left" Margin="160,150,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="h_Ausgabe"        HorizontalAlignment="Left" Margin="160,180,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="ha_Ausgabe"        HorizontalAlignment="Left" Margin="160,210,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="hf_Ausgabe"        HorizontalAlignment="Left" Margin="160,240,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="c_Ausgabe"        HorizontalAlignment="Left" Margin="160,270,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+
+
+
+            <Label Content="Zähnezahl: "           HorizontalAlignment="Left" Margin="250,55,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Modul: "         HorizontalAlignment="Left" Margin="250,85,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Masse: "         HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+
+            <TextBlock Name="z_Ausgabe"        HorizontalAlignment="Left" Margin="401,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="m_Ausgabe"        HorizontalAlignment="Left" Margin="401,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <TextBlock Name="Masse_Ausgabe"     HorizontalAlignment="Left" Margin="401,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+
+        </Canvas>
+
+
+
+        <Button Content="Catia" HorizontalAlignment="Left" Margin="40,426,0,0" VerticalAlignment="Top" Width="75" Click="Button_Catia"/>
+        <Button x:Name="btn_Ergebnis" Content="Ergebnis" HorizontalAlignment="Left" Margin="198,426,0,0" VerticalAlignment="Top" Width="75" Click="Ergebnis_Click"/>
 
 
 
