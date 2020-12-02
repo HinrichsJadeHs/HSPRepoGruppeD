@@ -1,0 +1,43 @@
+Language="VBSCRIPT"
+
+Sub CATMain()
+
+Set documents1 = CATIA.Documents
+
+Set partDocument1 = documents1.Add("Part")
+
+Set part1 = partDocument1.Part
+
+Set bodies1 = part1.Bodies
+
+Set body1 = bodies1.Item("Hauptkörper")
+
+Set orderedGeometricalSets1 = body1.OrderedGeometricalSets
+
+Set orderedGeometricalSet1 = orderedGeometricalSets1.Item("Geordnetes geometrisches Set.2")
+
+Set sketches1 = orderedGeometricalSet1.OrderedSketches
+
+Set originElements1 = part1.OriginElements
+
+Set reference1 = originElements1.PlaneXY
+
+Set sketch1 = sketches1.Add(reference1)
+
+Dim arrayOfVariantOfDouble1(8)
+arrayOfVariantOfDouble1(0) = 0.000000
+arrayOfVariantOfDouble1(1) = 0.000000
+arrayOfVariantOfDouble1(2) = 0.000000
+arrayOfVariantOfDouble1(3) = 1.000000
+arrayOfVariantOfDouble1(4) = 0.000000
+arrayOfVariantOfDouble1(5) = 0.000000
+arrayOfVariantOfDouble1(6) = 0.000000
+arrayOfVariantOfDouble1(7) = 1.000000
+arrayOfVariantOfDouble1(8) = 0.000000
+sketch1.SetAbsoluteAxisData arrayOfVariantOfDouble1
+
+part1.InWorkObject = sketch1
+
+Set factory2D1 = sketch1.OpenEdition()
+
+End Sub

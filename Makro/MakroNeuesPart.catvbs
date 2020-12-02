@@ -1,0 +1,9 @@
+Language="VBSCRIPT"
+
+Sub CATMain()
+
+Set documents1 = CATIA.Documents
+
+Set partDocument1 = documents1.Add("Part")
+
+End Sub
