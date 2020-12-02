@@ -1,0 +1,23 @@
+Language="VBSCRIPT"
+
+Sub CATMain()
+
+Set partDocument1 = CATIA.ActiveDocument
+
+Set part1 = partDocument1.Part
+
+Set shapeFactory1 = part1.ShapeFactory
+
+Set bodies1 = part1.Bodies
+
+Set body1 = bodies1.Item("Hauptkörper")
+
+Set sketches1 = body1.Sketches
+
+Set sketch1 = sketches1.Item("Skizze.2")
+
+Set pocket1 = shapeFactory1.AddNewPocket(sketch1, 20.000000)
+
+part1.Update 
+
+End Sub

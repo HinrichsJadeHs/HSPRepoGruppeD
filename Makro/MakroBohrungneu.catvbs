@@ -1,0 +1,105 @@
+Language="VBSCRIPT"
+
+Sub CATMain()
+
+Set partDocument1 = CATIA.ActiveDocument
+
+Set part1 = partDocument1.Part
+
+Set shapeFactory1 = part1.ShapeFactory
+
+Set bodies1 = part1.Bodies
+
+Set body1 = bodies1.Item("Hauptkörper")
+
+Set shapes1 = body1.Shapes
+
+Set pad1 = shapes1.Item("Block.1")
+
+Set reference1 = part1.CreateReferenceFromBRepName("FSur:(Face:(Brp:(Pad.1;1);None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithInitialFeatureSupport;MonoFond;MFBRepVersion_CXR15)", pad1)
+
+Set hole1 = shapeFactory1.AddNewHoleFromPoint(0.000000, 16.387733, 12.913813, reference1, 10.000000)
+
+hole1.Type = catSimpleHole
+
+hole1.AnchorMode = catExtremPointHoleAnchor
+
+hole1.BottomType = catVHoleBottom
+
+Set limit1 = hole1.BottomLimit
+
+limit1.LimitMode = catOffsetLimit
+
+Set length1 = hole1.Diameter
+
+length1.Value = 10.000000
+
+Set angle1 = hole1.BottomAngle
+
+angle1.Value = 120.000000
+
+hole1.ThreadingMode = catSmoothHoleThreading
+
+hole1.ThreadSide = catRightThreadSide
+
+Set sketch1 = hole1.Sketch
+
+part1.InWorkObject = sketch1
+
+Set factory2D1 = sketch1.OpenEdition()
+
+Set geometricElements1 = sketch1.GeometricElements
+
+Set point2D1 = geometricElements1.Item("Punkt.1")
+
+point2D1.SetData -16.387733, -12.913813
+
+Set originElements1 = part1.OriginElements
+
+Set reference2 = originElements1.PlaneZX
+
+Set geometricElements2 = factory2D1.CreateIntersections(reference2)
+
+Set geometry2D1 = geometricElements2.Item("Markierung.1")
+
+geometry2D1.Construction = True
+
+Set reference3 = originElements1.PlaneXY
+
+Set geometricElements3 = factory2D1.CreateIntersections(reference3)
+
+Set geometry2D2 = geometricElements3.Item("Markierung.1")
+
+geometry2D2.Construction = True
+
+Set constraints1 = sketch1.Constraints
+
+Set reference4 = part1.CreateReferenceFromObject(point2D1)
+
+Set reference5 = part1.CreateReferenceFromObject(geometry2D1)
+
+Set constraint1 = constraints1.AddBiEltCst(catCstTypeOn, reference4, reference5)
+
+constraint1.Mode = catCstModeDrivingDimension
+
+Set reference6 = part1.CreateReferenceFromObject(point2D1)
+
+Set reference7 = part1.CreateReferenceFromObject(geometry2D2)
+
+Set constraint2 = constraints1.AddBiEltCst(catCstTypeOn, reference6, reference7)
+
+constraint2.Mode = catCstModeDrivingDimension
+
+sketch1.CloseEdition 
+
+part1.InWorkObject = hole1
+
+hole1.BottomType = catTrimmedHoleBottom
+
+limit1.LimitMode = catUpToLastLimit
+
+part1.Update 
+
+part1.Update 
+
+End Sub

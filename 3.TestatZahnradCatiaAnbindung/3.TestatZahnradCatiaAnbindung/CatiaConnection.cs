@@ -81,6 +81,10 @@ namespace _3.TestatZahnradCatiaAnbindung
             hsp_catiaProfil.SetAbsoluteAxisData(arr);
         }
 
+
+
+
+        //nicht benötigt
         public void ErzeugeProfil(Double b, Double h)
         {
             // Skizze umbenennen
@@ -127,7 +131,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
         }
-
+       
         public void ErzeugeBalken(Double l)
         {
             // Hauptkoerper in Bearbeitung definieren
@@ -143,12 +147,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
         }
-
-
-
-
-
-
+        //nicht benötigt?
 
 
         public void ErzeugedasneueProfil(Zahnrad ZR1)
@@ -163,6 +162,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             double Fußkreisradius = Teilkreisradius - (1.25 * ZR1.modul);
             double Kopfkreisradius = Teilkreisradius + ZR1.modul;
             double Verrundungsradius = 0.35 * ZR1.modul;
+            
             double Alpha = 20;
             double Beta = 90 / ZR1.zähnezahl;
             double Betarad = Math.PI * Beta / 180;
@@ -253,6 +253,8 @@ namespace _3.TestatZahnradCatiaAnbindung
             KreisVerrundungRechts.StartPoint = pointVerrundungEvolventeRechts;
             KreisVerrundungRechts.EndPoint = pointFußkreisVerrundungRechts;
 
+            
+
             hsp_catiaProfil.CloseEdition();
 
             hsp_catiaPart.Part.Update();
@@ -293,6 +295,8 @@ namespace _3.TestatZahnradCatiaAnbindung
             hybridShapeFactory1.GSMVisibility(refVerbindung, 0);
 
             hsp_catiaPart.Part.MainBody.InsertHybridShape(verbindung);
+
+            
 
             hsp_catiaPart.Part.Update();
 
@@ -351,5 +355,94 @@ namespace _3.TestatZahnradCatiaAnbindung
 
             return l * (yMittelpunkt2 - yMittelpunkt) / d + h * (xMittelpunkt2 - xMittelpunkt) / d + yMittelpunkt;
         }
+
+
+
+
+
+
+        public void ErstelleLeereSkizzefürBohrung()
+        {
+            // geometrisches Set auswaehlen und umbenennen
+            HybridBodies catHybridBodies2 = hsp_catiaPart.Part.HybridBodies;
+            HybridBody catHybridBody2;
+            try
+            {
+                catHybridBody2 = catHybridBodies2.Item("Geometrisches Set.2");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Kein geometrisches Set gefunden! " + Environment.NewLine +
+                    "Ein PART manuell erzeugen und ein darauf achten, dass 'Geometisches Set' aktiviert ist.",
+                    "Fehler", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+            catHybridBody2.set_Name("Bohrung");
+            // neue Skizze im ausgewaehlten geometrischen Set anlegen
+            Sketches catSketches2 = catHybridBody2.HybridSketches;
+            OriginElements catOriginElements = hsp_catiaPart.Part.OriginElements;
+            Reference catReference2 = (Reference)catOriginElements.PlaneYZ;
+            hsp_catiaProfil = catSketches2.Add(catReference2);
+
+            // Achsensystem in Skizze erstellen 
+            ErzeugeAchsensystem();
+
+            // Part aktualisieren
+            hsp_catiaPart.Part.Update();
+        }
+
+        public void ErzeugeBohrung(Double bohrung)
+        {
+            // Skizze umbenennen
+            hsp_catiaProfil.set_Name("Bohrung");
+
+            
+            // Skizze oeffnen
+            Factory2D catFactory2D2 = hsp_catiaProfil.OpenEdition();
+
+           
+
+            
+            double Radius = Convert.ToDouble(bohrung);
+            double x0 = 0;
+            double y0 = 0;
+            Circle2D Bohrung = catFactory2D2.CreateClosedCircle(x0, y0, bohrung);
+
+            hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+
+            ShapeFactory catshapefactory2 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
+            Pocket catPocket2 = catshapefactory2.AddNewPocket(hsp_catiaProfil, 1);
+
+
+        }
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
