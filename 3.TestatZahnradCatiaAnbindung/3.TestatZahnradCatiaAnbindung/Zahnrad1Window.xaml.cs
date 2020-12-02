@@ -78,11 +78,14 @@ namespace _3.TestatZahnradCatiaAnbindung
 
 
                     // Generiere ein Profil
-                    cc.ErzeugeProfil(Convert.ToDouble(ZR1.zähnezahl), Convert.ToDouble(ZR1.teilkreisdurchmesser));
+                    //cc.ErzeugeProfil(Convert.ToDouble(ZR1.zähnezahl), Convert.ToDouble(ZR1.teilkreisdurchmesser));
+                    cc.ErzeugedasneueProfil(ZR1);
+
+                    cc.ErzeugeDasNeueKreismuster(ZR1);
 
 
                     // Extrudiere Balken
-                    cc.ErzeugeBalken(Convert.ToDouble(ZR1.dicke));
+                    //cc.ErzeugeBalken(Convert.ToDouble(ZR1.dicke));
                 }
                 else
                 {
