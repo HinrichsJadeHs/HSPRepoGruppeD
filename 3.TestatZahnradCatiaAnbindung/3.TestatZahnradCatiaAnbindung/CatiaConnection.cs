@@ -141,10 +141,40 @@ namespace _3.TestatZahnradCatiaAnbindung
             double Gamma = 90 - (Alpha - Beta);
             double Gammarad = Math.PI * Gamma / 180;
             double Totalangel = 360.0 / ZR1.zähnezahl;
-            double Totalangelra = Math.PI * Totalangel / 180;
+            double Totalangelrad = Math.PI * Totalangel / 180;
 
             //Punkte
+            //LinkerEvolKreis Mittelp. Koordinaten
+            double xMittelpunktaufEvol_links = Hilfskreisradius * Math.Cos(Gammarad);
+            double yMittelpunktaufEvol_links = Hilfskreisradius * Math.Sin(Gammarad);
 
+            // Schnittpkt. auf Evolvente und Teilkreisradius
+            double xPunktAufEvolvente = Teilkreisradius * Math.Sin(Betarad);
+            double yPunktAufEvolvente = Teilkreisradius * Math.Cos(Betarad);
+
+            //Evolventenkreis Radius
+            double EvolventenkreisRadius = Math.Sqrt(Math.Pow((xMittelpunktaufEvol_links - xPunktAufEvolvente), 2) + Math.Pow((yMittelpunktaufEvol_links - yPunktAufEvolvente), 2));
+
+            //Koordinaten Schnittpunkt Kopfkreis und Evolventenkreis
+            double xEvolventenkopfkreis_links = Schnittpunkt_X(x0, y0, Kopfkreisradius, xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius);
+            double yEvolventenkopfkreis_links = Schnittpunkt_Y(x0, y0, Kopfkreisradius, xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius);
+
+            //Mittelpunktkoordinaten Verrundung
+            double xMittelpunktVerrundung_links = Schnittpunkt_X(x0, y0, Fußkreisradius + Verrundungsradius, xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius + Verrundungsradius);
+            double yMittelpunktVerrundung_links = Schnittpunkt_Y(x0, y0, Fußkreisradius + Verrundungsradius, xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius + Verrundungsradius);
+
+            //Schnittpubktkoordinaten Verrundung - Evolventenkreis
+            double x_SP_EvolventeVerrundung_links = Schnittpunkt_X(xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius, xMittelpunktVerrundung_links, yMittelpunktVerrundung_links, Verrundungsradius);
+            double y_SP_EvolventeVerrundung_links = Schnittpunkt_Y(xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius, xMittelpunktVerrundung_links, yMittelpunktVerrundung_links, Verrundungsradius);
+
+            //Schnittpunktkoordinaten Verrundung - Fußkreis
+            double x_SP_FußkreisradiusVerrundung_links = Schnittpunkt_X(x0, y0, Fußkreisradius, xMittelpunktVerrundung_links, yMittelpunktVerrundung_links, Verrundungsradius);
+            double y_SP_FußkreisradiusVerrundung_links = Schnittpunkt_Y(x0, y0, Fußkreisradius, xMittelpunktVerrundung_links, yMittelpunktVerrundung_links, Verrundungsradius);
+
+            //Koordinaten Anfangspunkt Fußkreis
+            double Hilfswinkel = Totalangelrad - Math.Atan(Math.Abs(x_SP_FußkreisradiusVerrundung_links) / Math.Abs(y_SP_FußkreisradiusVerrundung_links));
+            double x_AnfangspunktFußkreis = - Fußkreisradius * Math.Sin(Hilfswinkel);
+            double y_AnfangspunktFußkreis = Fußkreisradius * Math.Cos(Hilfswinkel);
         }
 
         public void ErzeugeBalken(Double l)
@@ -161,6 +191,52 @@ namespace _3.TestatZahnradCatiaAnbindung
 
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
+        }
+
+        private double Schnittpunkt_X(double xMittelpunkt, double yMittelpunkt, double Radius1, double xMittelpunkt2, double yMittelpunkt2, double Radius2)
+        {
+            double d = Math.Sqrt(Math.Pow((xMittelpunkt - xMittelpunkt2), 2) + Math.Pow((yMittelpunkt - yMittelpunkt2), 2));
+            double l = (Math.Pow(Radius1, 2) - Math.Pow(Radius2, 2) + Math.Pow(d, 2)) / (d * 2);
+            double h;
+            double epsilon = 0.00001;
+
+            if (Radius1-l < -epsilon)
+            {
+                MessageBox.Show("Fehler");
+            }
+            if(Math.Abs(Radius1 - l)< epsilon)
+            {
+                h = 0;
+            }
+            else
+            {
+                h = Math.Sqrt(Math.Pow(Radius1, 2) - Math.Pow(l, 2));
+            }
+
+            return l * (xMittelpunkt2 - xMittelpunkt) / d - h * (yMittelpunkt2 - yMittelpunkt) / d + xMittelpunkt;
+        }
+
+        private double Schnittpunkt_Y(double xMittelpunkt, double yMittelpunkt, double Radius1, double xMittelpunkt2, double yMittelpunkt2, double Radius2)
+        {
+            double d = Math.Sqrt(Math.Pow((xMittelpunkt - xMittelpunkt2), 2) + Math.Pow((yMittelpunkt - yMittelpunkt2), 2));
+            double l = (Math.Pow(Radius1, 2) - Math.Pow(Radius2, 2) + Math.Pow(d, 2)) / (d * 2);
+            double h;
+            double epsilon = 0.00001;
+
+            if (Radius1 - l < -epsilon)
+            {
+                MessageBox.Show("Fehler");
+            }
+            if (Math.Abs(Radius1 - l) < epsilon)
+            {
+                h = 0;
+            }
+            else
+            {
+                h = Math.Sqrt(Math.Pow(Radius1, 2) - Math.Pow(l, 2));
+            }
+
+            return l * (yMittelpunkt2 - yMittelpunkt) / d + h * (xMittelpunkt2 - xMittelpunkt) / d + yMittelpunkt;
         }
     }
 }
