@@ -82,8 +82,8 @@ namespace _3.TestatZahnradCatiaAnbindung
 
                     cc.ErzeugeDasNeueKreismuster(ZR1);
 
-                    cc.ErstelleLeereSkizzefürBohrung();
-                    cc.ErzeugeBohrung(ZR1.bohrung);
+                    //cc.ErstelleLeereSkizzefürBohrung();
+                    //cc.ErzeugeBohrung(ZR1.bohrung);
                     
                 }
                 else
