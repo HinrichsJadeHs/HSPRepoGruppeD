@@ -1,0 +1,65 @@
+Language="VBSCRIPT"
+
+Sub CATMain()
+
+Set partDocument1 = CATIA.ActiveDocument
+
+Set part1 = partDocument1.Part
+
+Set bodies1 = part1.Bodies
+
+Set body1 = bodies1.Item("Hauptkörper")
+
+Set sketches1 = body1.Sketches
+
+Set originElements1 = part1.OriginElements
+
+Set reference1 = originElements1.PlaneYZ
+
+Set sketch1 = sketches1.Add(reference1)
+
+Dim arrayOfVariantOfDouble1(8)
+arrayOfVariantOfDouble1(0) = 0.000000
+arrayOfVariantOfDouble1(1) = 0.000000
+arrayOfVariantOfDouble1(2) = 0.000000
+arrayOfVariantOfDouble1(3) = 0.000000
+arrayOfVariantOfDouble1(4) = 1.000000
+arrayOfVariantOfDouble1(5) = 0.000000
+arrayOfVariantOfDouble1(6) = 0.000000
+arrayOfVariantOfDouble1(7) = 0.000000
+arrayOfVariantOfDouble1(8) = 1.000000
+sketch1.SetAbsoluteAxisData arrayOfVariantOfDouble1
+
+part1.InWorkObject = sketch1
+
+Set factory2D1 = sketch1.OpenEdition()
+
+Set geometricElements1 = sketch1.GeometricElements
+
+Set axis2D1 = geometricElements1.Item("Absolute Achse")
+
+Set line2D1 = axis2D1.GetItem("H-Richtung")
+
+line2D1.ReportName = 1
+
+Set line2D2 = axis2D1.GetItem("V-Richtung")
+
+line2D2.ReportName = 2
+
+Set circle2D1 = factory2D1.CreateClosedCircle(0.000000, 0.000000, 42.426407)
+
+circle2D1.ReportName = 3
+
+sketch1.CloseEdition 
+
+part1.InWorkObject = sketch1
+
+part1.Update 
+
+Set shapeFactory1 = part1.ShapeFactory
+
+Set pocket1 = shapeFactory1.AddNewPocket(sketch1, 20.000000)
+
+part1.Update 
+
+End Sub

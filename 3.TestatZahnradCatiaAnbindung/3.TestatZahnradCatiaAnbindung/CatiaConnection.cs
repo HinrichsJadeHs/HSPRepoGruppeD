@@ -361,88 +361,99 @@ namespace _3.TestatZahnradCatiaAnbindung
 
 
 
-        public void ErstelleLeereSkizzefürBohrung()
+
+
+
+
+
+        public void ErstelleLeereSkizze2(Zahnrad ZR1)
         {
             // geometrisches Set auswaehlen und umbenennen
-            HybridBodies catHybridBodies2 = hsp_catiaPart.Part.HybridBodies;
-            HybridBody catHybridBody2;
-            try
-            {
-                catHybridBody2 = catHybridBodies2.Item("Geometrisches Set.2");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Kein geometrisches Set gefunden! " + Environment.NewLine +
-                    "Ein PART manuell erzeugen und ein darauf achten, dass 'Geometisches Set' aktiviert ist.",
-                    "Fehler", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-            catHybridBody2.set_Name("Bohrung");
+            HybridBodies catHybridBodies1 = hsp_catiaPart.Part.HybridBodies;
+            HybridBody catHybridBody1;
+            
+            catHybridBody1= catHybridBodies1.Item("Geometrisches Set.2");
+            
+            
+            catHybridBody1.set_Name("Profile2");
             // neue Skizze im ausgewaehlten geometrischen Set anlegen
-            Sketches catSketches2 = catHybridBody2.HybridSketches;
+            Sketches catSketches1 = catHybridBody1.HybridSketches;
             OriginElements catOriginElements = hsp_catiaPart.Part.OriginElements;
-            Reference catReference2 = (Reference)catOriginElements.PlaneYZ;
-            hsp_catiaProfil = catSketches2.Add(catReference2);
+            Reference catReference1 = (Reference)catOriginElements.PlaneYZ;
+            hsp_catiaProfil = catSketches1.Add(catReference1);
 
             // Achsensystem in Skizze erstellen 
             ErzeugeAchsensystem();
 
             // Part aktualisieren
             hsp_catiaPart.Part.Update();
-        }
 
-        public void ErzeugeBohrung(Double bohrung)
-        {
             // Skizze umbenennen
-            hsp_catiaProfil.set_Name("Bohrung");
+            hsp_catiaProfil.set_Name("Kreis");
 
-            
+            // Rechteck in Skizze einzeichnen
             // Skizze oeffnen
             Factory2D catFactory2D2 = hsp_catiaProfil.OpenEdition();
 
-           
+            // Kreis erzeugen
+            Circle2D Kreis = catFactory2D2.CreateClosedCircle(0, 0, ZR1.bohrung);
 
-            
-            double Radius = Convert.ToDouble(bohrung);
-            double x0 = 0;
-            double y0 = 0;
-            Circle2D Bohrung = catFactory2D2.CreateClosedCircle(x0, y0, bohrung);
 
+            // Skizzierer verlassen
+            hsp_catiaProfil.CloseEdition();
+            // Part aktualisieren
+            hsp_catiaPart.Part.Update();
+
+
+
+
+            //Tasche erzeugen
+            //
+            //
+            //
+            // Hauptkoerper in Bearbeitung definieren
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
 
-            ShapeFactory catshapefactory2 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
-            Pocket catPocket2 = catshapefactory2.AddNewPocket(hsp_catiaProfil, 1);
+            // Block(Balken) erzeugen
+            ShapeFactory catShapeFactory2 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
+            Pocket catPocket1 = catShapeFactory2.AddNewPocket(hsp_catiaProfil, ZR1.dicke);
 
+            // Block umbenennen
+            catPocket1.set_Name("Balken");
 
+            // Part aktualisieren
+            hsp_catiaPart.Part.Update();
+
+          
         }
 
-        
+        public void Screenshot(string bildname)
+        {
 
+            object[] arr1 = new object[3];
+            hsp_catiaApp.ActiveWindow.ActiveViewer.GetBackgroundColor(arr1);
+            Console.WriteLine("Col: " + arr1[0] + " " + arr1[1] + " " + arr1[2]);
 
+            object[] arr2 = new object[] { 1, 1, 1 };
+            hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(arr2);
 
+            hsp_catiaApp.StartCommand("CompassDisplayOff");
+            hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe();
 
+            // hsp_catiaApp.ActiveWindow.ActiveViewer.Viewpoint3D = INFITF.Viewpoint3D;
+            //int[] color = new int[3]; // Hintergundfarbe in Weiß setzen
+            //color[0] = 1;
+            //color[1] = 1;
+            //color[2] = 1;
+            // CATSafeArray color[] = new CATSafeArrayVariant[3];
 
+            INFITF.SettingControllers settingControllers1 = hsp_catiaApp.SettingControllers;
+            //INFITF.VisualizationSettingAtt visualizationSettingAtt1 = settingControllers1.Item("CATVizVisualizationSettingCtrl");
 
+            // hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(color);
 
-
-
-
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
+            hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname + ".bmp");
+        }
 
     }
 }
