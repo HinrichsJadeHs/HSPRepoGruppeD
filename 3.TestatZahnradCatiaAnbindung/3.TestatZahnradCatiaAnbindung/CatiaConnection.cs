@@ -83,6 +83,10 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         public void ErzeugedasneueProfil(Zahnrad ZR1)
         {
+
+            //Deklarieren!! Beginn
+
+
             //Nullpunkt
             double x0 = 0;
             double y0 = 0;
@@ -135,6 +139,11 @@ namespace _3.TestatZahnradCatiaAnbindung
             double x_AnfangspunktFußkreis = -Fußkreisradius * Math.Sin(Hilfswinkel);
             double y_AnfangspunktFußkreis = Fußkreisradius * Math.Cos(Hilfswinkel);
 
+
+            //Deklarieren!! Ende
+
+
+
             //Skizze umbenennen und öffnen
             hsp_catiaProfil.set_Name("Zahnrädchen");
             Factory2D catfactory2D1 = hsp_catiaProfil.OpenEdition();
@@ -154,6 +163,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             Point2D pointEvolventenKopfkreisRechts = catfactory2D1.CreatePoint(-xEvolventenkopfkreis_links, yEvolventenkopfkreis_links);
 
             //Kreise
+
             Circle2D KreisFrußkreis = catfactory2D1.CreateCircle(x0, y0, Fußkreisradius, 0, Math.PI * 2);
             KreisFrußkreis.CenterPoint = point_Ursprung;
             KreisFrußkreis.StartPoint = pointFußkreisVerrundungLinks;
@@ -237,10 +247,7 @@ namespace _3.TestatZahnradCatiaAnbindung
         public void ErzeugedenNeuenBlock(Zahnrad ZR1, Reference refVerbindung, ShapeFactory sf1)
         {
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
-            Pad catPad1 = sf1.AddNewPadFromRef(refVerbindung, ZR1.dicke);
-
-            
-            
+            Pad catPad1 = sf1.AddNewPadFromRef(refVerbindung, ZR1.dicke);          
             hsp_catiaPart.Part.Update();
         }
 
@@ -249,13 +256,13 @@ namespace _3.TestatZahnradCatiaAnbindung
             double d = Math.Sqrt(Math.Pow((xMittelpunkt - xMittelpunkt2), 2) + Math.Pow((yMittelpunkt - yMittelpunkt2), 2));
             double l = (Math.Pow(Radius1, 2) - Math.Pow(Radius2, 2) + Math.Pow(d, 2)) / (d * 2);
             double h;
-            double epsilon = 0.00001;
+            double Verbindungsabfrage = 0.00001;
 
-            if (Radius1-l < -epsilon)
+            if (Radius1-l < -Verbindungsabfrage)
             {
                 MessageBox.Show("Fehler");
             }
-            if(Math.Abs(Radius1 - l)< epsilon)
+            if(Math.Abs(Radius1 - l)< Verbindungsabfrage)
             {
                 h = 0;
             }
@@ -272,13 +279,13 @@ namespace _3.TestatZahnradCatiaAnbindung
             double d = Math.Sqrt(Math.Pow((xMittelpunkt - xMittelpunkt2), 2) + Math.Pow((yMittelpunkt - yMittelpunkt2), 2));
             double l = (Math.Pow(Radius1, 2) - Math.Pow(Radius2, 2) + Math.Pow(d, 2)) / (d * 2);
             double h;
-            double epsilon = 0.00001;
+            double Verbindungsabfrage = 0.00001;
 
-            if (Radius1 - l < -epsilon)
+            if (Radius1 - l < -Verbindungsabfrage)
             {
                 MessageBox.Show("Fehler");
             }
-            if (Math.Abs(Radius1 - l) < epsilon)
+            if (Math.Abs(Radius1 - l) < Verbindungsabfrage)
             {
                 h = 0;
             }
@@ -289,6 +296,19 @@ namespace _3.TestatZahnradCatiaAnbindung
 
             return l * (yMittelpunkt2 - yMittelpunkt) / d + h * (xMittelpunkt2 - xMittelpunkt) / d + yMittelpunkt;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

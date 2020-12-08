@@ -82,8 +82,8 @@ namespace _3.TestatZahnradCatiaAnbindung
                     cc.ErzeugedasneueProfilfürBohrung(ZR1);
 
                     // Generiere ein Kreismuster mit Verbindung und Block  
-                    //cc.ErzeugeDasNeueKreismuster(ZR1);
-                    cc.ErzeugeDasNeueKreismusterMitBohrung(ZR1);
+                    cc.ErzeugeDasNeueKreismuster(ZR1);
+                    //cc.ErzeugeDasNeueKreismusterMitBohrung(ZR1);
 
                     //Erstelle 2. Skizze
                     //cc.ErstelleZweiteLeereSkizze();
@@ -279,10 +279,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     
                 }
             }
-            
-
-
-            
+                       
         }
         public void Canvasausgabe()
         {
