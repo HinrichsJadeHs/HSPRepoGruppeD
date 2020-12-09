@@ -78,8 +78,8 @@ namespace _3.TestatZahnradCatiaAnbindung
 
 
                     // Generiere ein Profil                    
-                    //cc.ErzeugedasneueProfil(ZR1);
-                    cc.ErzeugedasneueProfilfürBohrung(ZR1);
+                    cc.ErzeugedasneueProfil(ZR1);
+                    //cc.ErzeugedasneueProfilfürBohrung(ZR1);
 
                     // Generiere ein Kreismuster mit Verbindung und Block  
                     cc.ErzeugeDasNeueKreismuster(ZR1);

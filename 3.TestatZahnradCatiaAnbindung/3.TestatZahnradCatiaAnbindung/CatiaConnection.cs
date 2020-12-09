@@ -242,6 +242,10 @@ namespace _3.TestatZahnradCatiaAnbindung
             hsp_catiaPart.Part.Update();
 
             ErzeugedenNeuenBlock(ZR1, refVerbindung, shapeFactory1);
+
+
+
+            //Bohrung(hsp_catiaPart.Part, factory2D1, ZR1);
         }
 
         public void ErzeugedenNeuenBlock(Zahnrad ZR1, Reference refVerbindung, ShapeFactory sf1)
@@ -302,6 +306,31 @@ namespace _3.TestatZahnradCatiaAnbindung
 
 
 
+
+
+
+        public void Bohrung (Part myPart, Factory2D F2D, Zahnrad ZR1)
+        {
+            HybridBodies catHybridBodies1 = hsp_catiaPart.Part.HybridBodies;
+            HybridBody catHybridBody1;
+            catHybridBody1 = catHybridBodies1.Item("Geometrisches Set.2");
+
+            Sketches Skizze2 = catHybridBody1.HybridSketches;
+            OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
+            Reference RefmyPlaneX = (Reference)catoriginelements.PlaneYZ;
+
+
+            Sketch myBohrung = Skizze2.Add(RefmyPlaneX);
+            myPart.InWorkObject = myBohrung;
+            myBohrung.set_Name("Bohrung");
+            F2D = myBohrung.OpenEdition();
+
+            
+            Circle2D Kreis = F2D.CreateClosedCircle(0, 0, ZR1.bohrung);
+
+            ShapeFactory catShapeFactory2 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
+            Pocket catPocket1 = catShapeFactory2.AddNewPocket(hsp_catiaProfil, ZR1.dicke);
+        }
 
 
 
