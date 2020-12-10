@@ -17,10 +17,13 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         public double dicke ;
         public double bohrung;
+        public double bohrungsradius;
         public int eingabeparameter ;
         
         public int nachkommastellen ;
         public double material ;
+
+        public int Zusatzparameter=2;
 
         //Ausgaben
         public double kopfkreisdurchmesser;
@@ -32,12 +35,16 @@ namespace _3.TestatZahnradCatiaAnbindung
         public double zahnhöhe ;
         public double masse;
         public const double cf = 0.167;
+        public double PassfederBreite;
+        public double PassfederHöhe;
+        
 
         //Berechnung
         public void Berechnung()
         {
             if (eingabeparameter == 1)
             {
+                bohrungsradius = bohrung / 2;
                 teilkreisdurchmesser = modul * zähnezahl;
                 teilung = Math.PI * modul;
                 kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
@@ -57,9 +64,14 @@ namespace _3.TestatZahnradCatiaAnbindung
                 zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
                 zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
                 masse = Math.Round(masse, nachkommastellen);
+                if (Zusatzparameter == 2)
+                {
+                    Passfederberechnung();
+                }
             }
             else if (eingabeparameter == 2)
             {
+                bohrungsradius = bohrung / 2;
                 zähnezahl = teilkreisdurchmesser / modul;
                 teilung = Math.PI * modul;
                 kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
@@ -80,10 +92,142 @@ namespace _3.TestatZahnradCatiaAnbindung
                 zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
                 zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
                 masse = Math.Round(masse, nachkommastellen);
+                if (Zusatzparameter == 2)
+                {
+                    Passfederberechnung();
+                }
             }
         }
 
+        public void Passfederberechnung()
+        {
+            if(bohrung <= 12)
+            {
+                PassfederHöhe = bohrungsradius + 1.8;
+            }
+            if (bohrung > 12 && bohrung <= 17)
+            {
+                PassfederHöhe = bohrungsradius + 2.3;
+            }
+            if (bohrung > 17 && bohrung <= 22)
+            {
+                PassfederHöhe = bohrungsradius + 2.8;
+            }
+            if (bohrung > 22 && bohrung <= 44)
+            {
+                PassfederHöhe = bohrungsradius + 3.3;
+            }
+            if (bohrung > 44 && bohrung <= 50)
+            {
+                PassfederHöhe = bohrungsradius + 3.8;
+            }
+            if (bohrung > 50 && bohrung <= 58)
+            {
+                PassfederHöhe = bohrungsradius + 4.3;
+            }
+            if (bohrung > 58 && bohrung <= 65)
+            {
+                PassfederHöhe = bohrungsradius + 4.4;
+            }
+            if (bohrung > 65 && bohrung <= 75)
+            {
+                PassfederHöhe = bohrungsradius + 4.9;
+            }
+            if (bohrung > 75 && bohrung <= 95)
+            {
+                PassfederHöhe = bohrungsradius + 5.4;
+            }
+            if (bohrung > 95 && bohrung <= 110)
+            {
+                PassfederHöhe = bohrungsradius + 6.4;
+            }
+            if (bohrung > 110 && bohrung <= 130)
+            {
+                PassfederHöhe = bohrungsradius + 7.4;
+            }
+            if (bohrung > 130 && bohrung <= 150)
+            {
+                PassfederHöhe = bohrungsradius + 8.4;
+            }
+            if (bohrung > 150 && bohrung <= 170)
+            {
+                PassfederHöhe = bohrungsradius + 9.4;
+            }
+            if (bohrung > 170 )
+            {
+                PassfederHöhe = bohrungsradius + 10.4;
+            }
 
+            if (bohrung <= 12)
+            {
+                PassfederBreite = 4;
+            }
+            if (bohrung > 12 && bohrung <= 17)
+            {
+                PassfederBreite = 5;
+            }
+            if (bohrung > 17 && bohrung <= 22)
+            {
+                PassfederBreite = 6;
+            }
+            if (bohrung > 22 && bohrung <= 30)
+            {
+                PassfederBreite = 8;
+            }
+            if (bohrung > 30 && bohrung <= 38)
+            {
+                PassfederBreite = 10;
+            }
+            if (bohrung > 38 && bohrung <= 44)
+            {
+                PassfederBreite = 12;
+            }
+            if (bohrung > 44 && bohrung <= 50)
+            {
+                PassfederBreite = 14;
+            }
+            if (bohrung > 50 && bohrung <= 58)
+            {
+                PassfederBreite = 16;
+            }
+            if (bohrung > 58 && bohrung <= 65)
+            {
+                PassfederBreite = 18;
+            }
+            if (bohrung > 65 && bohrung <= 75)
+            {
+                PassfederBreite = 20;
+            }
+            if (bohrung > 75 && bohrung <= 85)
+            {
+                PassfederBreite = 22;
+            }
+            if (bohrung > 85 && bohrung <= 95)
+            {
+                PassfederBreite = 25;
+            }
+            if (bohrung > 95 && bohrung <= 110)
+            {
+                PassfederBreite = 28;
+            }
+            if (bohrung > 110 && bohrung <= 130)
+            {
+                PassfederBreite = 32;
+            }
+            if (bohrung > 130 && bohrung <= 150)
+            {
+                PassfederBreite = 36;
+            }
+            if (bohrung > 150 && bohrung <= 170)
+            {
+                PassfederBreite = 40;
+            }
+            if (bohrung > 170)
+            {
+                PassfederBreite = 45;
+            }
+
+        }
         //eingabeparameter aufnehmen
         public string Nachkommarstellen
         {
