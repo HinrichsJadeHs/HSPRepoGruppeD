@@ -73,18 +73,29 @@ namespace _3.TestatZahnradCatiaAnbindung
                     // Öffne ein neues Part
                     cc.ErzeugePart();
 
+
+                    cc.GanzeZahnrad(ZR1);
+
+
+
+
+
+
                     // Erstelle eine Skizze
-                    cc.ErstelleLeereSkizze();
-
-
+                    //cc.ErstelleLeereSkizze();
                     // Generiere ein Profil                    
-                    cc.ErzeugedasneueProfil(ZR1);
-                    //cc.ErzeugedasneueProfilfürBohrung(ZR1);
-
+                    //cc.ErzeugedasneueProfil(ZR1);                    
                     // Generiere ein Kreismuster mit Verbindung und Block  
-                    cc.ErzeugeDasNeueKreismuster(ZR1);
-                    //cc.ErzeugeDasNeueKreismusterMitBohrung(ZR1);
+                    //cc.ErzeugeDasNeueKreismuster(ZR1);
+                    
 
+
+
+
+
+
+                    //cc.ErzeugeDasNeueKreismusterMitBohrung(ZR1);
+                    //cc.ErzeugedasneueProfilfürBohrung(ZR1);
                     //Erstelle 2. Skizze
                     //cc.ErstelleZweiteLeereSkizze();
 
