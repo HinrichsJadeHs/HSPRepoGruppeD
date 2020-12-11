@@ -25,8 +25,13 @@
                 <ComboBoxItem>Teilkreisdurchmesser/Modul</ComboBoxItem>
             </ComboBox>
 
+
+            <RadioButton x:Name="RadioBtn_KeineBohrung" Content="keine Bohrung" Canvas.Left="10" Canvas.Top="50" Checked="keinebohrung_checked" />
+            <RadioButton x:Name="RadioBtn_EinfacheBohrung" Content="einfache Bohrung" Canvas.Left="10" Canvas.Top="70" Checked="einfachebohrung_checked"/>
+            <RadioButton x:Name="RadioBtn_Passfederverbindung" Content="Passfederverbindung" Canvas.Left="150" Canvas.Top="70" Checked="passfederverbindung_checked"/>
+
             <Label  Name="lbl_eingabe1"    Content="Zähnezahl :"      HorizontalAlignment="Left" Margin="5,95,0,0" VerticalAlignment="Top" Height="25" Width="75" />
-            <TextBox  Name="txtbx_eingabe1"           HorizontalAlignment="Left" Margin="80,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Hier je nach Eingabe mind. 5 Zähne oder einen Teilkreisdurchmesser eingeben" />
+            <TextBox  Name="txtbx_eingabe1"           HorizontalAlignment="Left" Margin="80,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Hier je nach Eingabe mind. 5 Zähne oder einen Teilkreisdurchmesser von mind. 15mm eingeben" />
             <Label  Name="lbl_mm"    Content=""      HorizontalAlignment="Left" Margin="120,98,0,0" VerticalAlignment="Top" Height="25" Width="35"/>
 
             <Label Name="lbl_eingabe2" Content="Modul :"             HorizontalAlignment="Left" Margin="5,130,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
@@ -65,14 +70,13 @@
             </ComboBox>
             <Label Content="mm"             HorizontalAlignment="Left" Margin="131,133,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
-            <Label Content="Zähne :"             HorizontalAlignment="Left" Margin="5,60,0,0" VerticalAlignment="Top" Height="25" Width="65" ToolTip="Geben Sie die Verzahnung an" />
 
             <Label Content="Dicke :"             HorizontalAlignment="Left" Margin="5,195,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
             <TextBox  Name="txbx_Dicke"           HorizontalAlignment="Left" Margin="80,195,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Dicke des zu erstellenden Zahnrades" />
             <Label Content="mm"             HorizontalAlignment="Left" Margin="116,199,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Bohrung :"             HorizontalAlignment="Left" Margin="5,225,0,0" VerticalAlignment="Top" Height="25" Width="65"/>
-            <TextBox  Name="txbx_Bohrungsdurchmesser"           HorizontalAlignment="Left" Margin="80,225,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="Bohrungsdurchmesser angeben" />
+            <TextBox  Name="txbx_Bohrungsdurchmesser"           HorizontalAlignment="Left" Margin="80,225,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="40" ToolTip="mind. einen Bohrungsdurchmesser von 8mm angeben" />
             <Label Content="mm"             HorizontalAlignment="Left" Margin="116,229,0,0" VerticalAlignment="Top" Height="25" Width="35" FontSize="14"/>
 
             <Label Content="Material :"             HorizontalAlignment="Left" Margin="5,255,0,0" VerticalAlignment="Top" Height="30" Width="65"/>
@@ -91,6 +95,8 @@
                 <ComboBoxItem>2</ComboBoxItem>
                 <ComboBoxItem>3</ComboBoxItem>
             </ComboBox>
+            
+
 
         </Canvas>
 
@@ -131,6 +137,8 @@
 
         <Button Content="Catia" HorizontalAlignment="Left" Margin="40,426,0,0" VerticalAlignment="Top" Width="75" Click="Button_Catia"/>
         <Button x:Name="btn_Ergebnis" Content="Ergebnis" HorizontalAlignment="Left" Margin="198,426,0,0" VerticalAlignment="Top" Width="75" Click="Ergebnis_Click"/>
+        <Button x:Name="Btn_CatiaÖffnen" Content="Catia öffnen" HorizontalAlignment="Left" Margin="40,472,0,0" VerticalAlignment="Top" Width="75" Click="btn_catiaÖffnen"/>
+        <Button x:Name="Btn_clear" Content="Clear" HorizontalAlignment="Left" Margin="198,472,0,0" VerticalAlignment="Top" Width="75" Click="clear_click"/>
 
 
 

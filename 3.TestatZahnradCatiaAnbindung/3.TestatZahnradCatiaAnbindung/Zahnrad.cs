@@ -23,7 +23,7 @@ namespace _3.TestatZahnradCatiaAnbindung
         public int nachkommastellen ;
         public double material ;
 
-        public int Zusatzparameter=2;
+        public int Zusatzparameter;
 
         //Ausgaben
         public double kopfkreisdurchmesser;
@@ -37,6 +37,7 @@ namespace _3.TestatZahnradCatiaAnbindung
         public const double cf = 0.167;
         public double PassfederBreite;
         public double PassfederHöhe;
+        public double EingabeDesTeilkreisdurchmessersCheck=0;
         
 
         //Berechnung
@@ -58,7 +59,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 teilkreisdurchmesser = Math.Round(teilkreisdurchmesser, nachkommastellen);
                 teilung = Math.Round(teilung, nachkommastellen);
                 kopfkreisdurchmesser = Math.Round(kopfkreisdurchmesser, nachkommastellen);
-                kopfspiel = Math.Round(kopfspiel, nachkommastellen);
+                kopfspiel = Math.Round(kopfspiel, 3);
                 fußkreisdurchmesser = Math.Round(fußkreisdurchmesser, nachkommastellen);
                 zahnhöhe = Math.Round(zahnhöhe, nachkommastellen);
                 zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
@@ -71,8 +72,17 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
             else if (eingabeparameter == 2)
             {
+                EingabeDesTeilkreisdurchmessersCheck = 0;
                 bohrungsradius = bohrung / 2;
                 zähnezahl = teilkreisdurchmesser / modul;
+                zähnezahl = Math.Round(zähnezahl, 0);
+
+                if (zähnezahl * modul != teilkreisdurchmesser)
+                {
+                    teilkreisdurchmesser = zähnezahl * modul;
+                    EingabeDesTeilkreisdurchmessersCheck = 1;
+                }
+                
                 teilung = Math.PI * modul;
                 kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
                 kopfspiel = cf * modul;
@@ -86,7 +96,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 zähnezahl = Math.Round(zähnezahl, 0);
                 teilung = Math.Round(teilung, nachkommastellen);
                 kopfkreisdurchmesser = Math.Round(kopfkreisdurchmesser, nachkommastellen);
-                kopfspiel = Math.Round(kopfspiel, nachkommastellen);
+                kopfspiel = Math.Round(kopfspiel, 3);
                 fußkreisdurchmesser = Math.Round(fußkreisdurchmesser, nachkommastellen);
                 zahnhöhe = Math.Round(zahnhöhe, nachkommastellen);
                 zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
@@ -313,6 +323,8 @@ namespace _3.TestatZahnradCatiaAnbindung
         }
         public string Bohrung
         {
+           
+            
             set
             {
                 bohrung = Convert.ToDouble(value);
@@ -321,7 +333,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             {
                 return Convert.ToString(bohrung);
             }
-
+            
         }
         public string Material
         {
