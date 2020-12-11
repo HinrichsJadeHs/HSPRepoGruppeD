@@ -75,7 +75,8 @@ namespace _3.TestatZahnradCatiaAnbindung
                     cc.ErzeugePart();
 
                     //Erstelle das Zahnrad
-                    cc.GanzeZahnrad(ZR1);
+                    //cc.GanzeZahnrad(ZR1);
+                    cc.GanzeInnenZahnrad(ZR1);
 
                     //cc.Screenshot("ZahnradFoto");
                }
