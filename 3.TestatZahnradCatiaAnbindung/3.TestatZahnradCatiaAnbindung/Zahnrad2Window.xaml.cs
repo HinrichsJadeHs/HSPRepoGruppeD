@@ -109,11 +109,11 @@ namespace _3.TestatZahnradCatiaAnbindung
                 {
                     txtbx_eingabe1.Background = Brushes.White;
                     double Parametercheck = Convert.ToDouble(txtbx_eingabe1.Text);
-                    if (Parametercheck < 8)
+                    if (Parametercheck < 14)
                     {
                         Kontrollvariable++;
                         txtbx_eingabe1.Background = Brushes.OrangeRed;
-                        MessageBox.Show("Geben Sie mindestens 8 Zähne an");
+                        MessageBox.Show("Geben Sie mindestens 14 Zähne an");
                     }
                     if (Parametercheck % 1 != 0)
                     {
@@ -258,8 +258,14 @@ namespace _3.TestatZahnradCatiaAnbindung
 
                 Zahnradfüttern();
                 ZR1.Berechnung();
-                
-                if (KontrolleAußendurchmesser()==true)
+                if (ZR1.ZusatzparameterInnen == 1)
+                {
+                    if (KontrolleAußendurchmesser() == true)
+                    {
+                        Canvasausgabe();
+                    }
+                }
+                else
                 {
                     Canvasausgabe();
                 }
@@ -269,19 +275,21 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         public bool KontrolleAußendurchmesser()
         {
-            double Außendurchmesser = Convert.ToDouble(txbx_Außendurchmesser.Text);
 
-                            
-                if (Außendurchmesser < (ZR1.kopfkreisdurchmesser * 1.3) )
-                {
-                    
-                    MessageBox.Show("Außendurchmesser ist zu klein!");
-                return false;
-                }
-                else
+            
+         double Außendurchmesser = Convert.ToDouble(txbx_Außendurchmesser.Text);
+
+        if (Außendurchmesser < (ZR1.kopfkreisdurchmesser + 20) && ZR1.ZusatzparameterInnen > 0)
+             {
+                double WieVielZuKlein = ZR1.kopfkreisdurchmesser +20 - Außendurchmesser;
+                 MessageBox.Show("Außendurchmesser ist um "+Convert.ToString(WieVielZuKlein)+" Millimeter zu klein!");
+                 return false;
+             }           
+            else  
             {
                 return true;
             }
+            
             
         }
 
@@ -327,10 +335,10 @@ namespace _3.TestatZahnradCatiaAnbindung
                 txtbx_eingabe1.Text = Convert.ToString(ZR1.teilkreisdurchmesser);
                 MessageBox.Show("Achtung! Eingabe des Teilkreisdurchmessers musste korrigiert werden!");
             }
-            p_Ausgabe.Text = Convert.ToString(ZR1.teilung + "mm");
-            da_Ausgabe.Text = Convert.ToString(ZR1.kopfkreisdurchmesser + "mm");
+            p_Ausgabe.Text = Convert.ToString(ZR1.teilung + "mm");            
             c_Ausgabe.Text = Convert.ToString(ZR1.kopfspiel + "mm");
-            df_Ausgabe.Text = Convert.ToString(ZR1.fußkreisdurchmesser + "mm");
+            da_Ausgabe.Text = Convert.ToString(ZR1.fußkreisdurchmesser + "mm");
+            df_Ausgabe.Text = Convert.ToString(ZR1.kopfkreisdurchmesser + "mm");
             h_Ausgabe.Text = Convert.ToString(ZR1.zahnhöhe + "mm");
             ha_Ausgabe.Text = Convert.ToString(ZR1.zahnkopfhöhe + "mm");
             hf_Ausgabe.Text = Convert.ToString(ZR1.zahnfußhöhe + "mm");

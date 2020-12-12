@@ -68,6 +68,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
                 zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
                 masse = Math.Round(masse, nachkommastellen);
+                außenradius = außendurchmesser / 2;
                 if (Zusatzparameter == 2)
                 {
                     Passfederberechnung();
@@ -105,6 +106,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
                 zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
                 masse = Math.Round(masse, nachkommastellen);
+                außenradius = außendurchmesser / 2;
                 if (Zusatzparameter == 2)
                 {
                     Passfederberechnung();

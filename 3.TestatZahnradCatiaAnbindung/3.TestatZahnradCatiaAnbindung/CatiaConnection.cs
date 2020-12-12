@@ -558,7 +558,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
             else if (ZR1.ZusatzparameterInnen > 0)
             {
-                Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, ZR1.außendurchmesser);
+                Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, ZR1.außenradius);
             }
 
             hsp_catiaProfil.CloseEdition();
