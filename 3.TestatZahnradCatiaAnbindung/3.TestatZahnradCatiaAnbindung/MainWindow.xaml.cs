@@ -37,5 +37,11 @@ namespace _3.TestatZahnradCatiaAnbindung
         {
             this.Close();
         }
+
+        private void Btn_Innenverzahnung_Click(object sender, RoutedEventArgs e)
+        {
+            Zahnrad2Window objinnenverzahnt = new Zahnrad2Window();
+            objinnenverzahnt.Show();
+        }
     }
 }

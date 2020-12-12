@@ -18,15 +18,15 @@ using System.Runtime.InteropServices;
 
 namespace _3.TestatZahnradCatiaAnbindung
 {
-    
-    public partial class Zahnrad1Window : Window
+
+    public partial class Zahnrad2Window : Window
     {
         Zahnrad ZR1 = new Zahnrad();
-        public Zahnrad1Window()
+        public Zahnrad2Window()
         {
             InitializeComponent();
         }
-        
+
         private void EingabeAuswahlDrop_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lbl_eingabe.Foreground = Brushes.Black;
@@ -36,7 +36,7 @@ namespace _3.TestatZahnradCatiaAnbindung
 
                 lbl_eingabe1.Content = "Zähnezahl :";
 
-                
+
 
                 //lbl_Ausgabe.Content = "Teilkreisdurchmesser d:";
             }
@@ -53,11 +53,11 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         public void Button_Catia(object sender, RoutedEventArgs e)
         {
-            
 
-            if(Eingabekontrolle() == true)
+
+            if (Eingabekontrolle() == true)
             {
-                CatiaControl();              
+                CatiaControl();
             }
 
         }
@@ -75,11 +75,11 @@ namespace _3.TestatZahnradCatiaAnbindung
                     cc.ErzeugePart();
 
                     //Erstelle das Zahnrad
-                    cc.GanzeZahnrad(ZR1);
                     
+                    cc.GanzeInnenZahnrad(ZR1);
 
                     //cc.Screenshot("ZahnradFoto");
-               }
+                }
                 else
                 {
                     MessageBox.Show("Laufende Catia Application nicht gefunden");
@@ -92,12 +92,13 @@ namespace _3.TestatZahnradCatiaAnbindung
         }
 
         private bool Eingabekontrolle()
-        { int Kontrollvariable = 0;
+        {
+            int Kontrollvariable = 0;
             string zahlcheck = txtbx_eingabe1.Text;
 
             if (EingabeAuswahlDrop.SelectedIndex == 0)
             {
-                               
+
                 if (isteingabedouble(zahlcheck) == false)
                 {
                     Kontrollvariable++;
@@ -108,13 +109,13 @@ namespace _3.TestatZahnradCatiaAnbindung
                 {
                     txtbx_eingabe1.Background = Brushes.White;
                     double Parametercheck = Convert.ToDouble(txtbx_eingabe1.Text);
-                    if (Parametercheck <8)
+                    if (Parametercheck < 8)
                     {
                         Kontrollvariable++;
                         txtbx_eingabe1.Background = Brushes.OrangeRed;
                         MessageBox.Show("Geben Sie mindestens 8 Zähne an");
                     }
-                    if (Parametercheck% 1 != 0)
+                    if (Parametercheck % 1 != 0)
                     {
                         Kontrollvariable++;
                         txtbx_eingabe1.Background = Brushes.OrangeRed;
@@ -122,12 +123,29 @@ namespace _3.TestatZahnradCatiaAnbindung
                     }
 
                 }
-                
+                if (ZR1.ZusatzparameterInnen != 0)
+                {
+
+                    zahlcheck = txbx_Außendurchmesser.Text;
+                    if (isteingabedouble(zahlcheck) == true)
+                    {
+                        txbx_Außendurchmesser.Background = Brushes.White;
+                    }
+                    else if (isteingabedouble(zahlcheck) == false)
+                    {
+                        Kontrollvariable++;
+                        MessageBox.Show("Bitte geben Sie eine Zahl für den Außendurchmesser an");
+                        txbx_Außendurchmesser.Background = Brushes.OrangeRed;
+                    }
+                    
+
+                }
+
 
             }
             else if (EingabeAuswahlDrop.SelectedIndex == 1)
             {
-                
+
 
                 if (isteingabedouble(zahlcheck) == false)
                 {
@@ -145,10 +163,31 @@ namespace _3.TestatZahnradCatiaAnbindung
                         txtbx_eingabe1.Background = Brushes.OrangeRed;
                         MessageBox.Show("Geben Sie mindestens einen Durchmesser von 15mm an");
                     }
+
+
+                }
+
+
+                if (ZR1.ZusatzparameterInnen != 0)
+                {
+
+                    zahlcheck = txbx_Außendurchmesser.Text;
+                    if (isteingabedouble(zahlcheck) == true)
+                    {
+                        txbx_Außendurchmesser.Background = Brushes.White;
+                    }
+                    else if (isteingabedouble(zahlcheck) == false)
+                    {
+                        Kontrollvariable++;
+                        MessageBox.Show("Bitte geben Sie eine Zahl für den Außendurchmesser an");
+                        txbx_Außendurchmesser.Background = Brushes.OrangeRed;
+                    }
                     
 
                 }
-                
+
+
+
             }
             else if (EingabeAuswahlDrop.SelectedIndex != 1 && EingabeAuswahlDrop.SelectedIndex != 0)
             {
@@ -157,17 +196,17 @@ namespace _3.TestatZahnradCatiaAnbindung
                 MessageBox.Show("Wählen Sie eine Eingabemöglichkeit aus!");
             }
 
-            
-            if (RadioBtn_KeineBohrung.IsChecked == false && RadioBtn_EinfacheBohrung.IsChecked == false && RadioBtn_Passfederverbindung.IsChecked == false)
+
+            if (RadioBtn_AutomatischerAußenring.IsChecked == false && RadioBtn_ManuellerAußenring.IsChecked == false)
             {
-                RadioBtn_KeineBohrung.IsChecked = true;
-                MessageBox.Show("da keine Auswahl für die Bohrung gewählt wurde, wird keine Bohrung erzeugt.");
+                RadioBtn_AutomatischerAußenring.IsChecked = true;
+                MessageBox.Show("da keine Auswahl für den Außendurchmesser gewählt wurde, wird dieser automatisch erzeugt");
             }
 
 
 
-                
-            
+
+
 
 
             zahlcheck = txbx_Dicke.Text;
@@ -182,29 +221,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 txbx_Dicke.Background = Brushes.OrangeRed;
             }
 
-            if (ZR1.Zusatzparameter != 0)
-            {
-                
-                zahlcheck = txbx_Bohrungsdurchmesser.Text;
-                if (isteingabedouble(zahlcheck) == true)
-                {
-                    txbx_Bohrungsdurchmesser.Background = Brushes.White;
-                }
-                else if (isteingabedouble(zahlcheck) == false)
-                {
-                    Kontrollvariable++;
-                    MessageBox.Show("Bitte geben Sie eine Zahl für den Bohrungsdurchmesser an");
-                    txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
-                }
-                double Parametercheck = Convert.ToDouble(txbx_Bohrungsdurchmesser.Text);
-                if (Parametercheck < 5)
-                {
-                    Kontrollvariable++;
-                    txbx_Bohrungsdurchmesser.Background = Brushes.OrangeRed;
-                    MessageBox.Show("Geben Sie mindestens einen Durchmesser von 8mm an");
-                }
-
-            }
+            
 
 
             if (Kontrollvariable > 0)
@@ -213,24 +230,24 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
             else
             {
-                lbl_eingabe.Foreground = Brushes.Black; 
+                lbl_eingabe.Foreground = Brushes.Black;
                 return true;
             }
         }
         private bool isteingabedouble(string zahlcheck)
         {
-            
-                try
-                {
-                    double doublezahl = double.Parse(zahlcheck);               
-                    return true;
-                               
-                }
-                catch (FormatException)
-                {
-                    return false;
-                }
-            
+
+            try
+            {
+                double doublezahl = double.Parse(zahlcheck);
+                return true;
+
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+
         }
 
         private void Ergebnis_Click(object sender, RoutedEventArgs e)
@@ -238,52 +255,74 @@ namespace _3.TestatZahnradCatiaAnbindung
             if (Eingabekontrolle() == true)
             {
                 
+
                 Zahnradfüttern();
-                ZR1.Berechnung();                
-                Canvasausgabe();
+                ZR1.Berechnung();
+                
+                if (KontrolleAußendurchmesser()==true)
+                {
+                    Canvasausgabe();
+                }
+            }
+
+        }
+
+        public bool KontrolleAußendurchmesser()
+        {
+            double Außendurchmesser = Convert.ToDouble(txbx_Außendurchmesser.Text);
+
+                            
+                if (Außendurchmesser < (ZR1.kopfkreisdurchmesser * 1.3) )
+                {
+                    
+                    MessageBox.Show("Außendurchmesser ist zu klein!");
+                return false;
+                }
+                else
+            {
+                return true;
             }
             
         }
-        
 
         public void Zahnradfüttern()
         {
 
-            
-                if (EingabeAuswahlDrop.SelectedIndex == 0)
-                {                   
-                    ZR1.Eingabeparameter = Convert.ToString(1);                  
-                    ZR1.Zähnezahl = txtbx_eingabe1.Text;
-                    ZR1.Modul = Convert.ToString(Drp_Modul.Text);
-                    ZR1.Dicke = Convert.ToString(txbx_Dicke.Text);
-                    if (ZR1.Zusatzparameter != 0)
-                    {
-                        ZR1.Bohrung = Convert.ToString(txbx_Bohrungsdurchmesser.Text);
-                    }
-                    ZR1.Nachkommarstellen = Convert.ToString(drp_nachkommar.Text);
-                }
-                else if (EingabeAuswahlDrop.SelectedIndex == 1)
+
+            if (EingabeAuswahlDrop.SelectedIndex == 0)
+            {
+                ZR1.Eingabeparameter = Convert.ToString(1);
+                ZR1.Zähnezahl = txtbx_eingabe1.Text;
+                ZR1.Modul = Convert.ToString(Drp_Modul.Text);
+                ZR1.Dicke = Convert.ToString(txbx_Dicke.Text);
+                if (ZR1.ZusatzparameterInnen != 0)
                 {
-                    ZR1.Eingabeparameter = Convert.ToString(2);
-                    ZR1.Teilkreisdurchmesser = txtbx_eingabe1.Text;
-                    ZR1.Modul = Convert.ToString(Drp_Modul.Text);
-                    ZR1.Dicke = Convert.ToString(txbx_Dicke.Text);
-                    
-                    if (ZR1.Zusatzparameter != 0)
-                    {
-                        ZR1.Bohrung = Convert.ToString(txbx_Bohrungsdurchmesser.Text);
-                    }
-                    ZR1.Nachkommarstellen = Convert.ToString(drp_nachkommar.Text);
+                    ZR1.Außendurchmesser = Convert.ToString(txbx_Außendurchmesser.Text);
                 }
-            
-                       
+                ZR1.Nachkommarstellen = Convert.ToString(drp_nachkommar.Text);
+            }
+            else if (EingabeAuswahlDrop.SelectedIndex == 1)
+            {
+                ZR1.Eingabeparameter = Convert.ToString(2);
+                ZR1.Teilkreisdurchmesser = txtbx_eingabe1.Text;
+                ZR1.Modul = Convert.ToString(Drp_Modul.Text);
+                ZR1.Dicke = Convert.ToString(txbx_Dicke.Text);
+
+                if (ZR1.ZusatzparameterInnen != 0)
+                {
+                    ZR1.Außendurchmesser = Convert.ToString(txbx_Außendurchmesser.Text);
+                }
+                ZR1.Nachkommarstellen = Convert.ToString(drp_nachkommar.Text);
+            }
+
+
         }
         public void Canvasausgabe()
         {
             m_Ausgabe.Text = Convert.ToString(ZR1.modul);
             z_Ausgabe.Text = Convert.ToString(ZR1.zähnezahl);
             d_Ausgabe.Text = Convert.ToString(ZR1.teilkreisdurchmesser + "mm");
-            if(ZR1.EingabeDesTeilkreisdurchmessersCheck == 1)
+            if (ZR1.EingabeDesTeilkreisdurchmessersCheck == 1)
             {
                 txtbx_eingabe1.Text = Convert.ToString(ZR1.teilkreisdurchmesser);
                 MessageBox.Show("Achtung! Eingabe des Teilkreisdurchmessers musste korrigiert werden!");
@@ -318,58 +357,32 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
         }
 
-        private void keinebohrung_checked(object sender, RoutedEventArgs e)
-        {
-            txbx_Bohrungsdurchmesser.Visibility = Visibility.Hidden;
-            ZR1.Zusatzparameter = 0;
-        }
+        
 
-        private void einfachebohrung_checked(object sender, RoutedEventArgs e)
-        {
-            txbx_Bohrungsdurchmesser.Visibility = Visibility.Visible;
-            ZR1.Zusatzparameter = 1;
-        }
-
-        private void passfederverbindung_checked(object sender, RoutedEventArgs e)
-        {
-            txbx_Bohrungsdurchmesser.Visibility = Visibility.Visible;
-            ZR1.Zusatzparameter = 2;
-        }
+        
 
         private void btn_catiaÖffnen(object sender, RoutedEventArgs e)
         {
 
             bool Catia_running = CheckIfRunning("CNEXT");
-            if(Catia_running == true)
+            if (Catia_running == true)
             {
                 MessageBox.Show("Catia läuft bereits!");
 
-
-
-
-
-
-
-
-
-
-
-
-
             }
-            else if ( Catia_running == false)
+            else if (Catia_running == false)
             {
                 Process Catia = new Process();
                 Catia.StartInfo.FileName = "CNEXT.exe";
                 Catia.Start();
             }
 
-            
+
         }
 
         private bool CheckIfRunning(string Processname)
         {
-            
+
             return Process.GetProcessesByName(Processname).Length > 0;
         }
 
@@ -387,12 +400,24 @@ namespace _3.TestatZahnradCatiaAnbindung
             hf_Ausgabe.Text = "";
             Masse_Ausgabe.Text = "";
             txtbx_eingabe1.Text = "";
-            txbx_Bohrungsdurchmesser.Text = "";
+            txbx_Außendurchmesser.Text = "";
             txbx_Dicke.Text = "";
+        }
+
+        private void automatischdurchmesser_checked(object sender, RoutedEventArgs e)
+        {
+            txbx_Außendurchmesser.Visibility = Visibility.Hidden;
+            ZR1.ZusatzparameterInnen = 0;
+        }
+
+        private void manuelldurchmesser_checked(object sender, RoutedEventArgs e)
+        {
+            txbx_Außendurchmesser.Visibility = Visibility.Visible;
+            ZR1.ZusatzparameterInnen = 1;
         }
     }
 
-    
+
 
 
 

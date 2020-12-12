@@ -21,6 +21,7 @@
 
         <Button Name="Close" Content="Beenden" Margin="363,432,363,42" Background="#FF53E8FF" BorderBrush="#FF7E7E7E" Foreground="Black" Click="Close_Click_1" BorderThickness="3,3,3,3" FontSize="16" FontWeight="Bold"/>
         <Button x:Name="btn_Aussenverzahnung_" Content="Außenverzahnung" Margin="235,295,541,164" Click="Btn_Aussenverzahnung_Click" Background="#FFFF6363" FontSize="16" FontWeight="Bold" BorderThickness="3,3,3,3" SnapsToDevicePixels="True" />
+        <Button x:Name="btn_Innenverzahnung_" Content="Innenverzahnung" Margin="541,295,235,164" Click="Btn_Innenverzahnung_Click" Background="#FFFF6363" FontSize="16" FontWeight="Bold" BorderThickness="3,3,3,3" SnapsToDevicePixels="True" />
 
         <Image HorizontalAlignment="Center" Height="180" Margin="0,90,0,0" VerticalAlignment="Top" Width="180" Source="ni1.png"  >
             <Image.RenderTransform>

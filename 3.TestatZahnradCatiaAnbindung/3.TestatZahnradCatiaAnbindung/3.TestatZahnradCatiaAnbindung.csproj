@@ -84,6 +84,9 @@
     <Compile Include="Zahnrad1Window.xaml.cs">
       <DependentUpon>Zahnrad1Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Zahnrad2Window.xaml.cs">
+      <DependentUpon>Zahnrad2Window.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,6 +100,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Zahnrad1Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Zahnrad2Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

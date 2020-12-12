@@ -18,12 +18,15 @@ namespace _3.TestatZahnradCatiaAnbindung
         public double dicke ;
         public double bohrung;
         public double bohrungsradius;
+        public double außendurchmesser;
+        public double außenradius;
         public int eingabeparameter ;
         
         public int nachkommastellen ;
         public double material ;
 
         public int Zusatzparameter;
+        public int ZusatzparameterInnen;
 
         //Ausgaben
         public double kopfkreisdurchmesser;
@@ -335,6 +338,22 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
             
         }
+
+        public string Außendurchmesser
+        {
+
+
+            set
+            {
+                außendurchmesser = Convert.ToDouble(value);
+            }
+            get
+            {
+                return Convert.ToString(außendurchmesser);
+            }
+
+        }
+
         public string Material
         {
             set

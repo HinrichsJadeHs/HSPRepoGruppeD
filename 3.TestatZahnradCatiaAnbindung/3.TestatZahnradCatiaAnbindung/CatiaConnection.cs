@@ -310,7 +310,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             hsp_catiaPart.Part.Update();
 
 
-            ////////////////////////////////////////////////////////////////
+            
 
             //Profilerstellen Ende
 
@@ -458,7 +458,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             double x0 = 0;
             double y0 = 0;
 
-            //Hilfsgrößen von Wilkos PDF
+            //Hilfsgrößen von Wilkos PDF nach Innenverzahnung umgestellt
             double Teilkreisradius = ZR1.teilkreisdurchmesser / 2;
             double Hilfskreisradius = Teilkreisradius * 1.12;
             double Kopfkreisradius = Teilkreisradius - (1.25 * ZR1.modul);
@@ -473,7 +473,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             double Totalangel = 360.0 / ZR1.zähnezahl;
             double Totalangelrad = Math.PI * Totalangel / 180;
 
-            //Punkte
+            //Punkte von außen nach innenverzahnung umgestellt
             //LinkerEvolKreis Mittelp. Koordinaten
             double xMittelpunktaufEvol_links = Hilfskreisradius * Math.Cos(Gammarad);
             double yMittelpunktaufEvol_links = Hilfskreisradius * Math.Sin(Gammarad);
@@ -534,6 +534,9 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
             catHybridBody1.set_Name("Profile");
             
+            //erst skizze für einen Block
+
+
             ShapeFactory shapeFactory2 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
             HybridShapeFactory hybridShapeFactory1 = (HybridShapeFactory)hsp_catiaPart.Part.HybridShapeFactory;
 
@@ -549,8 +552,14 @@ namespace _3.TestatZahnradCatiaAnbindung
             hsp_catiaProfil.set_Name("Block");
 
             Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
-
-            Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, ZR1.fußkreisdurchmesser/2*1.4);
+            if (ZR1.ZusatzparameterInnen == 0)
+            {
+                Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, ZR1.fußkreisdurchmesser / 2 * 1.4);
+            }
+            else if (ZR1.ZusatzparameterInnen > 0)
+            {
+                Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, ZR1.außendurchmesser);
+            }
 
             hsp_catiaProfil.CloseEdition();
 
@@ -560,7 +569,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             Pad Block = shapeFactory2.AddNewPad(hsp_catiaProfil, ZR1.dicke);
             hsp_catiaPart.Part.Update();
 
-
+            //dann zahnradskizze für eine tasche
 
             //Skizze umbenennen und öffnen
             Sketches catSketches1 = catHybridBody1.HybridSketches;
