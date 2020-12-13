@@ -109,7 +109,6 @@ namespace _3.TestatZahnradCatiaAnbindung
             hsp_catiaPart.Part.Update();
         }
 
-
         private double Schnittpunkt_X(double xMittelpunkt, double yMittelpunkt, double Radius1, double xMittelpunkt2, double yMittelpunkt2, double Radius2)
         {
             double d = Math.Sqrt(Math.Pow((xMittelpunkt - xMittelpunkt2), 2) + Math.Pow((yMittelpunkt - yMittelpunkt2), 2));
@@ -155,8 +154,6 @@ namespace _3.TestatZahnradCatiaAnbindung
 
             return l * (yMittelpunkt2 - yMittelpunkt) / d + h * (xMittelpunkt2 - xMittelpunkt) / d + yMittelpunkt;
         }
-
-
 
         public void GanzeZahnrad(Zahnrad ZR1)
         {
@@ -571,7 +568,6 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         }
 
-
         public void GanzeInnenZahnrad(Zahnrad ZR1)
         {
             double x0 = 0;
@@ -801,11 +797,6 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         }
 
-
-        
-
-
-
         public void Screenshot(string bildname)
         {
 
@@ -819,22 +810,20 @@ namespace _3.TestatZahnradCatiaAnbindung
             hsp_catiaApp.StartCommand("CompassDisplayOff");
             hsp_catiaApp.ActiveWindow.ActiveViewer.Reframe();
 
-             //hsp_catiaApp.ActiveWindow.ActiveViewer.Viewpoint3D = INFITF.Viewpoint3D;
-            int[] color = new int[3]; // Hintergundfarbe in Weiß setzen
-            color[0] = 1;
-            color[1] = 1;
-            color[2] = 1;
-             //CATSafeArray color[] = new CATSafeArrayVariant[3];
+            // hsp_catiaApp.ActiveWindow.ActiveViewer.Viewpoint3D = INFITF.Viewpoint3D;
+            //int[] color = new int[3]; // Hintergundfarbe in Weiß setzen
+            //color[0] = 1;
+            //color[1] = 1;
+            //color[2] = 1;
+            // CATSafeArray color[] = new CATSafeArrayVariant[3];
 
             INFITF.SettingControllers settingControllers1 = hsp_catiaApp.SettingControllers;
             //INFITF.VisualizationSettingAtt visualizationSettingAtt1 = settingControllers1.Item("CATVizVisualizationSettingCtrl");
 
-             hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(color);
+            // hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(color);
 
             hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname + ".bmp");
         }
-
-
 
     }
 }

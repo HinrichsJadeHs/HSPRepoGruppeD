@@ -78,7 +78,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     cc.GanzeZahnrad(ZR1);
                     
 
-                    //cc.Screenshot("ZahnradFoto");
+                    cc.Screenshot("AußenverzahntesZahnradFoto");
                }
                 else
                 {

@@ -130,6 +130,7 @@
             <TextBlock Name="z_Ausgabe"        HorizontalAlignment="Left" Margin="401,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
             <TextBlock Name="m_Ausgabe"        HorizontalAlignment="Left" Margin="401,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
             <TextBlock Name="Masse_Ausgabe"     HorizontalAlignment="Left" Margin="401,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <Image Name="ImageInnenverzahnt" Height="140" Canvas.Left="358" Canvas.Top="165" Width="140"/>
 
         </Canvas>
 

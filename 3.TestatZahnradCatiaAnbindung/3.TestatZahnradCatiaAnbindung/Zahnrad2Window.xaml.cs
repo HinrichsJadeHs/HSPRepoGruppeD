@@ -58,6 +58,11 @@ namespace _3.TestatZahnradCatiaAnbindung
             if (Eingabekontrolle() == true)
             {
                 CatiaControl();
+
+
+
+                
+                
             }
 
         }
@@ -78,7 +83,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     
                     cc.GanzeInnenZahnrad(ZR1);
 
-                    //cc.Screenshot("ZahnradFoto");
+                    cc.Screenshot("InnenverzahntestZahnradFoto");
                 }
                 else
                 {
