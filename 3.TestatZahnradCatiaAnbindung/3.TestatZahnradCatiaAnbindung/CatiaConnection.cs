@@ -357,7 +357,7 @@ namespace _3.TestatZahnradCatiaAnbindung
 
             // zweite skizze öffnen zeichnen, und eine Tasche daraus bilden
 
-            if (ZR1.Zusatzparameter == 1)
+            if (ZR1.Zusatzparameter == 1 )
             {
                 Sketches sketchesBohrung = catHybridBody1.HybridSketches;
                 OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
@@ -382,7 +382,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 Pocket Tasche = shapeFactory1.AddNewPocket(hsp_catiaProfil, ZR1.dicke);
                 hsp_catiaPart.Part.Update();
             }
-            if (ZR1.Zusatzparameter == 2)
+            if (ZR1.Zusatzparameter == 2 )
             {
                 //Koordinaten der Punkte
 
@@ -445,8 +445,127 @@ namespace _3.TestatZahnradCatiaAnbindung
                 Pocket Tasche = shapeFactory1.AddNewPocket(hsp_catiaProfil, ZR1.dicke);
                 hsp_catiaPart.Part.Update();
             }
+            if (ZR1.Zusatzparameter == 1)
+            {
+                MessageBoxResult result = MessageBox.Show("Es ist eine Gewichtsoptimierung verfügbar, soll diese im 3D-Model implementiert werden ?", "Gewichtsoptimierung?", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        ZR1.Zusatzparameter = 3;
+                        break;
+                    case MessageBoxResult.No:
+                        ZR1.Zusatzparameter = 0;
+                        break;
+
+                }
+            }
+
+            if ( ZR1.Zusatzparameter ==3 )
+            {
+
+                double UntererKreisradius = Math.Round(ZR1.bohrungsradius,0) + 15;
+                double ObererKreisradius = Math.Round( (ZR1.fußkreisdurchmesser / 2),0) - 15;
+                double VerrundungsradiusGewichtsopt = (ObererKreisradius*2 + UntererKreisradius*2) / 4 - UntererKreisradius;
+                double Winkel = 10;
+                double WinkelRad = Math.PI * Winkel / 180;
 
 
+
+                //Koordinaten der Punkte
+
+                //KoordinatenPunkt Links unten
+                double x_UntenLinks = -UntererKreisradius* Math.Sin(WinkelRad);
+                double y_UntenLinks = UntererKreisradius * Math.Cos(WinkelRad);
+
+                //KoordinatenPunkt Links oben
+                double x_ObenLinks = -ObererKreisradius * Math.Sin(WinkelRad);
+                double y_ObenLinks = ObererKreisradius * Math.Cos(WinkelRad);
+
+                //KoordinatenPunkt Rechts oben
+                double x_ObenRechts = ObererKreisradius * Math.Sin(WinkelRad);
+                double y_ObenRechts = ObererKreisradius * Math.Cos(WinkelRad);
+
+                //KoordinatenPunkt Rechts unten
+                double x_UntenRechts = UntererKreisradius * Math.Sin(WinkelRad);
+                double y_UntenRechts = UntererKreisradius * Math.Cos(WinkelRad);
+
+                //KoordinatenMittelPunkt VerrundungLinks
+                double x_VerrundungsmittelpunktLinks = -(ObererKreisradius*2 + UntererKreisradius*2)/4 * Math.Sin(WinkelRad);
+                double y_VerrundungsmittelpunktLinks = (ObererKreisradius*2 + UntererKreisradius*2)/4 * Math.Cos(WinkelRad);
+
+                //KoordinatenMittelPunkt VerrundungRechts
+                double x_VerrundungsmittelpunktRechts = (ObererKreisradius*2 + UntererKreisradius*2)/4 * Math.Sin(WinkelRad);
+                double y_VerrundungsmittelpunktRechts = (ObererKreisradius*2 + UntererKreisradius*2)/4 * Math.Cos(WinkelRad);
+
+
+
+
+                Sketches sketchesGewichtsReduzierung = catHybridBody1.HybridSketches;
+                OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
+                Reference refmxPlaneX = (Reference)catoriginelements.PlaneYZ;
+                hsp_catiaProfil = catSketches1.Add(refmxPlaneX);
+
+                ErzeugeAchsensystem();
+
+                hsp_catiaPart.Part.Update();
+
+                hsp_catiaProfil.set_Name("Passfederbohrung");
+
+                Factory2D catfactory2D3 = hsp_catiaProfil.OpenEdition();
+
+
+
+                //Punkte in die Skizze
+                Point2D POINTLinksUnten = catfactory2D3.CreatePoint(x_UntenLinks, y_UntenLinks);
+                Point2D POINTLinksOben = catfactory2D3.CreatePoint(x_ObenLinks, y_ObenLinks);
+                Point2D POINTRechtsOben = catfactory2D3.CreatePoint(x_ObenRechts, y_ObenRechts);
+                Point2D POINTRechtsUnten = catfactory2D3.CreatePoint(x_UntenRechts, y_UntenRechts);
+                Point2D POINTVerrundungMittelPunktLinks = catfactory2D3.CreatePoint(x_VerrundungsmittelpunktLinks, y_VerrundungsmittelpunktLinks);
+                Point2D POINTVerrundungMittelPunktRechts = catfactory2D3.CreatePoint(x_VerrundungsmittelpunktRechts, y_VerrundungsmittelpunktRechts);
+
+
+                //Linen ziehen
+                Circle2D KreisVerrundungUntenNachObenLinks = catfactory2D3.CreateCircle(x_VerrundungsmittelpunktLinks, y_VerrundungsmittelpunktLinks, VerrundungsradiusGewichtsopt, 0, Math.PI * 2);
+                KreisVerrundungUntenNachObenLinks.CenterPoint = POINTVerrundungMittelPunktLinks;
+                KreisVerrundungUntenNachObenLinks.EndPoint = POINTLinksUnten;
+                KreisVerrundungUntenNachObenLinks.StartPoint = POINTLinksOben;
+
+                Circle2D KreisObenLinksnachObenRechts = catfactory2D3.CreateCircle(x0, y0, ObererKreisradius, 0, Math.PI * 2);
+                KreisObenLinksnachObenRechts.CenterPoint = point_Ursprung;
+                KreisObenLinksnachObenRechts.EndPoint =  POINTLinksOben;
+                KreisObenLinksnachObenRechts.StartPoint =  POINTRechtsOben;
+
+                Circle2D KreisVerrundungObennachUntenRechts = catfactory2D3.CreateCircle(x_VerrundungsmittelpunktRechts, y_VerrundungsmittelpunktRechts, VerrundungsradiusGewichtsopt, 0, Math.PI * 2);
+                KreisVerrundungObennachUntenRechts.CenterPoint = POINTVerrundungMittelPunktRechts;
+                KreisVerrundungObennachUntenRechts.EndPoint = POINTRechtsOben;
+                KreisVerrundungObennachUntenRechts.StartPoint = POINTRechtsUnten;
+
+                Circle2D KreisUntenLinksUntenRechts = catfactory2D3.CreateCircle(x0, y0, UntererKreisradius, 0, Math.PI * 2);
+                KreisUntenLinksUntenRechts.CenterPoint = point_Ursprung;
+                KreisUntenLinksUntenRechts.EndPoint = POINTLinksUnten;
+                KreisUntenLinksUntenRechts.StartPoint = POINTRechtsUnten;
+
+
+
+                hsp_catiaProfil.CloseEdition();
+
+                hsp_catiaPart.Part.Update();
+
+                hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+                Pocket Tasche2 = shapeFactory1.AddNewPocket(hsp_catiaProfil, ZR1.dicke);
+                hsp_catiaPart.Part.Update();
+
+                CircPattern kreismusterFürwenigerGewicht = shapeFactory1.AddNewCircPattern(Tasche2, 1, 4, 20, 90, 1, 1, refUrsprung, refxRichtung, true, 0, true);
+                kreismusterFürwenigerGewicht.CircularPatternParameters = CatCircularPatternParameters.catInstancesandAngularSpacing;
+
+
+                hsp_catiaPart.Part.Update();
+
+
+
+
+
+            }
 
 
 
@@ -554,7 +673,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
             if (ZR1.ZusatzparameterInnen == 0)
             {
-                Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, ZR1.fußkreisdurchmesser / 2 * 1.4);
+                Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, Fußkreisradius+10);
             }
             else if (ZR1.ZusatzparameterInnen > 0)
             {
@@ -681,6 +800,9 @@ namespace _3.TestatZahnradCatiaAnbindung
 
 
         }
+
+
+        
 
 
 

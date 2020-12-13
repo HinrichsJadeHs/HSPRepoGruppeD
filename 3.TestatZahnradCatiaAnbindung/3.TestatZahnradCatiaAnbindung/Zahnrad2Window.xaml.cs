@@ -252,6 +252,9 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         private void Ergebnis_Click(object sender, RoutedEventArgs e)
         {
+            ZR1.parameterAußen = false;
+            ZR1.parameterInnen = true;
+
             if (Eingabekontrolle() == true)
             {
                 
@@ -282,7 +285,7 @@ namespace _3.TestatZahnradCatiaAnbindung
         if (Außendurchmesser < (ZR1.kopfkreisdurchmesser + 20) && ZR1.ZusatzparameterInnen > 0)
              {
                 double WieVielZuKlein = ZR1.kopfkreisdurchmesser +20 - Außendurchmesser;
-                 MessageBox.Show("Außendurchmesser ist um "+Convert.ToString(WieVielZuKlein)+" Millimeter zu klein!");
+                 MessageBox.Show("Außendurchmesser ist um mind. "+Convert.ToString(WieVielZuKlein)+" Millimeter zu klein!");
                  return false;
              }           
             else  

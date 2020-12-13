@@ -235,6 +235,8 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         private void Ergebnis_Click(object sender, RoutedEventArgs e)
         {
+            ZR1.parameterAußen = true;
+            ZR1.parameterInnen = false;
             if (Eingabekontrolle() == true)
             {
                 

@@ -1,0 +1,57 @@
+Language="VBSCRIPT"
+
+Sub CATMain()
+
+Set partDocument1 = CATIA.ActiveDocument
+
+Set part1 = partDocument1.Part
+
+Set shapeFactory1 = part1.ShapeFactory
+
+Set bodies1 = part1.Bodies
+
+Set body1 = bodies1.Item("Hauptkörper")
+
+Set shapes1 = body1.Shapes
+
+Set pocket1 = shapes1.Item("Tasche.1")
+
+Set reference1 = part1.CreateReferenceFromName("")
+
+Set reference2 = part1.CreateReferenceFromName("")
+
+Set circPattern1 = shapeFactory1.AddNewCircPattern(pocket1, 1, 2, 20.000000, 45.000000, 1, 1, reference1, reference2, True, 0.000000, True)
+
+circPattern1.CircularPatternParameters = catInstancesandAngularSpacing
+
+Set angularRepartition1 = circPattern1.AngularRepartition
+
+Set intParam1 = angularRepartition1.InstancesCount
+
+intParam1.Value = 4
+
+Set angularRepartition2 = circPattern1.AngularRepartition
+
+Set angle1 = angularRepartition2.AngularSpacing
+
+angle1.Value = 45.000000
+
+intParam1.Value = 4
+
+angle1.Value = 90.000000
+
+angle1.Value = 90.000000
+
+intParam1.Value = 4
+
+Set originElements1 = part1.OriginElements
+
+Set hybridShapePlaneExplicit1 = originElements1.PlaneYZ
+
+Set reference3 = part1.CreateReferenceFromObject(hybridShapePlaneExplicit1)
+
+circPattern1.SetRotationAxis reference3
+
+part1.Update 
+
+End Sub

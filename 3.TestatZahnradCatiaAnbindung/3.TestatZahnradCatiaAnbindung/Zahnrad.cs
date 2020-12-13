@@ -41,75 +41,150 @@ namespace _3.TestatZahnradCatiaAnbindung
         public double PassfederBreite;
         public double PassfederHöhe;
         public double EingabeDesTeilkreisdurchmessersCheck=0;
+
+        public bool parameterAußen;
+        public bool parameterInnen;
         
 
         //Berechnung
         public void Berechnung()
         {
-            if (eingabeparameter == 1)
+            if (parameterAußen == true)
             {
-                bohrungsradius = bohrung / 2;
-                teilkreisdurchmesser = modul * zähnezahl;
-                teilung = Math.PI * modul;
-                kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
-                kopfspiel = cf * modul;
-                fußkreisdurchmesser = teilkreisdurchmesser - 2 * (modul + kopfspiel);
-                zahnhöhe = 2 * modul + kopfspiel;
-                zahnkopfhöhe = modul;
-                zahnfußhöhe = modul + kopfspiel;
-                masse = (Math.PI / 4) * ((teilkreisdurchmesser * teilkreisdurchmesser) - (bohrung * bohrung)) * dicke * material;
-
-                teilkreisdurchmesser = Math.Round(teilkreisdurchmesser, nachkommastellen);
-                teilung = Math.Round(teilung, nachkommastellen);
-                kopfkreisdurchmesser = Math.Round(kopfkreisdurchmesser, nachkommastellen);
-                kopfspiel = Math.Round(kopfspiel, 3);
-                fußkreisdurchmesser = Math.Round(fußkreisdurchmesser, nachkommastellen);
-                zahnhöhe = Math.Round(zahnhöhe, nachkommastellen);
-                zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
-                zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
-                masse = Math.Round(masse, nachkommastellen);
-                außenradius = außendurchmesser / 2;
-                if (Zusatzparameter == 2)
+                if (eingabeparameter == 1)
                 {
-                    Passfederberechnung();
+                    bohrungsradius = bohrung / 2;
+                    teilkreisdurchmesser = modul * zähnezahl;
+                    teilung = Math.PI * modul;
+                    kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
+                    kopfspiel = cf * modul;
+                    fußkreisdurchmesser = teilkreisdurchmesser - 2 * (modul + kopfspiel);
+                    zahnhöhe = 2 * modul + kopfspiel;
+                    zahnkopfhöhe = modul;
+                    zahnfußhöhe = modul + kopfspiel;
+                    masse = (Math.PI / 4) * ((teilkreisdurchmesser * teilkreisdurchmesser) - (bohrung * bohrung)) * dicke * material;
+
+                    teilkreisdurchmesser = Math.Round(teilkreisdurchmesser, nachkommastellen);
+                    teilung = Math.Round(teilung, nachkommastellen);
+                    kopfkreisdurchmesser = Math.Round(kopfkreisdurchmesser, nachkommastellen);
+                    kopfspiel = Math.Round(kopfspiel, 3);
+                    fußkreisdurchmesser = Math.Round(fußkreisdurchmesser, nachkommastellen);
+                    zahnhöhe = Math.Round(zahnhöhe, nachkommastellen);
+                    zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
+                    zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
+                    masse = Math.Round(masse, nachkommastellen);
+                    außenradius = außendurchmesser / 2;
+                    if (Zusatzparameter == 2)
+                    {
+                        Passfederberechnung();
+                    }
+                }
+                else if (eingabeparameter == 2)
+                {
+                    EingabeDesTeilkreisdurchmessersCheck = 0;
+                    bohrungsradius = bohrung / 2;
+                    zähnezahl = teilkreisdurchmesser / modul;
+                    zähnezahl = Math.Round(zähnezahl, 0);
+
+                    if (zähnezahl * modul != teilkreisdurchmesser)
+                    {
+                        teilkreisdurchmesser = zähnezahl * modul;
+                        EingabeDesTeilkreisdurchmessersCheck = 1;
+                    }
+
+                    teilung = Math.PI * modul;
+                    kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
+                    kopfspiel = cf * modul;
+                    fußkreisdurchmesser = teilkreisdurchmesser - 2 * (modul + kopfspiel);
+                    zahnhöhe = 2 * modul + kopfspiel;
+                    zahnkopfhöhe = modul;
+                    zahnfußhöhe = modul + kopfspiel;
+                    masse = (Math.PI / 4) * ((teilkreisdurchmesser * teilkreisdurchmesser) - (bohrung * bohrung)) * dicke * material;
+
+
+                    zähnezahl = Math.Round(zähnezahl, 0);
+                    teilung = Math.Round(teilung, nachkommastellen);
+                    kopfkreisdurchmesser = Math.Round(kopfkreisdurchmesser, nachkommastellen);
+                    kopfspiel = Math.Round(kopfspiel, 3);
+                    fußkreisdurchmesser = Math.Round(fußkreisdurchmesser, nachkommastellen);
+                    zahnhöhe = Math.Round(zahnhöhe, nachkommastellen);
+                    zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
+                    zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
+                    masse = Math.Round(masse, nachkommastellen);
+                    außenradius = außendurchmesser / 2;
+                    if (Zusatzparameter == 2)
+                    {
+                        Passfederberechnung();
+                    }
                 }
             }
-            else if (eingabeparameter == 2)
+            if(parameterInnen == true)
             {
-                EingabeDesTeilkreisdurchmessersCheck = 0;
-                bohrungsradius = bohrung / 2;
-                zähnezahl = teilkreisdurchmesser / modul;
-                zähnezahl = Math.Round(zähnezahl, 0);
-
-                if (zähnezahl * modul != teilkreisdurchmesser)
+                if (eingabeparameter == 1)
                 {
-                    teilkreisdurchmesser = zähnezahl * modul;
-                    EingabeDesTeilkreisdurchmessersCheck = 1;
+                    bohrungsradius = bohrung / 2;
+                    teilkreisdurchmesser = modul * zähnezahl;
+                    teilung = Math.PI * modul;
+                    kopfkreisdurchmesser = teilkreisdurchmesser - 2 * modul;
+                    kopfspiel = cf * modul;
+                    fußkreisdurchmesser = teilkreisdurchmesser + 2 * (modul + kopfspiel);
+                    zahnhöhe = 2 * modul + kopfspiel;
+                    zahnkopfhöhe = modul;
+                    zahnfußhöhe = modul + kopfspiel;
+                    masse = (Math.PI / 4) * ((teilkreisdurchmesser * teilkreisdurchmesser) - (bohrung * bohrung)) * dicke * material;
+
+                    teilkreisdurchmesser = Math.Round(teilkreisdurchmesser, nachkommastellen);
+                    teilung = Math.Round(teilung, nachkommastellen);
+                    kopfkreisdurchmesser = Math.Round(kopfkreisdurchmesser, nachkommastellen);
+                    kopfspiel = Math.Round(kopfspiel, 3);
+                    fußkreisdurchmesser = Math.Round(fußkreisdurchmesser, nachkommastellen);
+                    zahnhöhe = Math.Round(zahnhöhe, nachkommastellen);
+                    zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
+                    zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
+                    masse = Math.Round(masse, nachkommastellen);
+                    außenradius = außendurchmesser / 2;
+                    if (Zusatzparameter == 2)
+                    {
+                        Passfederberechnung();
+                    }
                 }
-                
-                teilung = Math.PI * modul;
-                kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
-                kopfspiel = cf * modul;
-                fußkreisdurchmesser = teilkreisdurchmesser - 2 * (modul + kopfspiel);
-                zahnhöhe = 2 * modul + kopfspiel;
-                zahnkopfhöhe = modul;
-                zahnfußhöhe = modul + kopfspiel;
-                masse = (Math.PI / 4) * ((teilkreisdurchmesser * teilkreisdurchmesser) - (bohrung * bohrung)) * dicke * material;
-
-
-                zähnezahl = Math.Round(zähnezahl, 0);
-                teilung = Math.Round(teilung, nachkommastellen);
-                kopfkreisdurchmesser = Math.Round(kopfkreisdurchmesser, nachkommastellen);
-                kopfspiel = Math.Round(kopfspiel, 3);
-                fußkreisdurchmesser = Math.Round(fußkreisdurchmesser, nachkommastellen);
-                zahnhöhe = Math.Round(zahnhöhe, nachkommastellen);
-                zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
-                zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
-                masse = Math.Round(masse, nachkommastellen);
-                außenradius = außendurchmesser / 2;
-                if (Zusatzparameter == 2)
+                else if (eingabeparameter == 2)
                 {
-                    Passfederberechnung();
+                    EingabeDesTeilkreisdurchmessersCheck = 0;
+                    bohrungsradius = bohrung / 2;
+                    zähnezahl = teilkreisdurchmesser / modul;
+                    zähnezahl = Math.Round(zähnezahl, 0);
+
+                    if (zähnezahl * modul != teilkreisdurchmesser)
+                    {
+                        teilkreisdurchmesser = zähnezahl * modul;
+                        EingabeDesTeilkreisdurchmessersCheck = 1;
+                    }
+
+                    teilung = Math.PI * modul;
+                    kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
+                    kopfspiel = cf * modul;
+                    fußkreisdurchmesser = teilkreisdurchmesser - 2 * (modul + kopfspiel);
+                    zahnhöhe = 2 * modul + kopfspiel;
+                    zahnkopfhöhe = modul;
+                    zahnfußhöhe = modul + kopfspiel;
+                    masse = (Math.PI / 4) * ((teilkreisdurchmesser * teilkreisdurchmesser) - (bohrung * bohrung)) * dicke * material;
+
+
+                    zähnezahl = Math.Round(zähnezahl, 0);
+                    teilung = Math.Round(teilung, nachkommastellen);
+                    kopfkreisdurchmesser = Math.Round(kopfkreisdurchmesser, nachkommastellen);
+                    kopfspiel = Math.Round(kopfspiel, 3);
+                    fußkreisdurchmesser = Math.Round(fußkreisdurchmesser, nachkommastellen);
+                    zahnhöhe = Math.Round(zahnhöhe, nachkommastellen);
+                    zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
+                    zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
+                    masse = Math.Round(masse, nachkommastellen);
+                    außenradius = außendurchmesser / 2;
+                    if (Zusatzparameter == 2)
+                    {
+                        Passfederberechnung();
+                    }
                 }
             }
         }
