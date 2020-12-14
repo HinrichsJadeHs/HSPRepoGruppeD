@@ -44,6 +44,10 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         public bool parameterAußen;
         public bool parameterInnen;
+
+        public int EswurdeGerechnet=0;
+
+        public double WinkelFürGewichtsMinus = 10;
         
 
         //Berechnung
@@ -120,18 +124,24 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
             if(parameterInnen == true)
             {
+
                 if (eingabeparameter == 1)
                 {
+                    fußkreisdurchmesser = teilkreisdurchmesser + 2 * (modul + kopfspiel);
+                    if (ZusatzparameterInnen == 0)
+                    {
+                        außendurchmesser = fußkreisdurchmesser + 20;
+                    }
                     bohrungsradius = bohrung / 2;
                     teilkreisdurchmesser = modul * zähnezahl;
                     teilung = Math.PI * modul;
                     kopfkreisdurchmesser = teilkreisdurchmesser - 2 * modul;
                     kopfspiel = cf * modul;
-                    fußkreisdurchmesser = teilkreisdurchmesser + 2 * (modul + kopfspiel);
+                    
                     zahnhöhe = 2 * modul + kopfspiel;
                     zahnkopfhöhe = modul;
                     zahnfußhöhe = modul + kopfspiel;
-                    masse = (Math.PI / 4) * ((teilkreisdurchmesser * teilkreisdurchmesser) - (bohrung * bohrung)) * dicke * material;
+                    masse = (Math.PI / 4) * ((außendurchmesser * außendurchmesser) - (teilkreisdurchmesser * teilkreisdurchmesser)) * dicke * material;
 
                     teilkreisdurchmesser = Math.Round(teilkreisdurchmesser, nachkommastellen);
                     teilung = Math.Round(teilung, nachkommastellen);
@@ -147,9 +157,17 @@ namespace _3.TestatZahnradCatiaAnbindung
                     {
                         Passfederberechnung();
                     }
+
+                    
                 }
                 else if (eingabeparameter == 2)
                 {
+                    fußkreisdurchmesser = teilkreisdurchmesser - 2 * (modul + kopfspiel);
+                    if (ZusatzparameterInnen == 0)
+                    {
+                        außendurchmesser = fußkreisdurchmesser  + 20;
+                    }
+
                     EingabeDesTeilkreisdurchmessersCheck = 0;
                     bohrungsradius = bohrung / 2;
                     zähnezahl = teilkreisdurchmesser / modul;
@@ -164,11 +182,11 @@ namespace _3.TestatZahnradCatiaAnbindung
                     teilung = Math.PI * modul;
                     kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
                     kopfspiel = cf * modul;
-                    fußkreisdurchmesser = teilkreisdurchmesser - 2 * (modul + kopfspiel);
+                    
                     zahnhöhe = 2 * modul + kopfspiel;
                     zahnkopfhöhe = modul;
                     zahnfußhöhe = modul + kopfspiel;
-                    masse = (Math.PI / 4) * ((teilkreisdurchmesser * teilkreisdurchmesser) - (bohrung * bohrung)) * dicke * material;
+                    masse = (Math.PI / 4) * ((außendurchmesser * außendurchmesser) - (teilkreisdurchmesser * teilkreisdurchmesser)) * dicke * material;
 
 
                     zähnezahl = Math.Round(zähnezahl, 0);
@@ -181,6 +199,9 @@ namespace _3.TestatZahnradCatiaAnbindung
                     zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
                     masse = Math.Round(masse, nachkommastellen);
                     außenradius = außendurchmesser / 2;
+
+
+
                     if (Zusatzparameter == 2)
                     {
                         Passfederberechnung();

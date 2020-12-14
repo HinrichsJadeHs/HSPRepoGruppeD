@@ -143,5 +143,61 @@
   <ItemGroup>
     <Resource Include="ni2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="CATMat">
+      <Guid>{4D3F28C0-7790-11D6-8056-0030F113D1BF}</Guid>
+      <VersionMajor>0</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CATRma">
+      <Guid>{9BE25E70-7167-11D6-8054-0030F113D1BF}</Guid>
+      <VersionMajor>0</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="INFITF">
+      <Guid>{14F197B2-0771-11D1-A5B1-00A0C9575177}</Guid>
+      <VersionMajor>0</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="KnowledgewareTypeLib">
+      <Guid>{0770412C-722E-11D2-8378-0060941974FF}</Guid>
+      <VersionMajor>0</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="MECMOD">
+      <Guid>{0D90A5C9-3B08-11D1-A26C-0000F87546FD}</Guid>
+      <VersionMajor>0</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ProductStructureTypeLib">
+      <Guid>{5065F8B6-61BB-11D1-9D85-0000F8759F82}</Guid>
+      <VersionMajor>0</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

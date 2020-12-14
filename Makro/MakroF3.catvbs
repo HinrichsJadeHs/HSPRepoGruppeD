@@ -1,0 +1,11 @@
+Language="VBSCRIPT"
+
+Sub CATMain()
+
+Set specsAndGeomWindow1 = CATIA.ActiveWindow
+
+Set viewer3D1 = specsAndGeomWindow1.ActiveViewer
+
+Set viewpoint3D1 = viewer3D1.Viewpoint3D
+
+End Sub

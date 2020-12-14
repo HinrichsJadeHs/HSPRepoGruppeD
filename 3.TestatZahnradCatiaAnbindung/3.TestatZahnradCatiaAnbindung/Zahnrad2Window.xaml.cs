@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Drawing;
 
 
 
@@ -21,10 +22,12 @@ namespace _3.TestatZahnradCatiaAnbindung
 
     public partial class Zahnrad2Window : Window
     {
+        int i;
         Zahnrad ZR1 = new Zahnrad();
         public Zahnrad2Window()
         {
             InitializeComponent();
+            i = 0;
         }
 
         private void EingabeAuswahlDrop_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -55,20 +58,26 @@ namespace _3.TestatZahnradCatiaAnbindung
         {
 
 
-            if (Eingabekontrolle() == true)
+            if (ZR1.EswurdeGerechnet ==2)
             {
                 CatiaControl();
-
-
-
-                
-                
+                FotoLaden("InnenverzahntestZahnradFoto"+Convert.ToString(i));
             }
 
         }
 
+        public void FotoLaden(string Bildname)
+        {
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri("C://Temp/"+Bildname+".bmp");
+            image.EndInit();
+            ImageInnenverzahnt.Source = image;
+        }
+
         public void CatiaControl()
         {
+            i++;
             try
             {
                 CatiaConnection cc = new CatiaConnection();
@@ -83,7 +92,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     
                     cc.GanzeInnenZahnrad(ZR1);
 
-                    cc.Screenshot("InnenverzahntestZahnradFoto");
+                    cc.Screenshot("InnenverzahntestZahnradFoto"+Convert.ToString(i));
                 }
                 else
                 {
@@ -271,12 +280,18 @@ namespace _3.TestatZahnradCatiaAnbindung
                     if (KontrolleAußendurchmesser() == true)
                     {
                         Canvasausgabe();
+                        ZR1.EswurdeGerechnet = 2;
                     }
                 }
                 else
                 {
                     Canvasausgabe();
+                    ZR1.EswurdeGerechnet = 2;
                 }
+            }
+            else
+            {
+                ZR1.EswurdeGerechnet = 0;
             }
 
         }

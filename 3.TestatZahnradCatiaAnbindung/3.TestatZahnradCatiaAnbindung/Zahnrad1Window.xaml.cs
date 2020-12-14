@@ -21,10 +21,12 @@ namespace _3.TestatZahnradCatiaAnbindung
     
     public partial class Zahnrad1Window : Window
     {
+        int i = 0;
         Zahnrad ZR1 = new Zahnrad();
         public Zahnrad1Window()
         {
             InitializeComponent();
+           i = 0;
         }
         
         private void EingabeAuswahlDrop_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -55,15 +57,27 @@ namespace _3.TestatZahnradCatiaAnbindung
         {
             
 
-            if(Eingabekontrolle() == true)
+            if(ZR1.EswurdeGerechnet ==1)
             {
-                CatiaControl();              
+                CatiaControl();
+                FotoLaden("AußenverzahntesZahnradFoto"+Convert.ToString(i));
             }
 
         }
 
+        public void FotoLaden(string Bildname)
+        {
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri("C://Temp/" + Bildname + ".bmp");
+            image.EndInit();
+            Imageausßenverzahnt.Source = image;
+        }
+
         public void CatiaControl()
         {
+            i++;
+            
             try
             {
                 CatiaConnection cc = new CatiaConnection();
@@ -76,9 +90,10 @@ namespace _3.TestatZahnradCatiaAnbindung
 
                     //Erstelle das Zahnrad
                     cc.GanzeZahnrad(ZR1);
+
                     
 
-                    cc.Screenshot("AußenverzahntesZahnradFoto");
+                    cc.Screenshot("AußenverzahntesZahnradFoto"+Convert.ToString(i));
                }
                 else
                 {
@@ -235,6 +250,19 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         private void Ergebnis_Click(object sender, RoutedEventArgs e)
         {
+            if(RadioBtn_KeineBohrung.IsChecked == true)
+            {
+                ZR1.Zusatzparameter = 0;
+            }
+            else if (RadioBtn_EinfacheBohrung.IsChecked == true)
+            {
+                ZR1.Zusatzparameter = 1;
+            }
+            else if (RadioBtn_Passfederverbindung.IsChecked == true)
+            {
+                ZR1.Zusatzparameter = 2;
+            }
+
             ZR1.parameterAußen = true;
             ZR1.parameterInnen = false;
             if (Eingabekontrolle() == true)
@@ -243,8 +271,13 @@ namespace _3.TestatZahnradCatiaAnbindung
                 Zahnradfüttern();
                 ZR1.Berechnung();                
                 Canvasausgabe();
+                ZR1.EswurdeGerechnet = 1;
             }
-            
+            else
+            {
+                ZR1.EswurdeGerechnet = 0;
+            }
+
         }
         
 

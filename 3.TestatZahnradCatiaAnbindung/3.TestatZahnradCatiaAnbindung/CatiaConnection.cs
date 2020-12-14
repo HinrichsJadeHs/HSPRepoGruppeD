@@ -11,6 +11,7 @@ using KnowledgewareTypeLib;
 using ProductStructureTypeLib;
 using System.Windows;
 using System.Windows.Shapes;
+using CATMat;
 
 
 namespace _3.TestatZahnradCatiaAnbindung
@@ -157,6 +158,8 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         public void GanzeZahnrad(Zahnrad ZR1)
         {
+            
+
             //Erstelle Skizze
             // geometrisches Set auswaehlen und umbenennen
             HybridBodies catHybridBodies1 = hsp_catiaPart.Part.HybridBodies;
@@ -349,6 +352,7 @@ namespace _3.TestatZahnradCatiaAnbindung
 
             ErzeugedenNeuenBlock(ZR1, refVerbindung, shapeFactory1);
 
+            hsp_catiaProfil = catSketches1.Parent as MECMOD.Sketch;
 
             //Profil Erstellen
 
@@ -444,26 +448,32 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
             if (ZR1.Zusatzparameter == 1)
             {
-                MessageBoxResult result = MessageBox.Show("Es ist eine Gewichtsoptimierung verfügbar, soll diese im 3D-Model implementiert werden ?", "Gewichtsoptimierung?", MessageBoxButton.YesNo, MessageBoxImage.Information);
-                switch (result)
+                double Faktor = ZR1.teilkreisdurchmesser / ZR1.bohrung;
+                if (1.5 < Faktor && Faktor < 3.5 )
                 {
-                    case MessageBoxResult.Yes:
-                        ZR1.Zusatzparameter = 3;
-                        break;
-                    case MessageBoxResult.No:
-                        ZR1.Zusatzparameter = 0;
-                        break;
+                    MessageBoxResult result = MessageBox.Show("Es ist eine Gewichtsoptimierung verfügbar, soll diese im 3D-Model implementiert werden ?", "Gewichtsoptimierung?", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                    switch (result)
+                    {
+                        case MessageBoxResult.Yes:
+                            ZR1.Zusatzparameter = 3;
+                            break;
+                        case MessageBoxResult.No:
+                            ZR1.Zusatzparameter = 0;
+                            break;
 
+                    }
                 }
+
+                
             }
 
             if ( ZR1.Zusatzparameter ==3 )
             {
 
-                double UntererKreisradius = Math.Round(ZR1.bohrungsradius,0) + 15;
-                double ObererKreisradius = Math.Round( (ZR1.fußkreisdurchmesser / 2),0) - 15;
+                double UntererKreisradius = Math.Round(ZR1.bohrungsradius,0) + 7.5;
+                double ObererKreisradius = Math.Round( (ZR1.fußkreisdurchmesser / 2),0) - 7.5;
                 double VerrundungsradiusGewichtsopt = (ObererKreisradius*2 + UntererKreisradius*2) / 4 - UntererKreisradius;
-                double Winkel = 10;
+                double Winkel = ZR1.WinkelFürGewichtsMinus;
                 double WinkelRad = Math.PI * Winkel / 180;
 
 
@@ -792,14 +802,16 @@ namespace _3.TestatZahnradCatiaAnbindung
             hsp_catiaPart.Part.Update();
 
             ErzeugeDieNeueZahnradTasche(ZR1, refVerbindung, shapeFactory1);
-
-
+            hsp_catiaProfil = catSketches1.Parent as MECMOD.Sketch;
+            hsp_catiaPart.Part.Update();
 
         }
 
-        public void Screenshot(string bildname)
-        {
+       
 
+        public void Screenshot(string bildname )
+        {
+            
             object[] arr1 = new object[3];
             hsp_catiaApp.ActiveWindow.ActiveViewer.GetBackgroundColor(arr1);
             Console.WriteLine("Col: " + arr1[0] + " " + arr1[1] + " " + arr1[2]);
@@ -821,8 +833,9 @@ namespace _3.TestatZahnradCatiaAnbindung
             //INFITF.VisualizationSettingAtt visualizationSettingAtt1 = settingControllers1.Item("CATVizVisualizationSettingCtrl");
 
             // hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(color);
-
-            hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname + ".bmp");
+            hsp_catiaApp.ActiveWindow.ActiveViewer.ZoomIn();
+            hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname +".bmp");
+            
         }
 
     }
