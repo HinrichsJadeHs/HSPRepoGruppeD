@@ -62,6 +62,10 @@ namespace _3.TestatZahnradCatiaAnbindung
                 CatiaControl();
                 FotoLaden("AußenverzahntesZahnradFoto"+Convert.ToString(i));
             }
+            else if (ZR1.EswurdeGerechnet == 0)
+            {
+                MessageBox.Show("Es sollte vorher gerechnet werden");
+            }
 
         }
 

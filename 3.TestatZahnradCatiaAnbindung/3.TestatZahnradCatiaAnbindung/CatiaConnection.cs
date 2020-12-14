@@ -834,6 +834,7 @@ namespace _3.TestatZahnradCatiaAnbindung
 
             // hsp_catiaApp.ActiveWindow.ActiveViewer.PutBackgroundColor(color);
             hsp_catiaApp.ActiveWindow.ActiveViewer.ZoomIn();
+            
             hsp_catiaApp.ActiveWindow.ActiveViewer.CaptureToFile(CatCaptureFormat.catCaptureFormatBMP, "C:\\Temp\\" + bildname +".bmp");
             
         }
