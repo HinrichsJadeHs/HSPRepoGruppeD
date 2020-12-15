@@ -470,8 +470,8 @@ namespace _3.TestatZahnradCatiaAnbindung
             if ( ZR1.Zusatzparameter ==3 )
             {
 
-                double UntererKreisradius = Math.Round(ZR1.bohrungsradius,0) + 7.5;
-                double ObererKreisradius = Math.Round( (ZR1.fußkreisdurchmesser / 2),0) - 7.5;
+                double UntererKreisradius = Math.Round(ZR1.bohrungsradius,0) *1.25;
+                double ObererKreisradius = Math.Round( (ZR1.fußkreisdurchmesser / 2),0) *0.85;
                 double VerrundungsradiusGewichtsopt = (ObererKreisradius*2 + UntererKreisradius*2) / 4 - UntererKreisradius;
                 double Winkel = ZR1.WinkelFürGewichtsMinus;
                 double WinkelRad = Math.PI * Winkel / 180;

@@ -7,17 +7,11 @@
         mc:Ignorable="d"
         Title="Zahnradrechner" Height="550" MinHeight="550" MaxHeight="550" Width="1000" MinWidth="1000" MaxWidth="1000" Icon="Niklas2.png">
 
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFA5FFA5"/>
-                <GradientStop Color="#FFFF7D7D" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+    <Grid Background="#FFB4B4B4">
 
         <Label Content="Innenverzahnt" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="498" FontSize="20" FontWeight="Bold" />
 
-        <Canvas Margin="40,50,0,149" Background="#FFC1C1C1" HorizontalAlignment="Left" Width="290" Height="330">
+        <Canvas Margin="40,50,0,149" Background="White" HorizontalAlignment="Left" Width="290" Height="330">
             <Label Content="Eingabe:"  Name="lbl_eingabe"          HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="150" Height="31" RenderTransformOrigin="1.618,0.362" FontWeight="Bold" FontSize="16"/>
 
             <ComboBox Name="EingabeAuswahlDrop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="170" Height="25"  SelectionChanged="EingabeAuswahlDrop_SelectionChanged" Canvas.Left="90" Canvas.Top="10" >
@@ -100,7 +94,7 @@
 
         </Canvas>
 
-        <Canvas Margin="364,50,0,0" Background="#FFC1C1C1" HorizontalAlignment="Left" Width="618" Height="442" VerticalAlignment="Top">
+        <Canvas Margin="364,50,0,0" Background="white" HorizontalAlignment="Left" Width="618" Height="442" VerticalAlignment="Top">
             <Label Content="Berechnungen:" Margin="5,5,0,0" Width="150" Height="31" RenderTransformOrigin="1.618,0.362" FontWeight="Bold" FontSize="16" Canvas.Left="5" Canvas.Top="5"/>
             <Label Content="Teilkreisdurchmesser d: "    Name="lbl_Ausgabe"       HorizontalAlignment="Left" Margin="5,55,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
             <Label Content="Teilung p: "                        HorizontalAlignment="Left" Margin="5,85,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
@@ -126,11 +120,13 @@
             <Label Content="Zähnezahl: "           HorizontalAlignment="Left" Margin="250,55,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
             <Label Content="Modul: "         HorizontalAlignment="Left" Margin="250,85,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
             <Label Content="Masse: "         HorizontalAlignment="Left" Margin="250,115,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
+            <Label Content="Preis aufgrund Masse: "         HorizontalAlignment="Left" Margin="250,140,0,0" VerticalAlignment="Top" Width="150" Height="30" RenderTransformOrigin="1.618,0.362"/>
 
             <TextBlock Name="z_Ausgabe"        HorizontalAlignment="Left" Margin="401,60,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
             <TextBlock Name="m_Ausgabe"        HorizontalAlignment="Left" Margin="401,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
             <TextBlock Name="Masse_Ausgabe"     HorizontalAlignment="Left" Margin="401,120,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
-            <Image Name="ImageInnenverzahnt" Height="250" Canvas.Left="250" Canvas.Top="162" Width="358" Stretch="Fill"/>
+            <TextBlock Name="Preis_Ausgabe"     HorizontalAlignment="Left" Margin="401,145,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="25"/>
+            <Image Name="ImageInnenverzahnt" Height="250" Canvas.Left="358" Canvas.Top="182" Width="250"/>
             <Image HorizontalAlignment="Left"  Width="105" Source="ni1.png" RenderTransformOrigin=".5,.5" Canvas.Left="10" Canvas.Top="327" >
                 <Image.RenderTransform>
                     <RotateTransform CenterX="0" CenterY="0" />
@@ -160,6 +156,7 @@
         <Button x:Name="btn_Ergebnis" Background="#FF53E8FF" BorderBrush="#FF7E7E7E" Content="Ergebnis" HorizontalAlignment="Left" Margin="230,385,0,0" VerticalAlignment="Top" Width="100" Click="Ergebnis_Click" Height="41"/>
         <Button x:Name="Btn_CatiaÖffnen" Background="#FF53E8FF" BorderBrush="#FF7E7E7E" Content="Catia öffnen" HorizontalAlignment="Left" Margin="40,431,0,0" VerticalAlignment="Top" Width="100" Click="btn_catiaÖffnen" Height="41"/>
         <Button x:Name="Btn_clear" Content="Clear" Background="#FF53E8FF" BorderBrush="#FF7E7E7E" HorizontalAlignment="Left" Margin="230,431,0,0" VerticalAlignment="Top" Width="100" Click="clear_click" Height="41"/>
+        <Button Content="Close" HorizontalAlignment="Left" Margin="145,472,0,0" VerticalAlignment="Top" Width="80" Background="#FF3EC300" Click="Button_Click"/>
 
 
 

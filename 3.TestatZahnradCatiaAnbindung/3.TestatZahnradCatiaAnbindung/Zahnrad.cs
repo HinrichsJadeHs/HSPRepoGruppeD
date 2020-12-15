@@ -24,6 +24,7 @@ namespace _3.TestatZahnradCatiaAnbindung
         
         public int nachkommastellen ;
         public double material ;
+        public double materialpreis;
 
         public int Zusatzparameter;
         public int ZusatzparameterInnen;
@@ -37,6 +38,7 @@ namespace _3.TestatZahnradCatiaAnbindung
         public double zahnfußhöhe ;
         public double zahnhöhe ;
         public double masse;
+        public double Preis;
         public const double cf = 0.167;
         public double PassfederBreite;
         public double PassfederHöhe;
@@ -67,7 +69,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     zahnkopfhöhe = modul;
                     zahnfußhöhe = modul + kopfspiel;
                     masse = (Math.PI / 4) * ((teilkreisdurchmesser * teilkreisdurchmesser) - (bohrung * bohrung)) * dicke * material;
-
+                    Preis = masse * materialpreis;
                     teilkreisdurchmesser = Math.Round(teilkreisdurchmesser, nachkommastellen);
                     teilung = Math.Round(teilung, nachkommastellen);
                     kopfkreisdurchmesser = Math.Round(kopfkreisdurchmesser, nachkommastellen);
@@ -77,6 +79,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
                     zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
                     masse = Math.Round(masse, nachkommastellen);
+                    Preis = Math.Round(Preis, 2);
                     außenradius = außendurchmesser / 2;
                     if (Zusatzparameter == 2)
                     {
@@ -104,7 +107,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     zahnkopfhöhe = modul;
                     zahnfußhöhe = modul + kopfspiel;
                     masse = (Math.PI / 4) * ((teilkreisdurchmesser * teilkreisdurchmesser) - (bohrung * bohrung)) * dicke * material;
-
+                    Preis = masse * materialpreis;
 
                     zähnezahl = Math.Round(zähnezahl, 0);
                     teilung = Math.Round(teilung, nachkommastellen);
@@ -115,6 +118,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
                     zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
                     masse = Math.Round(masse, nachkommastellen);
+                    Preis = Math.Round(Preis, 2);
                     außenradius = außendurchmesser / 2;
                     if (Zusatzparameter == 2)
                     {
@@ -142,6 +146,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     zahnkopfhöhe = modul;
                     zahnfußhöhe = modul + kopfspiel;
                     masse = (Math.PI / 4) * ((außendurchmesser * außendurchmesser) - (teilkreisdurchmesser * teilkreisdurchmesser)) * dicke * material;
+                    Preis = masse * materialpreis;
 
                     teilkreisdurchmesser = Math.Round(teilkreisdurchmesser, nachkommastellen);
                     teilung = Math.Round(teilung, nachkommastellen);
@@ -152,6 +157,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
                     zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
                     masse = Math.Round(masse, nachkommastellen);
+                    Preis = Math.Round(Preis, 2);
                     außenradius = außendurchmesser / 2;
                     if (Zusatzparameter == 2)
                     {
@@ -163,9 +169,10 @@ namespace _3.TestatZahnradCatiaAnbindung
                 else if (eingabeparameter == 2)
                 {
                     fußkreisdurchmesser = teilkreisdurchmesser - 2 * (modul + kopfspiel);
+                    kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
                     if (ZusatzparameterInnen == 0)
                     {
-                        außendurchmesser = fußkreisdurchmesser  + 20;
+                        außendurchmesser = kopfkreisdurchmesser  + 20;
                     }
 
                     EingabeDesTeilkreisdurchmessersCheck = 0;
@@ -180,14 +187,14 @@ namespace _3.TestatZahnradCatiaAnbindung
                     }
 
                     teilung = Math.PI * modul;
-                    kopfkreisdurchmesser = teilkreisdurchmesser + 2 * modul;
+                    
                     kopfspiel = cf * modul;
                     
                     zahnhöhe = 2 * modul + kopfspiel;
                     zahnkopfhöhe = modul;
                     zahnfußhöhe = modul + kopfspiel;
                     masse = (Math.PI / 4) * ((außendurchmesser * außendurchmesser) - (teilkreisdurchmesser * teilkreisdurchmesser)) * dicke * material;
-
+                    Preis = masse * materialpreis;
 
                     zähnezahl = Math.Round(zähnezahl, 0);
                     teilung = Math.Round(teilung, nachkommastellen);
@@ -198,6 +205,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     zahnkopfhöhe = Math.Round(zahnkopfhöhe, nachkommastellen);
                     zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
                     masse = Math.Round(masse, nachkommastellen);
+                    Preis = Math.Round(Preis, 2);
                     außenradius = außendurchmesser / 2;
 
 
@@ -464,6 +472,8 @@ namespace _3.TestatZahnradCatiaAnbindung
             }
 
         }
+
+        
 
       
 

@@ -56,17 +56,28 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         public void Button_Catia(object sender, RoutedEventArgs e)
         {
+            if(ZR1.zähnezahl>=13)
+            {
+                if (ZR1.EswurdeGerechnet == 2)
+                {
+                    CatiaControl();
+                    FotoLaden("InnenverzahntestZahnradFoto" + Convert.ToString(i));
+                }
+                else if (ZR1.EswurdeGerechnet == 0)
+                {
+                    MessageBox.Show("Es sollte vorher gerechnet werden");
+                }
+            }
+            else if(ZR1.zähnezahl< 13)
+            {
+                MessageBox.Show("Die Zähnezahl ist zu klein. bitte berechnen Sie ein anderes Zahnrad(evtl. ist das Modul zu hoch)");
+            }
 
 
-            if (ZR1.EswurdeGerechnet ==2)
-            {
-                CatiaControl();
-                FotoLaden("InnenverzahntestZahnradFoto"+Convert.ToString(i));
-            }
-            else if (ZR1.EswurdeGerechnet == 0)
-            {
-                MessageBox.Show("Es sollte vorher gerechnet werden");
-            }
+
+
+
+            ZR1.EswurdeGerechnet = 0;
 
         }
 
@@ -370,6 +381,14 @@ namespace _3.TestatZahnradCatiaAnbindung
             ha_Ausgabe.Text = Convert.ToString(ZR1.zahnkopfhöhe + "mm");
             hf_Ausgabe.Text = Convert.ToString(ZR1.zahnfußhöhe + "mm");
             Masse_Ausgabe.Text = Convert.ToString(ZR1.masse + "g");
+            if (ZR1.Preis < 0.01)
+            {
+                Preis_Ausgabe.Text = Convert.ToString(0.01 + "€");
+            }
+            else
+            {
+                Preis_Ausgabe.Text = Convert.ToString(ZR1.Preis + "€");
+            }
         }
 
         private void cmbx_material_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -377,18 +396,22 @@ namespace _3.TestatZahnradCatiaAnbindung
             if (cmbx_material.SelectedIndex == 0)
             {
                 ZR1.material = 0.00786;
+                ZR1.materialpreis = 0.00057;
             }
             else if (cmbx_material.SelectedIndex == 1)
             {
                 ZR1.material = 0.00067;
+                ZR1.materialpreis = 0.0008;
             }
             else if (cmbx_material.SelectedIndex == 2)
             {
                 ZR1.material = 0.0027;
+                ZR1.materialpreis = 0.00103;
             }
             else if (cmbx_material.SelectedIndex == 3)
             {
                 ZR1.material = 0.00896;
+                ZR1.materialpreis = 0.005;
             }
         }
 
@@ -449,6 +472,11 @@ namespace _3.TestatZahnradCatiaAnbindung
         {
             txbx_Außendurchmesser.Visibility = Visibility.Visible;
             ZR1.ZusatzparameterInnen = 1;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 

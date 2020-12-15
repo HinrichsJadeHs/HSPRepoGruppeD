@@ -7,13 +7,7 @@
         mc:Ignorable="d"
         Title="Zahnradrechner"  Height="550" MinHeight="550" MaxHeight="550" Width="1000" MinWidth="1000" MaxWidth="1000" Icon="Niklas2.png">
 
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFA5FFA5"/>
-                <GradientStop Color="#FFFF7D7D" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+    <Grid Background="#FFB4B4B4">
 
         <Label Content="Willkommen beim Zahnradrechner" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top" Width="344" FontSize="20" FontWeight="Bold" />
         <Label Content="Wählen Sie zwischen einem Innen- oder Außenverzahnten Zahnrad" HorizontalAlignment="Left" Margin="40,45,0,0" VerticalAlignment="Top" Width="800" FontSize="18" FontWeight="Bold" />
