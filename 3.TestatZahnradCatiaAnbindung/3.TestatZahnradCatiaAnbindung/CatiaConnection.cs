@@ -449,7 +449,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             if (ZR1.Zusatzparameter == 1)
             {
                 double Faktor = ZR1.teilkreisdurchmesser / ZR1.bohrung;
-                if (1.5 < Faktor && Faktor < 3.5 )
+                if (1.5 < Faktor && Faktor < 3.5 && ZR1.teilkreisdurchmesser-ZR1.bohrung > 12)
                 {
                     MessageBoxResult result = MessageBox.Show("Es ist eine Gewichtsoptimierung verfügbar, soll diese im 3D-Model implementiert werden ?", "Gewichtsoptimierung?", MessageBoxButton.YesNo, MessageBoxImage.Information);
                     switch (result)
