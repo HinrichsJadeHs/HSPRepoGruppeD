@@ -381,6 +381,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             ha_Ausgabe.Text = Convert.ToString(ZR1.zahnkopfhöhe + "mm");
             hf_Ausgabe.Text = Convert.ToString(ZR1.zahnfußhöhe + "mm");
             Masse_Ausgabe.Text = Convert.ToString(ZR1.masse + "g");
+            Außendurchmesser_Ausgabe.Text = Convert.ToString(ZR1.außendurchmesser + "mm");
             if (ZR1.Preis < 0.01)
             {
                 Preis_Ausgabe.Text = Convert.ToString(0.01 + "€");
@@ -414,10 +415,6 @@ namespace _3.TestatZahnradCatiaAnbindung
                 ZR1.materialpreis = 0.005;
             }
         }
-
-        
-
-        
 
         private void btn_catiaÖffnen(object sender, RoutedEventArgs e)
         {

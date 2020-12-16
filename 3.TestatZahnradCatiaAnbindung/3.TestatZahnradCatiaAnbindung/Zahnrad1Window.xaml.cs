@@ -416,9 +416,6 @@ namespace _3.TestatZahnradCatiaAnbindung
             if(Catia_running == true)
             {
                 MessageBox.Show("Catia läuft bereits!");
-
-
-
             }
             else if ( Catia_running == false)
             {
@@ -426,8 +423,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 Catia.StartInfo.FileName = "CNEXT.exe";
                 Catia.Start();
             }
-
-            
+           
         }
 
         private bool CheckIfRunning(string Processname)

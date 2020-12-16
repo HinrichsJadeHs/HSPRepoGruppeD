@@ -158,6 +158,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                     zahnfußhöhe = Math.Round(zahnfußhöhe, nachkommastellen);
                     masse = Math.Round(masse, nachkommastellen);
                     Preis = Math.Round(Preis, 2);
+                    außendurchmesser = Math.Round(außendurchmesser, nachkommastellen);
                     außenradius = außendurchmesser / 2;
                     if (Zusatzparameter == 2)
                     {
