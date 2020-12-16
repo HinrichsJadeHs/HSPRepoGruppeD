@@ -55,17 +55,23 @@ namespace _3.TestatZahnradCatiaAnbindung
 
         public void Button_Catia(object sender, RoutedEventArgs e)
         {
-            
 
-            if(ZR1.EswurdeGerechnet ==1)
+            if (ZR1.zähnezahl >= 9)
             {
-                CatiaControl();
-                FotoLaden("AußenverzahntesZahnradFoto"+Convert.ToString(i));
-                
+                if (ZR1.EswurdeGerechnet == 1)
+                {
+                    CatiaControl();
+                    FotoLaden("AußenverzahntesZahnradFoto" + Convert.ToString(i));
+
+                }
+                else if (ZR1.EswurdeGerechnet == 0)
+                {
+                    MessageBox.Show("Es sollte vorher gerechnet werden");
+                }
             }
-            else if (ZR1.EswurdeGerechnet == 0)
+            else
             {
-                MessageBox.Show("Es sollte vorher gerechnet werden");
+                MessageBox.Show("Die Zähnezahl ist zu klein. bitte berechnen Sie ein anderes Zahnrad");
             }
             ZR1.EswurdeGerechnet = 0;
         }
