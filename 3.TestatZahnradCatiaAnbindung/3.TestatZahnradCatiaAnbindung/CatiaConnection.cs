@@ -110,6 +110,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             hsp_catiaPart.Part.Update();
         }
 
+        //Schnittpunktkontrolle
         private double Schnittpunkt_X(double xMittelpunkt, double yMittelpunkt, double Radius1, double xMittelpunkt2, double yMittelpunkt2, double Radius2)
         {
             double d = Math.Sqrt(Math.Pow((xMittelpunkt - xMittelpunkt2), 2) + Math.Pow((yMittelpunkt - yMittelpunkt2), 2));
@@ -156,6 +157,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             return l * (yMittelpunkt2 - yMittelpunkt) / d + h * (xMittelpunkt2 - xMittelpunkt) / d + yMittelpunkt;
         }
 
+
         public void GanzeZahnrad(Zahnrad ZR1)
         {
             
@@ -191,8 +193,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             //Erstelle Skizze Ende
 
 
-            //Profil Erstellen
-
+            
             //Deklarieren!! Beginn
 
 
@@ -257,7 +258,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             hsp_catiaProfil.set_Name("Zahnrädchen");
             Factory2D catfactory2D1 = hsp_catiaProfil.OpenEdition();
 
-            //Nun die Punkte in die Skizze
+            //Nun die Punkte in die Skizze um daran die Kreise zu zeichnen
             Point2D point_Ursprung = catfactory2D1.CreatePoint(x0, y0);
             Point2D pointAnfangFußkreisLinks = catfactory2D1.CreatePoint(x_AnfangspunktFußkreis, y_AnfangspunktFußkreis);
             Point2D pointFußkreisVerrundungLinks = catfactory2D1.CreatePoint(x_SP_FußkreisradiusVerrundung_links, y_SP_FußkreisradiusVerrundung_links);
@@ -271,7 +272,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             Point2D pointEvolventenKopfkreisLinks = catfactory2D1.CreatePoint(xEvolventenkopfkreis_links, yEvolventenkopfkreis_links);
             Point2D pointEvolventenKopfkreisRechts = catfactory2D1.CreatePoint(-xEvolventenkopfkreis_links, yEvolventenkopfkreis_links);
 
-            //Kreise
+            //Kreise für die Zahngestaltung 
 
             Circle2D KreisFrußkreis = catfactory2D1.CreateCircle(x0, y0, Fußkreisradius, 0, Math.PI * 2);
             KreisFrußkreis.CenterPoint = point_Ursprung;
@@ -356,8 +357,9 @@ namespace _3.TestatZahnradCatiaAnbindung
 
             //Profil Erstellen
 
-            // zweite skizze öffnen zeichnen, und eine Tasche daraus bilden
+            // zweite skizze 
 
+            //Bohrung
             if (ZR1.Zusatzparameter == 1 )
             {
                 Sketches sketchesBohrung = catHybridBody1.HybridSketches;
@@ -383,6 +385,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 Pocket Tasche = shapeFactory1.AddNewPocket(hsp_catiaProfil, ZR1.dicke);
                 hsp_catiaPart.Part.Update();
             }
+            //Passfeder
             if (ZR1.Zusatzparameter == 2 )
             {
                 //Koordinaten der Punkte
@@ -446,6 +449,7 @@ namespace _3.TestatZahnradCatiaAnbindung
                 Pocket Tasche = shapeFactory1.AddNewPocket(hsp_catiaProfil, ZR1.dicke);
                 hsp_catiaPart.Part.Update();
             }
+            //fragen wenn Bohrung i.O. dann Gewichtsoptimierung
             if (ZR1.Zusatzparameter == 1)
             {
                 double Faktor = ZR1.teilkreisdurchmesser / ZR1.bohrung;
@@ -462,11 +466,11 @@ namespace _3.TestatZahnradCatiaAnbindung
                             break;
 
                     }
-                }
-
-                
+                }               
             }
 
+
+            //Gewichtsoptimierung
             if ( ZR1.Zusatzparameter ==3 )
             {
 
@@ -573,9 +577,6 @@ namespace _3.TestatZahnradCatiaAnbindung
 
 
             }
-
-
-
         }
 
         public void GanzeInnenZahnrad(Zahnrad ZR1)
@@ -808,7 +809,6 @@ namespace _3.TestatZahnradCatiaAnbindung
         }
 
        
-
         public void Screenshot(string bildname )
         {
             
