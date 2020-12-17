@@ -50,6 +50,8 @@ namespace _3.TestatZahnradCatiaAnbindung
         public int EswurdeGerechnet=0;
 
         public double WinkelFürGewichtsMinus = 10;
+
+        public bool CatiaError = false;
         
 
         //Berechnung

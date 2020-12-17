@@ -680,7 +680,7 @@ namespace _3.TestatZahnradCatiaAnbindung
             Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
             if (ZR1.ZusatzparameterInnen == 0)
             {
-                Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, Fußkreisradius+10);
+                Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, Fußkreisradius*1.1);
             }
             else if (ZR1.ZusatzparameterInnen > 0)
             {

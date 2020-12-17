@@ -73,10 +73,6 @@ namespace _3.TestatZahnradCatiaAnbindung
                 MessageBox.Show("Die Zähnezahl ist zu klein. bitte berechnen Sie ein anderes Zahnrad(evtl. ist das Modul zu hoch)");
             }
 
-
-
-
-
             ZR1.EswurdeGerechnet = 0;
 
         }
@@ -457,6 +453,8 @@ namespace _3.TestatZahnradCatiaAnbindung
             txtbx_eingabe1.Text = "";
             txbx_Außendurchmesser.Text = "";
             txbx_Dicke.Text = "";
+            txbx_Außendurchmesser.Text = "";
+            Außendurchmesser_Ausgabe.Text = "";
         }
 
         private void automatischdurchmesser_checked(object sender, RoutedEventArgs e)
